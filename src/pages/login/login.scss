@@ -1,13 +1,6 @@
-html,
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    background-color: #afbcb4;
-}
-
 .login {
     height: 100vh;
+    background-color: #afbcb4;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,6 +72,10 @@ body {
           border: none;
           border-bottom: 1px solid lightgray;
           padding: 20px 10px;
+          }
+
+          small {
+            font-size: 11px;
           }
           
           button {
