@@ -4,10 +4,10 @@ import logo from '../login/images/logo.png';
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  const [passwordError, setPasswordError] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [passwordError, setPasswordError] = useState(false); // Añadir el estado passwordError
+  const [submitted, setSubmitted] = useState(false); // Añadir el estado submitted
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => { // Añadir la función handleSubmit que valida la contraseña
     event.preventDefault();
     setSubmitted(true);
     const confirmPassword = event.target.confirmPassword.value;
@@ -19,7 +19,7 @@ const Register = () => {
     }
   };
 
-  const handleConfirmPasswordChange = (event) => {
+  const handleConfirmPasswordChange = (event) => { // Añadir la función handleConfirmPasswordChange que valida la confirmación de la contraseña
     const confirmPassword = event.target.value;
     const password = event.target.form.password.value;
     setPasswordError(confirmPassword !== password);
@@ -49,10 +49,10 @@ const Register = () => {
             <input type="email" placeholder="Correo electrónico" name="email" required />
             <input type="password" id="password" placeholder="Contraseña" 
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" required />
-            <small>* La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.</small>
+            <small>* La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.</small> {/* Añadir el mensaje de error */}
             <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" 
-                   onChange={handleConfirmPasswordChange} name="confirmPassword" required />
-            {submitted && passwordError && <small style={{ color: 'red' }}>Las contraseñas no coinciden.</small>}
+                   onChange={handleConfirmPasswordChange} name="confirmPassword" required /> {/* Añadir el evento onChange que llama a la función handleConfirmPasswordChange */}
+            {submitted && passwordError && <small style={{ color: 'red' }}>Las contraseñas no coinciden.</small>} {/* Añadir el mensaje de error */}
             <button type="submit">Registrarse</button>
           </form>
         </div>

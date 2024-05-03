@@ -4,17 +4,17 @@ import logo from './images/logo.png';
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [passwordError, setPasswordError] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [passwordError, setPasswordError] = useState(false); // Añadir el estado passwordError
+  const [submitted, setSubmitted] = useState(false); // Añadir el estado submitted
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event) => { // Añadir la función handleSubmit que valida la contraseña
     event.preventDefault();
     setSubmitted(true);
     const password = document.getElementById('password').value;
     setPasswordError(submitted && !isValidPassword(password));
   };
 
-  const isValidPassword = (password) => {
+  const isValidPassword = (password) => { // Añadir la función isValidPassword que valida la contraseña
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return regex.test(password);
   };
