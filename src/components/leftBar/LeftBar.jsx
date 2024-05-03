@@ -1,17 +1,17 @@
 import "./leftBar.scss";
-import Friends from "../../assets/1.png";
-import Groups from "../../assets/2.png";
-import Market from "../../assets/3.png";
-import Watch from "../../assets/4.png";
-import Memories from "../../assets/5.png";
-import Events from "../../assets/6.png";
-import Gaming from "../../assets/7.png";
-import Gallery from "../../assets/8.png";
-import Videos from "../../assets/9.png";
-import Messages from "../../assets/10.png";
-import Tutorials from "../../assets/11.png";
-import Courses from "../../assets/12.png";
-import Fund from "../../assets/13.png";
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import GroupsIcon from '@mui/icons-material/Groups';
+import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
+import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import RestoreIcon from '@mui/icons-material/Restore';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import PedalBikeIcon from '@mui/icons-material/PedalBike';
+import CollectionsIcon from '@mui/icons-material/Collections';
+import SmartDisplayIcon from '@mui/icons-material/SmartDisplay';
+import MarkunreadIcon from '@mui/icons-material/Markunread';
+import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront';
+import SchoolIcon from '@mui/icons-material/School';
+import SavingsIcon from '@mui/icons-material/Savings';
 
 const LeftBar = () => {
     return (
@@ -23,23 +23,23 @@ const LeftBar = () => {
                         <span>Jorge Fernández</span>
                     </div>
                     <div className="item">
-                        <img src={Friends} alt="" />
+                        <PeopleAltIcon className="icon"/>
                         <span>Amigos</span>
                     </div>
                     <div className="item">
-                        <img src={Groups} alt="" />
+                        <GroupsIcon className="icon"/>
                         <span>Grupos</span>
                     </div>
                     <div className="item">
-                        <img src={Market} alt="" />
+                        <ShoppingBagIcon className="icon"/>
                         <span>Tienda</span>
                     </div>
                     <div className="item">
-                        <img src={Watch} alt="" />
+                        <VideoLibraryIcon className="icon"/>
                         <span>Ver</span>
                     </div>
                     <div className="item">
-                        <img src={Memories} alt="" />
+                        <RestoreIcon className="icon"/>
                         <span>Recuerdos</span>
                     </div>
                 </div>
@@ -47,23 +47,23 @@ const LeftBar = () => {
                 <div className="menu">
                     <span>Favoritos</span>
                     <div className="item">
-                        <img src={Events} alt="" />
+                        <CalendarMonthIcon className="icon"/>
                         <span>Eventos</span>
                     </div>
                     <div className="item">
-                        <img src={Gaming} alt="" />
+                        <PedalBikeIcon className="icon"/>
                         <span>Juegos</span>
                     </div>
                     <div className="item">
-                        <img src={Gallery} alt="" />
+                        <CollectionsIcon className="icon"/>
                         <span>Galería</span>
                     </div>
                     <div className="item">
-                        <img src={Videos} alt="" />
+                        <SmartDisplayIcon className="icon"/>
                         <span>Vídeos</span>
                     </div>
                     <div className="item">
-                        <img src={Messages} alt="" />
+                        <MarkunreadIcon className="icon"/>
                         <span>Mensajes</span>
                     </div>
                 </div>
@@ -71,15 +71,15 @@ const LeftBar = () => {
                 <div className="menu">
                     <span>Otros</span>
                     <div className="item">
-                        <img src={Fund} alt="" />
+                        <SavingsIcon className="icon"/>
                         <span>Fondos</span>
                     </div>
                     <div className="item">
-                        <img src={Tutorials} alt="" />
+                        <VideoCameraFrontIcon className="icon"/>
                         <span>Tutoriales</span>
                     </div>
                     <div className="item">
-                        <img src={Courses} alt="" />
+                        <SchoolIcon className="icon"/>
                         <span>Cursos</span>
                     </div>
                 </div>

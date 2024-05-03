@@ -11,14 +11,19 @@ import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/rightBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
+import "./style.scss";
+import React, { useContext } from 'react';
+import { DarkModeContext } from './context/darkModeContext.jsx';
 
 function App() {
 
   const currentUser = true; // Variable currentUser que indica si el usuario está logueado o no
 
+  const { darkMode } = useContext(DarkModeContext); // Extraer el estado darkMode del contexto DarkModeContext
+
   const Layout = () => { // Componente Layout que contiene la estructura de la aplicación
     return (
-      <div>
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <NavBar/>
         <div style={{display: "flex"}}>
           <LeftBar/>
