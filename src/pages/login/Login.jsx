@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import "./login.scss";
 import logo from './images/logo.png';
 import { Link } from "react-router-dom";
+import { useContext } from 'react';
+import { AuthContext } from "../../context/authContext";
 
 const Login = () => {
   const [passwordError, setPasswordError] = useState(false); // Añadir el estado passwordError
@@ -18,6 +20,12 @@ const Login = () => {
     const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     return regex.test(password);
   };
+
+  const { login } = useContext(AuthContext); // Variable currentUser que indica si el usuario está logueado o no
+
+  const handleLogin = () => { // Añadir la función handleLogin que loguea al usuario
+    login();
+  }
 
   return (
     <div className="login">
@@ -41,7 +49,7 @@ const Login = () => {
             <input type="text" placeholder="Nombre de usuario" required/>
             <input type="password" id="password" placeholder="Contraseña" required/>
             {submitted && passwordError && <small style={{ color: 'red' }}>* La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.</small>}
-            <button type="submit">Iniciar sesión</button>
+            <button onClick={handleLogin}>Iniciar sesión</button>
           </form>
         </div>
       </div>

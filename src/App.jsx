@@ -14,10 +14,11 @@ import Profile from "./pages/profile/Profile";
 import "./style.scss";
 import React, { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext.jsx';
+import { AuthContext } from "./context/authContext.jsx";
 
 function App() {
 
-  const currentUser = true; // Variable currentUser que indica si el usuario está logueado o no
+  const { currentUser } = useContext(AuthContext); // Variable currentUser que indica si el usuario está logueado o no
 
   const { darkMode } = useContext(DarkModeContext); // Extraer el estado darkMode del contexto DarkModeContext
 

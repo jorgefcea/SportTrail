@@ -12,15 +12,20 @@ import MarkunreadIcon from '@mui/icons-material/Markunread';
 import VideoCameraFrontIcon from '@mui/icons-material/VideoCameraFront';
 import SchoolIcon from '@mui/icons-material/School';
 import SavingsIcon from '@mui/icons-material/Savings';
+import { AuthContext } from "../../context/authContext";
+import { useContext } from "react";
 
 const LeftBar = () => {
+
+    const { currentUser } = useContext(AuthContext);
+
     return (
         <div className="leftBar">
             <div className="container">
                 <div className="menu">
                     <div className="user">
-                        <img src="../src/pages/login/images/logo.png" alt="" />
-                        <span>Jorge Fernández</span>
+                        <img src={currentUser.profilePic} alt="" />
+                        <span>{currentUser.name}</span>
                     </div>
                     <div className="item">
                         <PeopleAltIcon className="icon"/>

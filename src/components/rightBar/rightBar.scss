@@ -5,7 +5,7 @@
         flex: 3;
         position: sticky;
         top: 71px;
-        height: calc(100vh - 70px);
+        height: calc(100vh - 71px);
         overflow: scroll;
         background-color: themed("bgSoft");
         
@@ -23,6 +23,7 @@
                 padding: 20px;
                 margin-bottom: 20px;
                 background-color: themed("bg");
+                border-radius: 10px;
 
                 span {
                     color: gray;
@@ -58,6 +59,7 @@
                             position: absolute;
                             top: 0;
                             left: 25px;
+                            border: 0.5px solid white;
                         }
 
                         p {
