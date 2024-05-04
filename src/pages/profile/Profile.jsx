@@ -3,7 +3,7 @@ import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PinterestIcon from "@mui/icons-material/Pinterest";
-import TwitterIcon from "@mui/icons-material/Twitter";
+import XIcon from '@mui/icons-material/X';
 import PlaceIcon from "@mui/icons-material/Place";
 import PublicIcon from '@mui/icons-material/Public';
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
@@ -19,23 +19,23 @@ const Profile = () => {
       </div>
       <div className="profileContainer">
         <div className="uInfo">
-          <div className="left">
-            <a href="http://facebook.com">
-              <FacebookTwoToneIcon className="icon"/>
-            </a>
-            <a href="http://facebook.com">
-              <InstagramIcon className="icon"/>
-            </a>
-            <a href="http://facebook.com">
-              <TwitterIcon className="icon"/>
-            </a>
-            <a href="http://facebook.com">
-              <LinkedInIcon className="icon"/>
-            </a>
-            <a href="http://facebook.com">
-              <PinterestIcon className="icon"/>
-            </a>
-          </div>
+        <div className="left">
+          <a href="https://facebook.com">
+            <FacebookTwoToneIcon className="icon"/>
+          </a>
+          <a href="https://instagram.com">
+            <InstagramIcon className="icon"/>
+          </a>
+          <a href="https://x.com">
+            <XIcon className="icon"/>
+          </a>
+          <a href="https://linkedin.com">
+            <LinkedInIcon className="icon"/>
+          </a>
+          <a href="https://pinterest.com">
+            <PinterestIcon className="icon"/>
+          </a>
+        </div>
           <div className="center">
             <span className="perfilName">Jorge Fernández Cea</span>
             <div className="info">
