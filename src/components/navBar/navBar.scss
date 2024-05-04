@@ -38,15 +38,24 @@
                     width: 300px;
                     background-color: transparent;
                     color: themed("navTextColor");
-
-                    @include mobile{
-                        display: none;
+                  
+                    &::placeholder {
+                      color: themed("navPlaceholderColor");
                     }
-        
-                    @include tablet{
-                        width: 180px;
+                  
+                    &:focus {
+                      outline: none;
                     }
-                }
+                  
+                    @include mobile {
+                      display: none;
+                    }
+                  
+                    @include tablet {
+                      width: 180px;
+                    }
+                  }
+                  
             }
         }
         

@@ -9,6 +9,7 @@ $themes: ( // Tema de la aplicación
     commentBorder: #c9c9bf,
     bgNav: #2a403a,
     navTextColor: #e8e7da,
+    navPlaceholderColor: #a8a89f,
   ),
   dark: (
     textColor: #e8e7da,
@@ -21,6 +22,7 @@ $themes: ( // Tema de la aplicación
     bgNav: #222,
     navTextColor: #e8e7da,
     commentBorder: #3e3e38,
+    navPlaceholderColor: #a8a89f,
   ),
 );
 
@@ -43,16 +45,16 @@ $themes: ( // Tema de la aplicación
   }
 }
 
-@function themed($key) {
+@function themed($key) { // Función para obtener el valor de una propiedad del tema
   @return map-get($theme-map, $key);
 }
 
-@mixin mobile {
+@mixin mobile { // Mixin para definir estilos para dispositivos móviles
   @media (max-width: 480px) {
     @content;
   }
 }
-@mixin tablet {
+@mixin tablet { // Mixin para definir estilos para tabletas
   @media (max-width: 960px) {
     @content;
   }
