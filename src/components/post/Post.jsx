@@ -27,7 +27,7 @@ const Post = ({ post }) => {
               >
                 <span className="name">{post.name}</span>
               </Link>
-              <span className="date">1 min ago</span>
+              <span className="date">hace 1 minuto</span>
             </div>
           </div>
           <MoreHorizIcon />
@@ -39,15 +39,15 @@ const Post = ({ post }) => {
         <div className="info">
           <div className="item">
             {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
-            12 Likes
+            12 Me gusta
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
-            12 Comments
+            12 Comentarios
           </div>
           <div className="item">
             <ShareOutlinedIcon />
-            Share
+            Compartir
           </div>
         </div>
         {commentOpen && <Comments />}
