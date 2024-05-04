@@ -1,94 +1,186 @@
+@import "../../style.scss";
+
+body {
+  background-color: #afbcb4;
+}
+
 .login {
-    height: 100vh;
-    background-color: #afbcb4;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  .card {
+    width: 50%;
+    margin: auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    overflow: hidden;
+
+    @include tablet {
+      flex-direction: column;
+      width: 100%;
+      min-height: 100%;
+      border-radius: 0px;
+    }
+
+    @include mobile {
+      border-radius: 0px;
+      width: 100%;
+    }
   
-    .card {
-      width: 50%;
+    .left {
+      flex: 1;
+      background: 
+      linear-gradient(rgba(42, 64, 58, 0.7), rgba(42, 64, 58, 0.7)),
+      url("./images/senderismo.avif") center;
+    
+      background-size: cover;
+      padding: 50px;
       display: flex;
-      background-color: white;
-      border-radius: 10px;
-      min-height: 600px;
-      overflow: hidden;
-  
-      .left {
-        flex: 1;
-        background: 
-        linear-gradient(rgba(42, 64, 58, 0.7), rgba(42, 64, 58, 0.7)),
-        url("./images/senderismo.avif") center;
+      flex-direction: column;
+      gap: 30px;
+      color: white;
+
+      @include mobile {
+        padding: 30px;
+      }
+
+      img {
+        width: 240px;
+        margin: auto;
+
+        @include mobile {
+          margin-top: 0;
+          width: 150px;
+        }
+      }
       
-        background-size: cover;
-        padding: 50px;
+      p {
+        font-size: 15px;
+
+        @include tablet {
+          font-size: 17px;
+        }
+
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+
+      span {
+        font-size: 15px;
+
+        @include tablet {
+          font-size: 17px;
+        }
+
+        @include mobile {
+          font-size: 12px;
+        }
+      }
+      
+      button {
+        width: 50%;
+        padding: 10px;
+        border: none;
+        background-color: white;
+        border-radius: 10px;
+        color: #2a403a;
+        font-weight: bold;
+        cursor: pointer;
+
+        @include tablet {
+          width: 40%;
+          font-size: 17px;
+        }
+
+        @include mobile {
+          width: 40%;
+          font-size: 12px;
+        }
+      }
+    }
+  
+    .right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      justify-content: center;
+
+      @include tablet {
+        padding: 30px;
+      }
+
+      h1 {
+        color: #555;
+        
+        @include tablet {
+          font-size: 35px;
+        }
+
+        @include mobile {
+          font-size: 25px;
+        }
+      }
+      
+      form {
         display: flex;
         flex-direction: column;
         gap: 30px;
-        color: white;
-  
-        img {
-          width: 240px;
-          margin: auto;
-        }
         
-        p {
-            font-size: 15px;
+        input {
+          border: none;
+          border-bottom: 1px solid lightgray;
+          padding: 20px 10px;
+
+          @include tablet {
+            font-size: 17px;
+          }
+
+          @include mobile {
+            padding: 15px 10px;
+            font-size: 12px;
+          }
         }
-  
-        span {
-          font-size: 15px;
+
+        small {
+          font-size: 11px;
+
+          @include tablet {
+            font-size: 17px;
+          }
+
+          @include mobile {
+            font-size: 12px;
+          }
         }
         
         button {
           width: 50%;
           padding: 10px;
           border: none;
-          background-color: white;
+          background-color: #2a403a;
           border-radius: 10px;
-          color: #2a403a;
+          color: white;
           font-weight: bold;
           cursor: pointer;
-        }
-      }
-  
-      .right {
-        flex: 1;
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-        justify-content: center;
-  
-        h1 {
-        color: #555;
-        }
-        
-        form {
-          display: flex;
-          flex-direction: column;
-          gap: 30px;
-          
-          input {
-          border: none;
-          border-bottom: 1px solid lightgray;
-          padding: 20px 10px;
+
+          @include tablet {
+            width: 40%;
+            font-size: 17px;
           }
 
-          small {
-            font-size: 11px;
-          }
-          
-          button {
-            width: 50%;
-            padding: 10px;
-            border: none;
-            background-color: #2a403a;
-            border-radius: 10px;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
+          @include mobile {
+            width: 40%;
+            font-size: 12px;
           }
         }
       }
     }
   }
+}
