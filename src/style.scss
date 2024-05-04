@@ -19,7 +19,7 @@ $themes: ( // Tema de la aplicación
   ),
 );
 
-@mixin themify($themes) { // Función para cambiar el tema
+@mixin themify($themes) { // Función para cambiar el tema de la aplicación
   @each $theme, $map in $themes {
     .theme-#{$theme} & {
       $theme-map: () !global;
@@ -40,4 +40,15 @@ $themes: ( // Tema de la aplicación
 
 @function themed($key) {
   @return map-get($theme-map, $key);
+}
+
+@mixin mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 960px) {
+    @content;
+  }
 }
