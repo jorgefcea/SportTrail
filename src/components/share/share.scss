@@ -28,10 +28,18 @@
           outline: none;
           padding: 20px 10px;
           background-color: transparent;
-          width: 90%;
+          width: 91%;
           color: themed("textColor");
           border: 1px solid themed("commentBorder");
           border-radius: 10px;
+
+          @include tablet{
+            width: 85%;
+          }
+
+          @include mobile{
+            width: 76%;
+          }
         }
       }
 
@@ -50,6 +58,10 @@
           display: flex;
           align-items: center;
           gap: 20px;
+
+          @include mobile{
+            gap: 0;
+          }
 
           .item {
             display: flex;
@@ -70,6 +82,11 @@
               width: 30px;
               height: 30px;
               color: themed("iconColor");
+
+              @include mobile{
+                width: 25px;
+                height: 25px;
+              }
           }
           }
         }
