@@ -42,7 +42,7 @@ const RightBar = () => {
                         <div className="userInfo">
                             <img src="../src/pages/login/images/logo.png" alt="" />
                             <p>
-                                <span>Jorge Fernández</span> ha dado ❤️ a publicación
+                                <span>Jorge Fernández</span> ha dado 💚 a publicación
                             </p>
                         </div>
                         <span>hace 1 minuto</span>
@@ -51,7 +51,7 @@ const RightBar = () => {
                         <div className="userInfo">
                             <img src="../src/pages/login/images/logo.png" alt="" />
                             <p>
-                                <span>Jorge Fernández</span> ha dado ❤️ a un comentario
+                                <span>Jorge Fernández</span> ha dado 💚 a un comentario
                             </p>
                         </div>
                         <span>hace 1 minuto</span>

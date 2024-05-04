@@ -23,7 +23,7 @@ const NavBar = () => {
         <div className="navBar">
             <div className="left">
                 <Link to="/" style={{textDecoration: "none"}}>
-                    <span>SportTrail</span>
+                    <img src="../src/pages/login/images/logo.png" alt="" />
                 </Link>
                 <HomeOutlinedIcon/>
                 <ShoppingBagOutlinedIcon/>
