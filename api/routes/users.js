@@ -1,8 +1,8 @@
-import Express from 'express';
-import { getUser } from '../controllers/user.js';
+import express from "express";
+import { getUser } from "../controllers/user.js";
 
-const router = Express.Router(); // Crea una instancia de un router de express que manejará las rutas de los usuarios
+const router = express.Router()
 
-router.get('/find/:userId', getUser); // Ruta para obtener un usuario por su id
+router.get("/find/:userId", getUser)
 
-export default router;
+export default router
