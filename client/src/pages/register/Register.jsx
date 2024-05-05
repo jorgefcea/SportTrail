@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import "./register.scss";
 import logo from '../login/images/logo.png';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Register = () => {
   const [passwordError, setPasswordError] = useState(false); // Añadir el estado passwordError
   const [submitted, setSubmitted] = useState(false); // Añadir el estado submitted
 
-  const handleSubmit = (event) => { // Añadir la función handleSubmit que valida la contraseña
+  const handleSubmit = async (event) => { // Añadir la función handleSubmit que valida la contraseña y envía el formulario
     event.preventDefault();
     setSubmitted(true);
     const confirmPassword = event.target.confirmPassword.value;
@@ -15,7 +16,11 @@ const Register = () => {
     if (confirmPassword !== password) {
       setPasswordError(true);
     } else {
-      console.log("Formulario enviado");
+      try { // Enviar los datos del formulario al servidor
+        await axios.post("http://localhost:8800/api/auth/register", inputs); 
+      } catch (err) {
+        setErr(err.response.data);
+      }
     }
   };
 
@@ -23,6 +28,18 @@ const Register = () => {
     const confirmPassword = event.target.value;
     const password = event.target.form.password.value;
     setPasswordError(confirmPassword !== password);
+  };
+
+  const [inputs, setInputs] = useState({ // Añadir el estado inputs
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [err, setErr] = useState(null);
+
+  const handleChange = (e) => { // Añadir la función handleChange que actualiza el estado inputs
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -44,16 +61,17 @@ const Register = () => {
         <div className="right">
           <h1>¡Regístrate!</h1>
           <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Nombre completo" name="fullName" required />
-            <input type="text" placeholder="Nombre de usuario" name="username" required />
-            <input type="email" placeholder="Correo electrónico" name="email" required />
+            <input type="text" placeholder="Nombre completo" name="name" onChange={handleChange} required />
+            <input type="text" placeholder="Nombre de usuario" name="username" onChange={handleChange} required />
+            <input type="email" placeholder="Correo electrónico" name="email" onChange={handleChange} required />
             <input type="password" id="password" placeholder="Contraseña" 
-                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" required />
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" onChange={handleChange} required />
             <small>* La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.</small> {/* Añadir el mensaje de error */}
             <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" 
                    onChange={handleConfirmPasswordChange} name="confirmPassword" required /> {/* Añadir el evento onChange que llama a la función handleConfirmPasswordChange */}
             {submitted && passwordError && <small style={{ color: 'red' }}>Las contraseñas no coinciden.</small>} {/* Añadir el mensaje de error */}
-            <button type="submit">Registrarse</button>
+            {err && <small style={{ color: 'red' }}>{err}</small>}
+            <button type="submit">Register</button>
           </form>
         </div>
       </div>

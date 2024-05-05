@@ -4,29 +4,32 @@ import logo from './images/logo.png';
 import { Link } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "../../context/authContext";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [passwordError, setPasswordError] = useState(false); // Añadir el estado passwordError
-  const [submitted, setSubmitted] = useState(false); // Añadir el estado submitted
+  const [inputs, setInputs] = useState({
+    username: "",
+    password: "",
+  });
+  const [err, setErr] = useState(null);
 
-  const handleSubmit = (event) => { // Añadir la función handleSubmit que valida la contraseña
-    event.preventDefault();
-    setSubmitted(true);
-    const password = document.getElementById('password').value;
-    setPasswordError(submitted && !isValidPassword(password));
+  const navigate = useNavigate()
+
+  const handleChange = (e) => {
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+  const { login } = useContext(AuthContext);
 
-  const isValidPassword = (password) => { // Añadir la función isValidPassword que valida la contraseña
-    const regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-    return regex.test(password);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await login(inputs);
+      navigate("/")
+    } catch (err) {
+      setErr(err.response.data);
+    }
   };
-
-  const { login } = useContext(AuthContext); // Variable currentUser que indica si el usuario está logueado o no
-
-  const handleLogin = () => { // Añadir la función handleLogin que loguea al usuario
-    login();
-  }
-
+  
   return (
     <div className="login">
       <div className="card">
@@ -45,10 +48,9 @@ const Login = () => {
         </div>
         <div className="right">
           <h1>¡Bienvenido de nuevo!</h1>
-          <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Nombre de usuario" required/>
-            <input type="password" id="password" placeholder="Contraseña" required/>
-            {submitted && passwordError && <small style={{ color: 'red' }}>* La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.</small>}
+          <form>
+            <input type="text" placeholder="Nombre de usuario" name="username" required onChange={handleChange}/>
+            <input type="password" id="password" placeholder="Contraseña" name="password" required onChange={handleChange}/>
             <button onClick={handleLogin}>Iniciar sesión</button>
           </form>
         </div>
