@@ -51,6 +51,7 @@ const Login = () => {
           <form>
             <input type="text" placeholder="Nombre de usuario" name="username" required onChange={handleChange}/>
             <input type="password" id="password" placeholder="Contraseña" name="password" required onChange={handleChange}/>
+            {err && <small style={{ color: 'red' }}>{err}</small>}
             <button onClick={handleLogin}>Iniciar sesión</button>
           </form>
         </div>
