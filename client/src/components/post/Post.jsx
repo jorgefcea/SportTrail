@@ -8,12 +8,36 @@ import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
 import { useState } from "react";
 import moment from "moment";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
+  const { currentUser } = useContext(AuthContext);
+  const queryClient = useQueryClient();
 
-  //TEMPORARY
-  const liked = false;
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["likes", post.id],
+    queryFn: () =>
+      makeRequest.get("/likes?postId=" + post.id).then((res) => res.data),
+  });
+
+  const mutation = useMutation({
+    mutationKey: "toggleLike",
+    mutationFn: (liked) => {
+      if (liked) return makeRequest.delete("/likes?postId=" + post.id);
+      return makeRequest.post("/likes", { postId: post.id });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["likes"]);
+    },
+  });
+
+  const handleLike = () => {
+    mutation.mutate(data.includes(currentUser.id));
+  };
 
   return (
     <div className="post">
@@ -39,8 +63,17 @@ const Post = ({ post }) => {
         </div>
         <div className="info">
           <div className="item">
-            {liked ? <FavoriteOutlinedIcon /> : <FavoriteBorderOutlinedIcon />}
-            12 Me gusta
+            {isLoading ? (
+              "loading"
+            ) : data.includes(currentUser.id) ? (
+              <FavoriteOutlinedIcon
+                style={{ color: "limegreen" }}
+                onClick={handleLike}
+              />
+            ) : (
+              <FavoriteBorderOutlinedIcon onClick={handleLike} />
+            )}
+            {data?.length} Me gusta
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
@@ -51,7 +84,7 @@ const Post = ({ post }) => {
             Compartir
           </div>
         </div>
-        {commentOpen && <Comments />}
+        {commentOpen && <Comments postId={post.id} />}
       </div>
     </div>
   );

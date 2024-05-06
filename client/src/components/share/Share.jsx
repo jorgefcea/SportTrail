@@ -4,12 +4,14 @@ import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
-import { useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 
 const Share = () => {
   const [file, setFile] = useState(null);
   const [desc, setDesc] = useState("");
+  const { currentUser } = useContext(AuthContext);
+  const queryClient = useQueryClient();
 
   const upload = async () => {
     try {
@@ -22,29 +24,31 @@ const Share = () => {
     }
   };
 
-  const { currentUser } = useContext(AuthContext);
-  const queryClient = useQueryClient();
-
-  const handleClick = async (e) => {
-    e.preventDefault();
-    let imgUrl = "";
-    if (file) imgUrl = await upload();
-    
-    try {
+  const mutation = useMutation({
+    mutationKey: "createPost",
+    mutationFn: async () => {
+      let imgUrl = "";
+      if (file) imgUrl = await upload();
       await makeRequest.post("/posts", { desc, img: imgUrl });
+    },
+    onSuccess: () => {
       queryClient.invalidateQueries(["posts"]);
       setDesc("");
       setFile(null);
-    } catch (error) {
-      // Manejar el error aquí
+    },
+    onError: (error) => {
       console.error("Error al realizar la mutación:", error);
     }
+  });
+
+  const handleClick = () => {
+    mutation.mutate();
   };
 
   return (
     <div className="share">
       <div className="container">
-      <div className="top">
+        <div className="top">
           <div className="left">
             <img src={currentUser.profilePic} alt="" />
             <input
