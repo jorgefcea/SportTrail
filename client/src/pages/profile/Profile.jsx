@@ -8,14 +8,33 @@ import PlaceIcon from "@mui/icons-material/Place";
 import PublicIcon from '@mui/icons-material/Public';
 import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import Posts from "../../components/posts/Posts"
+import Posts from "../../components/posts/Posts";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { makeRequest } from "../../axios";
+import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/authContext";
 
 const Profile = () => {
+
+  const { currentUser } = useContext(AuthContext);
+
+  const userId = parseInt(useLocation().pathname.split("/")[2]);
+
+  const { isLoading, error, data } = useQuery({
+    queryKey: ["user"],
+    queryFn: () =>
+      makeRequest.get("/users/find/" + userId).then((res) => {
+        return res.data;
+      })
+  });
+  
+
   return (
     <div className="profile">
-      <div className="images">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" className="cover" />
-        <img src="../src/pages/login/images/senderismo.avif" alt="" className="profilePic" />
+      {isLoading ? "loading" : <><div className="images">
+        <img src={data?.coverPic} alt="" className="cover" />
+        <img src={data?.profilePic} alt="" className="profilePic" />
       </div>
       <div className="profileContainer">
         <div className="uInfo">
@@ -37,18 +56,22 @@ const Profile = () => {
           </a>
         </div>
           <div className="center">
-            <span className="perfilName">Jorge Fernández Cea</span>
+            <span className="perfilName">{data?.name}</span>
             <div className="info">
               <div className="item">
                 <PlaceIcon />
-                <span>Granada</span>
+                <span>{data?.city}</span>
               </div>
               <div className="item">
                 <PublicIcon />
-                <span>España</span>
+                <span>{data?.country}</span>
               </div>
             </div>
-            <button className="button">Seguir</button>
+            {userId === currentUser.id ? (
+            <button className="button">Actualizar</button>
+            ) : (
+            <button className="button">Seguir</button> 
+            )}
           </div>
           <div className="right">
             <EmailOutlinedIcon />
@@ -56,7 +79,7 @@ const Profile = () => {
           </div>
         </div>
       <Posts/>
-      </div>
+      </div></>}
     </div>
   );
 };
