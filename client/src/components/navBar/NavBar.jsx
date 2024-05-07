@@ -45,9 +45,11 @@ const NavBar = () => {
                         <Link to="/" style={{textDecoration: "none"}}>
                             <img src="../src/pages/login/images/logo.png" alt="" />
                         </Link>
-                        <HomeOutlinedIcon/>
+                        <Link to="/" style={{textDecoration: "none", color: "inherit" }}>
+                            <HomeOutlinedIcon/>
+                        </Link>
                         <ShoppingBagOutlinedIcon/>
-                        {darkMode ? <WbSunnyOutlinedIcon onClick={toggle}/> : <DarkModeOutlinedIcon onClick={toggle}/> }
+                        {darkMode ? <WbSunnyOutlinedIcon onClick={toggle} style={{cursor: "pointer"}}/> : <DarkModeOutlinedIcon onClick={toggle} style={{cursor: "pointer"}}/> }
                         <GridViewOutlinedIcon/>
                         <div className="search">
                             <SearchOutlinedIcon/>
@@ -55,7 +57,9 @@ const NavBar = () => {
                         </div>
                     </div>
                     <div className="right">
-                        <PersonOutlinedIcon/>
+                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }}>
+                            <PersonOutlinedIcon/>
+                        </Link>
                         <EmailOutlinedIcon/>
                         <NotificationsOutlinedIcon/>
                         <div className="user">

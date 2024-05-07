@@ -3,6 +3,7 @@ import { makeRequest } from "../../axios";
 import "./update.scss";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import PublicIcon from '@mui/icons-material/Public';
 
 const Update = ({ setOpenUpdate, user }) => {
     const [cover, setCover] = useState(null);
@@ -67,17 +68,20 @@ const Update = ({ setOpenUpdate, user }) => {
     return (
         <div className="update">
             <div className="wrapper">
-                <h1>Actualizar Perfil</h1>
+                <h1>¡Actualiza tu perfil!</h1>
                 <form>
                     <div className="files">
                         <label htmlFor="cover">
-                            <span>Foto de Portada</span>
+                            <div className="item">
+                                <PublicIcon className="icon" />
+                                <span>Foto de Perfil</span>
+                            </div>
                             <div className="imgContainer">
                                 <img
                                     src={cover ? URL.createObjectURL(cover) : user.coverPic}
                                     alt=""
                                 />
-                                <CloudUploadIcon className="icon" />
+                                <CloudUploadIcon className="icon2" />
                             </div>
                         </label>
                         <input
@@ -87,13 +91,16 @@ const Update = ({ setOpenUpdate, user }) => {
                             onChange={(e) => setCover(e.target.files[0])}
                         />
                         <label htmlFor="profile">
-                            <span>Foto de Perfil</span>
+                            <div className="item">
+                                <PublicIcon className="icon" />
+                                <span>Foto de Portada</span>
+                            </div>
                             <div className="imgContainer">
                                 <img
                                     src={profile ? URL.createObjectURL(profile) : user.profilePic}
                                     alt=""
                                 />
-                                <CloudUploadIcon className="icon" />
+                                <CloudUploadIcon className="icon1" />
                             </div>
                         </label>
                         <input
@@ -103,35 +110,50 @@ const Update = ({ setOpenUpdate, user }) => {
                             onChange={(e) => setProfile(e.target.files[0])}
                         />
                     </div>
-                    <label>Email</label>
+                    <div className="item">
+                        <PublicIcon className="icon" />
+                        <label>Correo Electrónico</label>
+                    </div>
                     <input
                         type="text"
                         value={texts.email}
                         name="email"
                         onChange={handleChange}
                     />
-                    <label>Contraseña</label>
+                    <div className="item">
+                        <PublicIcon className="icon" />
+                        <label>Contraseña</label>
+                    </div>
                     <input
                         type="text"
                         value={texts.password}
                         name="password"
                         onChange={handleChange}
                     />
-                    <label>Nombre</label>
+                    <div className="item">
+                        <PublicIcon className="icon" />
+                        <label>Nombre</label>
+                    </div>
                     <input
                         type="text"
                         value={texts.name}
                         name="name"
                         onChange={handleChange}
                     />
-                    <label>País / Ciudad</label>
+                    <div className="item">
+                        <PublicIcon className="icon" />
+                        <label>Ciudad</label>
+                    </div>
                     <input
                         type="text"
                         name="city"
                         value={texts.city}
                         onChange={handleChange}
                     />
-                    <label>País</label>
+                    <div className="item">
+                        <PublicIcon className="icon" />
+                        <label>País</label>
+                    </div>
                     <input
                         type="text"
                         name="country"

@@ -16,6 +16,7 @@ import SchoolIcon from '@mui/icons-material/School';
 import SavingsIcon from '@mui/icons-material/Savings';
 import { makeRequest } from "../../axios";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const LeftBar = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -45,10 +46,12 @@ const LeftBar = () => {
                 ) : (
                     <>
                         <div className="menu">
-                            <div className="user">
-                                <img src={"/upload/"+ userData.profilePic} alt="Profile" />
-                                <span>{userData.name}</span>
-                            </div>
+                            <Link to={`/profile/${currentUser.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                <div className="user">
+                                    <img src={"/upload/"+ userData.profilePic} alt="Profile" />
+                                    <span>{userData.name}</span>
+                                </div>
+                            </Link>
                             <div className="item">
                                 <PeopleAltIcon className="icon" />
                                 <span>Amigos</span>

@@ -2,7 +2,7 @@ import "./share.scss";
 import CollectionsIcon from '@mui/icons-material/Collections';
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
@@ -11,6 +11,8 @@ const Share = () => {
   const [file, setFile] = useState(null);
   const [desc, setDesc] = useState("");
   const { currentUser } = useContext(AuthContext);
+  const [userData, setUserData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const queryClient = useQueryClient();
 
   const upload = async () => {
@@ -21,6 +23,17 @@ const Share = () => {
       return res.data;
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  const fetchUserData = async () => {
+    try {
+      const response = await makeRequest.get(`/users/find/${currentUser.id}`);
+      setUserData(response.data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+      setIsLoading(false);
     }
   };
 
@@ -45,15 +58,19 @@ const Share = () => {
     mutation.mutate();
   };
 
+  useEffect(() => {
+    fetchUserData();
+  }, [currentUser.id]);
+
   return (
     <div className="share">
       <div className="container">
         <div className="top">
           <div className="left">
-            <img src={currentUser.profilePic} alt="" />
+            <img src={userData && "/upload/"+ userData.profilePic} alt="" />
             <input
               type="text"
-              placeholder={`¿Qué está pasando ${currentUser.name}?`}
+              placeholder={`¿Qué está pasando ${userData && userData.name}?`}
               onChange={(e) => setDesc(e.target.value)}
               value={desc}
             />

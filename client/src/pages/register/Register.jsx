@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Register = () => {
-  const [passwordError, setPasswordError] = useState(false); // Añadir el estado passwordError
-  const [submitted, setSubmitted] = useState(false); // Añadir el estado submitted
+  const [passwordError, setPasswordError] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [redirectToLogin, setRedirectToLogin] = useState(false); // Variable de estado para controlar la redirección
 
-  const handleSubmit = async (event) => { // Añadir la función handleSubmit que valida la contraseña y envía el formulario
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setSubmitted(true);
     const confirmPassword = event.target.confirmPassword.value;
@@ -16,21 +17,22 @@ const Register = () => {
     if (confirmPassword !== password) {
       setPasswordError(true);
     } else {
-      try { // Enviar los datos del formulario al servidor
+      try {
         await axios.post("http://localhost:8800/api/auth/register", inputs); 
+        setRedirectToLogin(true); // Establecer redirectToLogin a true después de un registro exitoso
       } catch (err) {
         setErr(err.response.data);
       }
     }
   };
 
-  const handleConfirmPasswordChange = (event) => { // Añadir la función handleConfirmPasswordChange que valida la confirmación de la contraseña
+  const handleConfirmPasswordChange = (event) => {
     const confirmPassword = event.target.value;
     const password = event.target.form.password.value;
     setPasswordError(confirmPassword !== password);
   };
 
-  const [inputs, setInputs] = useState({ // Añadir el estado inputs
+  const [inputs, setInputs] = useState({
     name: "",
     username: "",
     email: "",
@@ -38,9 +40,14 @@ const Register = () => {
   });
   const [err, setErr] = useState(null);
 
-  const handleChange = (e) => { // Añadir la función handleChange que actualiza el estado inputs
+  const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  if (redirectToLogin) {
+    // Redirigir al usuario a la página de inicio de sesión después de un registro exitoso
+    window.location.href = "/login";
+  }
 
   return (
     <div className="register">
@@ -66,10 +73,10 @@ const Register = () => {
             <input type="email" placeholder="Correo electrónico" name="email" onChange={handleChange} required />
             <input type="password" id="password" placeholder="Contraseña" 
                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password" onChange={handleChange} required />
-            <small>* La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.</small> {/* Añadir el mensaje de error */}
+            <small>* La contraseña debe contener al menos 8 caracteres, incluyendo al menos una letra mayúscula, una letra minúscula y un número.</small>
             <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" 
-                   onChange={handleConfirmPasswordChange} name="confirmPassword" required /> {/* Añadir el evento onChange que llama a la función handleConfirmPasswordChange */}
-            {submitted && passwordError && <small style={{ color: 'red' }}>Las contraseñas no coinciden.</small>} {/* Añadir el mensaje de error */}
+                   onChange={handleConfirmPasswordChange} name="confirmPassword" required />
+            {submitted && passwordError && <small style={{ color: 'red' }}>Las contraseñas no coinciden.</small>}
             {err && <small style={{ color: 'red' }}>{err}</small>}
             <button type="submit">Register</button>
           </form>
