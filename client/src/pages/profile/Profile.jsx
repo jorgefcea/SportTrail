@@ -28,7 +28,32 @@ const Profile = () => {
         return res.data;
       })
   });
+
+  const { isLoading: rIsLoading, data: relationshipData } = useQuery({
+    queryKey: ["relationship"],
+    queryFn: () =>
+      makeRequest.get("/relationships?followedUserId=" + userId).then((res) => {
+        return res.data;
+      })
+  });
+
+  const queryClient = useQueryClient();
+
+  const mutation = useMutation({
+    mutationKey: "toggleRelationship",
+    mutationFn: (following) => {
+      if (following) return makeRequest.delete("/relationships?userId=" + userId);
+      return makeRequest.post("/relationships", { userId });
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["relationship"]);
+    },
+  });
   
+  
+  const handleFollow = () => {
+    mutation.mutate(relationshipData.includes(currentUser.id));
+  };
 
   return (
     <div className="profile">
@@ -67,18 +92,24 @@ const Profile = () => {
                 <span>{data?.country}</span>
               </div>
             </div>
-            {userId === currentUser.id ? (
-            <button className="button">Actualizar</button>
-            ) : (
-            <button className="button">Seguir</button> 
-            )}
+            {rIsLoading ? (
+                  "loading"
+                ) : userId === currentUser.id ? (
+                  <button onClick={() => setOpenUpdate(true)}>Actualizar</button>
+                ) : (
+                  <button onClick={handleFollow}>
+                    {relationshipData.includes(currentUser.id)
+                      ? "Siguiendo"
+                      : "Seguir"}
+                  </button>
+                )}
           </div>
           <div className="right">
             <EmailOutlinedIcon />
             <MoreVertIcon />
           </div>
         </div>
-      <Posts/>
+      <Posts userId={userId} />
       </div></>}
     </div>
   );
