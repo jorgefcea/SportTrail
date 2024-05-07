@@ -11,11 +11,13 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
+import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios";
 
 const NavBar = () => {
-    const { toggle, darkMode, currentUser, logout } = useContext(AuthContext); // Importa logout del contexto
+    const { toggle, darkMode } = useContext(DarkModeContext);
+    const { currentUser, logout } = useContext(AuthContext); // Importa logout del contexto
     const [isLoading, setIsLoading] = useState(true);
     const [userData, setUserData] = useState(null);
 
