@@ -4,7 +4,7 @@ import { AuthContext } from "../../context/authContext";
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import GroupsIcon from '@mui/icons-material/Groups';
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import MapIcon from '@mui/icons-material/Map';
 import RestoreIcon from '@mui/icons-material/Restore';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import PedalBikeIcon from '@mui/icons-material/PedalBike';
@@ -65,8 +65,8 @@ const LeftBar = () => {
                                 <span>Tienda</span>
                             </div>
                             <div className="item">
-                                <VideoLibraryIcon className="icon" />
-                                <span>Ver</span>
+                                <MapIcon className="icon" />
+                                <span>Rutas</span>
                             </div>
                             <div className="item">
                                 <RestoreIcon className="icon" />

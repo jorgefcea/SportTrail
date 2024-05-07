@@ -8,15 +8,14 @@ import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import CancelIcon from '@mui/icons-material/Cancel';
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
-import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios";
 
 const NavBar = () => {
-    const { toggle, darkMode } = useContext(DarkModeContext);
-    const { currentUser } = useContext(AuthContext);
+    const { toggle, darkMode, currentUser, logout } = useContext(AuthContext); // Importa logout del contexto
     const [isLoading, setIsLoading] = useState(true);
     const [userData, setUserData] = useState(null);
 
@@ -34,6 +33,16 @@ const NavBar = () => {
     useEffect(() => {
         fetchUserData();
     }, [currentUser.id]);
+
+    const handleLogout = async () => { // Define la función handleLogout para manejar el logout
+        try {
+            console.log("Logging out...");
+            await logout(); // Llama a la función logout del contexto de autenticación
+            console.log("Logout successful");
+        } catch (error) {
+            console.error("Error logging out:", error);
+        }
+    };
 
     return (
         <div className="navBar">
@@ -62,13 +71,19 @@ const NavBar = () => {
                         </Link>
                         <EmailOutlinedIcon/>
                         <NotificationsOutlinedIcon/>
-                        <div className="user">
-                            {userData && userData.profilePic && (
-                                <img src={"/upload/"+ userData.profilePic} alt="Profile" />
-                            )}
-                            {userData && userData.name && (
-                                <span>{userData.name}</span>
-                            )}
+                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }}>
+                            <div className="user">
+                                {userData && userData.profilePic && (
+                                    <img src={"/upload/"+ userData.profilePic} alt="Profile" />
+                                )}
+                                {userData && userData.name && (
+                                    <span>{userData.name}</span>
+                                )}
+                            </div>
+                        </Link>
+                        <div className="user" onClick={handleLogout} style={{cursor: "pointer"}}> {/* Maneja el clic para cerrar sesión */}
+                            <CancelIcon/>
+                            <span>Cerrar Sesión</span>
                         </div>
                     </div>
                 </>

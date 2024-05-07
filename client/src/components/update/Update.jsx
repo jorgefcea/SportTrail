@@ -4,6 +4,12 @@ import "./update.scss";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import PublicIcon from '@mui/icons-material/Public';
+import ContactEmergencyIcon from '@mui/icons-material/ContactEmergency';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import EmailIcon from '@mui/icons-material/Email';
+import PasswordIcon from '@mui/icons-material/Password';
+import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
 
 const Update = ({ setOpenUpdate, user }) => {
     const [cover, setCover] = useState(null);
@@ -73,7 +79,7 @@ const Update = ({ setOpenUpdate, user }) => {
                     <div className="files">
                         <label htmlFor="cover">
                             <div className="item">
-                                <PublicIcon className="icon" />
+                                <AccountBoxIcon className="icon" />
                                 <span>Foto de Perfil</span>
                             </div>
                             <div className="imgContainer">
@@ -92,7 +98,7 @@ const Update = ({ setOpenUpdate, user }) => {
                         />
                         <label htmlFor="profile">
                             <div className="item">
-                                <PublicIcon className="icon" />
+                                <ContactEmergencyIcon className="icon" />
                                 <span>Foto de Portada</span>
                             </div>
                             <div className="imgContainer">
@@ -111,7 +117,7 @@ const Update = ({ setOpenUpdate, user }) => {
                         />
                     </div>
                     <div className="item">
-                        <PublicIcon className="icon" />
+                        <EmailIcon className="icon" />
                         <label>Correo Electrónico</label>
                     </div>
                     <input
@@ -121,7 +127,7 @@ const Update = ({ setOpenUpdate, user }) => {
                         onChange={handleChange}
                     />
                     <div className="item">
-                        <PublicIcon className="icon" />
+                        <PasswordIcon className="icon" />
                         <label>Contraseña</label>
                     </div>
                     <input
@@ -131,7 +137,7 @@ const Update = ({ setOpenUpdate, user }) => {
                         onChange={handleChange}
                     />
                     <div className="item">
-                        <PublicIcon className="icon" />
+                        <DriveFileRenameOutlineIcon className="icon" />
                         <label>Nombre</label>
                     </div>
                     <input
@@ -141,7 +147,7 @@ const Update = ({ setOpenUpdate, user }) => {
                         onChange={handleChange}
                     />
                     <div className="item">
-                        <PublicIcon className="icon" />
+                        <LocationCityIcon className="icon" />
                         <label>Ciudad</label>
                     </div>
                     <input
