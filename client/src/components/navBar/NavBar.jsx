@@ -9,40 +9,66 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
+import { makeRequest } from "../../axios";
 
 const NavBar = () => {
-
     const { toggle, darkMode } = useContext(DarkModeContext);
-
     const { currentUser } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState(true);
+    const [userData, setUserData] = useState(null);
+
+    const fetchUserData = async () => {
+        try {
+            const response = await makeRequest.get(`/users/find/${currentUser.id}`);
+            setUserData(response.data);
+            setIsLoading(false);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+            setIsLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserData();
+    }, [currentUser.id]);
 
     return (
         <div className="navBar">
-            <div className="left">
-                <Link to="/" style={{textDecoration: "none"}}>
-                    <img src="../src/pages/login/images/logo.png" alt="" />
-                </Link>
-                <HomeOutlinedIcon/>
-                <ShoppingBagOutlinedIcon/>
-                {darkMode ? <WbSunnyOutlinedIcon onClick={toggle}/> : <DarkModeOutlinedIcon onClick={toggle}/> }
-                <GridViewOutlinedIcon/>
-                <div className="search">
-                    <SearchOutlinedIcon/>
-                    <input type="text" placeholder="Buscar..."/>
-                </div>
-            </div>
-            <div className="right">
-                <PersonOutlinedIcon/>
-                <EmailOutlinedIcon/>
-                <NotificationsOutlinedIcon/>
-                <div className="user">
-                    <img src={"/upload/" + currentUser.profilePic} alt="" />
-                    <span>{currentUser.name}</span>
-                </div>
-            </div>
+            {isLoading ? (
+                <div>Loading...</div>
+            ) : (
+                <>
+                    <div className="left">
+                        <Link to="/" style={{textDecoration: "none"}}>
+                            <img src="../src/pages/login/images/logo.png" alt="" />
+                        </Link>
+                        <HomeOutlinedIcon/>
+                        <ShoppingBagOutlinedIcon/>
+                        {darkMode ? <WbSunnyOutlinedIcon onClick={toggle}/> : <DarkModeOutlinedIcon onClick={toggle}/> }
+                        <GridViewOutlinedIcon/>
+                        <div className="search">
+                            <SearchOutlinedIcon/>
+                            <input type="text" placeholder="Buscar..."/>
+                        </div>
+                    </div>
+                    <div className="right">
+                        <PersonOutlinedIcon/>
+                        <EmailOutlinedIcon/>
+                        <NotificationsOutlinedIcon/>
+                        <div className="user">
+                            {userData && userData.profilePic && (
+                                <img src={"/upload/"+ userData.profilePic} alt="Profile" />
+                            )}
+                            {userData && userData.name && (
+                                <span>{userData.name}</span>
+                            )}
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
     );
 }
