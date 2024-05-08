@@ -94,15 +94,15 @@ const Comments = ({ postId }) => {
       ) : (
         data.map((comment) => (
           <div className="comment" key={comment.id}>
-            <img
-              src={
-                comment.profilePic
-                  ? "/upload/" + comment.profilePic
-                  : ""
-              }
-              alt="Profile"
-            />
-            <div className="info">
+            <div className="user-info">
+              <img
+                src={
+                  comment.profilePic
+                    ? "/upload/" + comment.profilePic
+                    : ""
+                }
+                alt="Profile"
+              />
               <Link
                 to={`/profile/${comment.userId}`}
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -110,29 +110,33 @@ const Comments = ({ postId }) => {
               >
                 <span>{comment.name}</span>
               </Link>
-              <p>{comment.desc}</p>
+              {currentUser.id === comment.userId && (
+                <div className="more-icon-container">
+                  {menuOpen && (
+                    <div className="comment-menu">
+                      <button
+                        className="delete-btn"
+                        onClick={() => handleDeleteComment(comment.id)}
+                      >
+                        <DeleteIcon />
+                      </button>
+                    </div>
+                  )}
+                  <MoreHorizIcon
+                    onClick={() => setMenuOpen(!menuOpen)}
+                    style={{ cursor: "pointer" }}
+                  />
+                </div>
+              )}
             </div>
-            <span className="date">
-              {moment(comment.createdAt).fromNow()}
-            </span>
-            {currentUser.id === comment.userId && (
-              <div className="more-icon-container">
-                <MoreHorizIcon
-                  onClick={() => setMenuOpen(!menuOpen)}
-                  style={{ cursor: "pointer" }}
-                />
-                {menuOpen && (
-                  <div className="comment-menu">
-                    <button
-                      className="delete-btn"
-                      onClick={() => handleDeleteComment(comment.id)}
-                    >
-                      <DeleteIcon />
-                    </button>
-                  </div>
-                )}
+            <div className="comment-content">
+              <p>{comment.desc}</p>
+              <div className="comment-meta">
+                <span className="date">
+                  {moment(comment.createdAt).fromNow()}
+                </span>
               </div>
-            )}
+            </div>
           </div>
         ))
       )}

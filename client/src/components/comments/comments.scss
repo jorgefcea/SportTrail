@@ -49,15 +49,12 @@
     .comment {
       margin: 30px 0;
       display: flex;
-      justify-content: space-between;
-      gap: 20px;
+      flex-direction: column;
 
-      .info {
-        flex: 5;
+      .user-info {
         display: flex;
-        flex-direction: column;
-        gap: 3px;
-        align-items: flex-start;
+        align-items: center;
+        gap: 10px;
 
         span {
           font-weight: 500;
@@ -66,6 +63,13 @@
             font-size: 16px;
           }
         }
+      }
+
+      .comment-content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 50px;
 
         p {
           color: themed("textColorSoft");
@@ -75,66 +79,75 @@
           border-radius: 10px;
           margin-top: 15px;
           width: 100%;
-          max-width: 580px;
+          max-width: 700px;
           overflow-wrap: break-word;
           white-space: pre-wrap;
 
           @include tablet {
-            max-width: 330px;
+            max-width: 400px;
           }
 
           @include mobile {
-            max-width: 200px;
+            max-width: 250px;
             font-size: 11px;
           }
         }
-      }
 
-      .date {
-        flex: 1;
-        align-self: center;
-        color: gray;
-        font-size: 12px;
-        align-self: center;
+        .comment-meta {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
 
-        @include mobile {
-          padding-left: 20px;
-          font-size: 11px;
+          .date {
+            color: gray;
+            font-size: 12px;
+            margin-right: 10px; // Agregamos un poco de margen a la derecha
+
+            @include mobile {
+              font-size: 11px;
+            }
+          }
         }
       }
 
       // Estilos para el contenedor del icono de más (menú)
       .more-icon-container {
-        position: relative; // Asegurar que el posicionamiento absoluto funcione correctamente
+        margin-left: auto; // Mueve los tres puntos hacia la derecha
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .delete-btn {
+          margin-right: 10px; // Agregamos un poco de margen entre el botón de borrar y los tres puntos
+        }
 
         .comment-menu {
-          position: absolute;
-          top: 27px;
-          right: -5px;
           background-color: #f0544f;
           border-radius: 5px;
           padding: 5px;
           display: flex;
+          justify-content: flex-start; /* Alinear los elementos al principio del contenedor */
           align-items: center;
           gap: 5px;
           cursor: pointer;
           color: white;
-
+          padding-left: 5px;
+          padding-right: 0px;
+        
           button {
             border: none;
             background-color: transparent;
             color: white;
             cursor: pointer;
             margin-bottom: -3px;
+            margin-left: 5px;
           }
-
+        
           @include mobile {
             font-size: 11px;
-            top: -5px;
-            right: 35px; 
-            padding: 3px;
           }
         }
+        
       }
     }
   }
