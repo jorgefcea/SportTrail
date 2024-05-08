@@ -1,5 +1,6 @@
 import "./navBar.scss";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import MapIcon from '@mui/icons-material/Map';
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import WbSunnyOutlinedIcon from "@mui/icons-material/WbSunnyOutlined";
 import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
@@ -56,15 +57,24 @@ const NavBar = () => {
                         <Link to="/" style={{textDecoration: "none"}}>
                             <img src="../src/pages/login/images/logo.png" alt="" />
                         </Link>
-                        <Link to="/" style={{textDecoration: "none", color: "inherit" }}>
+                        <Link to="/" style={{textDecoration: "none", color: "inherit" }} className="homesito">
                             <HomeOutlinedIcon/>
+                        </Link>
+                        <Link to="/" style={{textDecoration: "none", color: "inherit" }}>
+                            <MapIcon/>
                         </Link>
                         <ShoppingBagOutlinedIcon/>
                         {darkMode ? <WbSunnyOutlinedIcon onClick={toggle} style={{cursor: "pointer"}}/> : <DarkModeOutlinedIcon onClick={toggle} style={{cursor: "pointer"}}/> }
-                        <GridViewOutlinedIcon/>
+                        <GridViewOutlinedIcon className="cuadritos"/>
                         <div className="search">
                             <SearchOutlinedIcon/>
                             <input type="text" placeholder="Buscar..."/>
+                        </div>
+                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }}>
+                            <PersonOutlinedIcon className="perfilsito"/>
+                        </Link>
+                        <div className="logout" onClick={handleLogout} style={{cursor: "pointer"}}> {/* Maneja el clic para cerrar sesión */}
+                            <CancelIcon className="logoutsito"/>
                         </div>
                     </div>
                     <div className="right">

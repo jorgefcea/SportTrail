@@ -17,7 +17,19 @@
         .left {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 28px;
+
+            .homesito {
+              @include mobile {
+                display: none;
+              }
+            }
+
+            .cuadritos {
+              @include mobile {
+                display: none;
+              }
+            }
 
             img {
                 width: 60px;
@@ -55,14 +67,29 @@
                       width: 180px;
                     }
                   }
-                  
+            }
+
+            .perfilsito {
+              display: none;
+
+              @include mobile {
+                display: block;
+              }
+            }
+
+            .logout {
+              display: none;
+              
+              @include mobile {
+                display: block;
+              }
             }
         }
         
         .right {
             display: flex;
             align-items: center;
-            gap: 30px;
+            gap: 28px;
             justify-content: flex-end;
 
             @include mobile{
