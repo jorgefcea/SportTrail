@@ -38,6 +38,13 @@ const LeftBar = () => {
         fetchUserData();
     }, []);
 
+    const handleLinkClick = () => {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          window.location.reload();
+        }, 1);
+      };
+
     return (
         <div className="leftBar">
             <div className="container">
@@ -46,7 +53,7 @@ const LeftBar = () => {
                 ) : (
                     <>
                         <div className="menu">
-                            <Link to={`/profile/${currentUser.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                            <Link to={`/profile/${currentUser.id}`} style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                 <div className="user">
                                     <img src={"/upload/"+ userData.profilePic} alt="Profile" />
                                     <span>{userData.name}</span>

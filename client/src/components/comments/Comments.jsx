@@ -48,6 +48,13 @@ const Comments = ({ postId }) => {
     setDesc("");
   };
 
+  const handleLinkClick = () => {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          window.location.reload();
+        }, 1);
+      };
+
   return (
     <div className="comments">
       <div className="write">
@@ -72,6 +79,7 @@ const Comments = ({ postId }) => {
               <Link
                 to={`/profile/${comment.userId}`} 
                 style={{ textDecoration: "none", color: "inherit" }}
+                onClick={handleLinkClick}
               >
                 <span>{comment.name}</span>
               </Link>

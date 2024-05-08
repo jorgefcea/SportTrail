@@ -3,22 +3,22 @@ import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 
-const Posts = ({userId}) => {
+const Posts = ({ userId }) => {
   const { isLoading, error, data } = useQuery({
     queryKey: ["posts"],
     queryFn: () =>
-      makeRequest.get("/posts?userId="+userId).then((res) => {
-        return res.data;
-      }),
+      makeRequest.get("/posts?userId=" + userId).then((res) => res.data),
   });
 
   return (
     <div className="posts">
-      {error
-        ? "Something went wrong!"
-        : isLoading
-        ? "loading"
-        : data.map((post) => <Post post={post} key={post.id} />)}
+      {error ? (
+        "Something went wrong!"
+      ) : isLoading ? (
+        "loading"
+      ) : (
+        data.map((post, index) => <Post post={post} key={`${post.id}-${index}`} />)
+      )}
     </div>
   );
 };

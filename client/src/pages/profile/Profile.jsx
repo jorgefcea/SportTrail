@@ -12,32 +12,25 @@ import Posts from "../../components/posts/Posts";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import Update from "../../components/update/Update";
-import { useState } from "react";
 
 const Profile = () => {
-
   const [openUpdate, setOpenUpdate] = useState(false);
   const { currentUser } = useContext(AuthContext);
-
   const userId = parseInt(useLocation().pathname.split("/")[2]);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["user"],
     queryFn: () =>
-      makeRequest.get("/users/find/" + userId).then((res) => {
-        return res.data;
-      })
+      makeRequest.get("/users/find/" + userId).then((res) => res.data)
   });
 
   const { isLoading: rIsLoading, data: relationshipData } = useQuery({
     queryKey: ["relationship"],
     queryFn: () =>
-      makeRequest.get("/relationships?followedUserId=" + userId).then((res) => {
-        return res.data;
-      })
+      makeRequest.get("/relationships?followedUserId=" + userId).then((res) => res.data)
   });
 
   const queryClient = useQueryClient();
@@ -52,54 +45,67 @@ const Profile = () => {
       queryClient.invalidateQueries(["relationship"]);
     },
   });
-  
-  
+
   const handleFollow = () => {
     mutation.mutate(relationshipData.includes(currentUser.id));
   };
+
+  useEffect(() => {
+    const handlePopstate = () => {
+      setTimeout(() => {
+        window.location.reload();
+      }, 1);
+    };
+
+    window.addEventListener("popstate", handlePopstate);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+    };
+  }, []);
 
   return (
     <div className="profile">
       {isLoading ? (
         "loading"
       ) : (
-      <>
-      <div className="images">
-          <img src={"/upload/"+ data.coverPic} alt="" className="cover" />
-          <img src={"/upload/"+ data.profilePic} alt="" className="profilePic" />
-      </div>
-      <div className="profileContainer">
-        <div className="uInfo">
-        <div className="left">
-          <a href="https://facebook.com">
-            <FacebookTwoToneIcon className="icon"/>
-          </a>
-          <a href="https://instagram.com">
-            <InstagramIcon className="icon"/>
-          </a>
-          <a href="https://x.com">
-            <XIcon className="icon"/>
-          </a>
-          <a href="https://linkedin.com">
-            <LinkedInIcon className="icon"/>
-          </a>
-          <a href="https://pinterest.com">
-            <PinterestIcon className="icon"/>
-          </a>
-        </div>
-          <div className="center">
-            <span className="perfilName">{data?.name}</span>
-            <div className="info">
-              <div className="item">
-                <PlaceIcon />
-                <span>{data?.city}</span>
+        <>
+          <div className="images">
+            <img src={"/upload/" + data.coverPic} alt="" className="cover" />
+            <img src={"/upload/" + data.profilePic} alt="" className="profilePic" />
+          </div>
+          <div className="profileContainer">
+            <div className="uInfo">
+              <div className="left">
+                <a href="https://facebook.com">
+                  <FacebookTwoToneIcon className="icon" />
+                </a>
+                <a href="https://instagram.com">
+                  <InstagramIcon className="icon" />
+                </a>
+                <a href="https://x.com">
+                  <XIcon className="icon" />
+                </a>
+                <a href="https://linkedin.com">
+                  <LinkedInIcon className="icon" />
+                </a>
+                <a href="https://pinterest.com">
+                  <PinterestIcon className="icon" />
+                </a>
               </div>
-              <div className="item">
-                <PublicIcon />
-                <span>{data?.country}</span>
-              </div>
-            </div>
-            {rIsLoading ? (
+              <div className="center">
+                <span className="perfilName">{data?.name}</span>
+                <div className="info">
+                  <div className="item">
+                    <PlaceIcon />
+                    <span>{data?.city}</span>
+                  </div>
+                  <div className="item">
+                    <PublicIcon />
+                    <span>{data?.country}</span>
+                  </div>
+                </div>
+                {rIsLoading ? (
                   "loading"
                 ) : userId === currentUser.id ? (
                   <button onClick={() => setOpenUpdate(true)} className="button">Actualizar</button>
@@ -110,13 +116,13 @@ const Profile = () => {
                       : "Seguir"}
                   </button>
                 )}
-          </div>
-          <div className="right">
-            <EmailOutlinedIcon />
-            <MoreVertIcon />
-          </div>
-        </div>
-        <Posts userId={userId} />
+              </div>
+              <div className="right">
+                <EmailOutlinedIcon />
+                <MoreVertIcon />
+              </div>
+            </div>
+            <Posts userId={userId} />
           </div>
         </>
       )}

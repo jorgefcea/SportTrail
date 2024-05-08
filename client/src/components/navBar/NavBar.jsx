@@ -47,6 +47,13 @@ const NavBar = () => {
         }
     };
 
+    const handleLinkClick = () => {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          window.location.reload();
+        }, 1);
+      };
+
     return (
         <div className="navBar">
             {isLoading ? (
@@ -54,7 +61,7 @@ const NavBar = () => {
             ) : (
                 <>
                     <div className="left">
-                        <Link to="/" style={{textDecoration: "none"}}>
+                        <Link to="/" style={{textDecoration: "none"}} onClick={handleLinkClick}>
                             <img src="../src/pages/login/images/logo.png" alt="" />
                         </Link>
                         <Link to="/" style={{textDecoration: "none", color: "inherit" }} className="homesito">
@@ -70,7 +77,7 @@ const NavBar = () => {
                             <SearchOutlinedIcon/>
                             <input type="text" placeholder="Buscar..."/>
                         </div>
-                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }}>
+                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                             <PersonOutlinedIcon className="perfilsito"/>
                         </Link>
                         <div className="logout" onClick={handleLogout} style={{cursor: "pointer"}}> {/* Maneja el clic para cerrar sesión */}
@@ -78,12 +85,12 @@ const NavBar = () => {
                         </div>
                     </div>
                     <div className="right">
-                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }}>
+                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                             <PersonOutlinedIcon/>
                         </Link>
                         <EmailOutlinedIcon/>
                         <NotificationsOutlinedIcon/>
-                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }}>
+                        <Link to={`/profile/${currentUser.id}`} style={{textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                             <div className="user">
                                 {userData && userData.profilePic && (
                                     <img src={"/upload/"+ userData.profilePic} alt="Profile" />
