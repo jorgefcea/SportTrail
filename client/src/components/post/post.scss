@@ -55,7 +55,7 @@
         button {
           position: absolute;
           top: 35px;
-          right: 0;
+          right: -5px;
           border: none;
           background-color: #f0544f;
           border-radius: 5px;
@@ -68,6 +68,9 @@
 
           @include mobile {
             font-size: 11px;
+            top: 5px;
+            right: 35px;
+            padding: 3px;
           }
         }
       }
@@ -84,7 +87,7 @@
 
         @include mobile {
           width: 100%; 
-          max-width: 270px;
+          max-width: 400px;
           font-size: 14px;
         }
 
@@ -107,6 +110,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
+        flex-wrap: wrap; 
 
         .item {
           display: flex;
@@ -117,6 +121,23 @@
 
           @include mobile {
             font-size: 11px;
+          }
+        }
+
+        .social-icons {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          @include mobile {
+            justify-content: center;
+            margin: auto;
+          }
+
+          svg {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
           }
         }
       }

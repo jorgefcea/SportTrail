@@ -13,12 +13,17 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
+import FacebookTwoToneIcon from "@mui/icons-material/FacebookTwoTone";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import XIcon from '@mui/icons-material/X';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [shareModalOpen, setShareModalOpen] = useState(false); // Estado para controlar la apertura del modal de compartir
 
   const { isLoading: likesLoading, error: likesError, data: likesData } = useQuery({
     queryKey: ["likes", post.id],
@@ -52,7 +57,10 @@ const Post = ({ post }) => {
       queryClient.invalidateQueries(["posts"]);
     },
   });
-  
+
+  useEffect(() => {
+    queryClient.invalidateQueries(["comments", post.id]);
+  }, [post.id, queryClient]);
 
   const handleLike = () => {
     mutation.mutate(likesData.includes(currentUser.id));
@@ -62,9 +70,31 @@ const Post = ({ post }) => {
     deleteMutation.mutate(post.id);
   };
 
-  useEffect(() => {
-    queryClient.invalidateQueries(["comments", post.id]);
-  }, [post.id, queryClient]);
+  const handleShare = () => {
+    setShareModalOpen(!shareModalOpen); // Cambiar el estado de shareModalOpen al hacer clic en Compartir
+  };
+
+  const handleShareToSocialMedia = (platform) => { // Función para compartir en redes sociales
+    const shareUrl = window.location.href;
+    const shareText = post.desc;
+  
+    switch (platform) { 
+      case "facebook":
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, "_blank");
+        break;
+      case "instagram":
+        window.open("https://www.instagram.com/", "_blank");
+        break;
+      case "twitter":
+        window.open(`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`, "_blank");
+        break;
+      case "whatsapp":
+        window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + " - " + shareUrl)}`, "_blank");
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <div className="post">
@@ -109,10 +139,19 @@ const Post = ({ post }) => {
             <TextsmsOutlinedIcon />
             {commentsLoading ? "Cargando..." : `${commentsData?.length} Comentarios`}
           </div>
-          <div className="item">
+          <div className="item" onClick={handleShare}>
             <ShareOutlinedIcon />
             Compartir
           </div>
+          {/* Mostrar los iconos de redes sociales si shareModalOpen es verdadero */}
+          {shareModalOpen && (
+            <div className="social-icons">
+              <FacebookTwoToneIcon onClick={() => handleShareToSocialMedia("facebook")} />
+              <InstagramIcon onClick={() => handleShareToSocialMedia("instagram")} />
+              <XIcon onClick={() => handleShareToSocialMedia("twitter")} />
+              <WhatsAppIcon onClick={() => handleShareToSocialMedia("whatsapp")} />
+            </div>
+          )}
         </div>
         {commentOpen && <Comments postId={post.id} />}
       </div>

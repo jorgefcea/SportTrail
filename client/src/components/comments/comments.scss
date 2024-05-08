@@ -84,7 +84,7 @@
           }
 
           @include mobile {
-            max-width: 122px;
+            max-width: 200px;
             font-size: 11px;
           }
         }
@@ -98,6 +98,7 @@
         align-self: center;
 
         @include mobile {
+          padding-left: 20px;
           font-size: 11px;
         }
       }
@@ -108,8 +109,8 @@
 
         .comment-menu {
           position: absolute;
-          top: 35px;
-          right: 0;
+          top: 27px;
+          right: -5px;
           background-color: #f0544f;
           border-radius: 5px;
           padding: 5px;
@@ -124,10 +125,14 @@
             background-color: transparent;
             color: white;
             cursor: pointer;
+            margin-bottom: -3px;
           }
 
           @include mobile {
             font-size: 11px;
+            top: -5px;
+            right: 35px; 
+            padding: 3px;
           }
         }
       }
