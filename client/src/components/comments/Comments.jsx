@@ -5,6 +5,7 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import moment from "moment";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Comments = ({ postId }) => {
   const [desc, setDesc] = useState("");
@@ -68,7 +69,12 @@ const Comments = ({ postId }) => {
           <div className="comment" key={comment.id}>
             <img src={comment.profilePic ? "/upload/" + comment.profilePic : ""} alt="Profile" />
             <div className="info">
-              <span>{comment.name}</span>
+              <Link
+                to={`/profile/${comment.userId}`} 
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <span>{comment.name}</span>
+              </Link>
               <p>{comment.desc}</p>
             </div>
             <span className="date">
