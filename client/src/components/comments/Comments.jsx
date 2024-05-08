@@ -6,26 +6,35 @@ import { makeRequest } from "../../axios";
 import moment from "moment";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Comments = ({ postId }) => {
   const [desc, setDesc] = useState("");
   const { currentUser } = useContext(AuthContext);
   const [userData, setUserData] = useState(null);
+  const queryClient = useQueryClient();
+  const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
 
   const { isLoading, error, data } = useQuery({
-    queryKey: ["comments"],
+    queryKey: ["comments", postId],
     queryFn: () =>
       makeRequest.get("/comments?postId=" + postId).then((res) => res.data),
   });
-
-  const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationKey: "addComment",
     mutationFn: (newComment) => makeRequest.post("/comments", newComment),
     onSuccess: () => {
-      // Invalidate and refetch
-      queryClient.invalidateQueries(["comments"]);
+      queryClient.invalidateQueries(["comments", postId]);
+    },
+  });
+
+  const deleteMutation = useMutation({
+    mutationKey: "deleteComment",
+    mutationFn: (commentId) => makeRequest.delete(`/comments/${commentId}`),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["comments", postId]);
     },
   });
 
@@ -48,36 +57,54 @@ const Comments = ({ postId }) => {
     setDesc("");
   };
 
+  const handleDeleteComment = (commentId) => {
+    deleteMutation.mutate(commentId);
+  };
+
   const handleLinkClick = () => {
-        setTimeout(() => {
-          window.scrollTo(0, 0);
-          window.location.reload();
-        }, 1);
-      };
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      window.location.reload();
+    }, 1);
+  };
 
   return (
     <div className="comments">
       <div className="write">
-        <img src={userData && userData.profilePic ? "/upload/" + userData.profilePic : ""} alt="Profile" />
+        <img
+          src={
+            userData && userData.profilePic
+              ? "/upload/" + userData.profilePic
+              : ""
+          }
+          alt="Profile"
+        />
         <input
           type="text"
           placeholder="Publica un comentario"
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
-        <button onClick={handleClick}>Send</button>
+        <button onClick={handleClick}>Enviar</button>
       </div>
       {error ? (
-        "Something went wrong"
+        "Algo salió mal"
       ) : isLoading ? (
-        "loading"
+        "Cargando..."
       ) : (
         data.map((comment) => (
           <div className="comment" key={comment.id}>
-            <img src={comment.profilePic ? "/upload/" + comment.profilePic : ""} alt="Profile" />
+            <img
+              src={
+                comment.profilePic
+                  ? "/upload/" + comment.profilePic
+                  : ""
+              }
+              alt="Profile"
+            />
             <div className="info">
               <Link
-                to={`/profile/${comment.userId}`} 
+                to={`/profile/${comment.userId}`}
                 style={{ textDecoration: "none", color: "inherit" }}
                 onClick={handleLinkClick}
               >
@@ -88,6 +115,24 @@ const Comments = ({ postId }) => {
             <span className="date">
               {moment(comment.createdAt).fromNow()}
             </span>
+            {currentUser.id === comment.userId && (
+              <div className="more-icon-container">
+                <MoreHorizIcon
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  style={{ cursor: "pointer" }}
+                />
+                {menuOpen && (
+                  <div className="comment-menu">
+                    <button
+                      className="delete-btn"
+                      onClick={() => handleDeleteComment(comment.id)}
+                    >
+                      <DeleteIcon />
+                    </button>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         ))
       )}
