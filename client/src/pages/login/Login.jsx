@@ -13,7 +13,7 @@ const Login = () => {
   });
   const [err, setErr] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -24,7 +24,7 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(inputs);
-      navigate("/")
+      navigate("/");
     } catch (err) {
       setErr(err.response.data);
     }
@@ -48,11 +48,11 @@ const Login = () => {
         </div>
         <div className="right">
           <h1>¡Bienvenido de nuevo!</h1>
-          <form>
+          <form onSubmit={handleLogin}>
             <input type="text" placeholder="Nombre de usuario" name="username" required onChange={handleChange}/>
             <input type="password" id="password" placeholder="Contraseña" name="password" required onChange={handleChange}/>
             {err && <small style={{ color: 'red' }}>{err}</small>}
-            <button onClick={handleLogin}>Iniciar sesión</button>
+            <button type="submit">Iniciar sesión</button>
           </form>
         </div>
       </div>
