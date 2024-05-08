@@ -64,7 +64,7 @@ const NavBar = () => {
                         <Link to="/" style={{textDecoration: "none"}} onClick={handleLinkClick}>
                             <img src="../src/pages/login/images/logo.png" alt="" />
                         </Link>
-                        <Link to="/" style={{textDecoration: "none", color: "inherit" }} className="homesito">
+                        <Link to="/" style={{textDecoration: "none", color: "inherit" }} className="homesito" onClick={handleLinkClick}>
                             <HomeOutlinedIcon/>
                         </Link>
                         <Link to="/" style={{textDecoration: "none", color: "inherit" }}>

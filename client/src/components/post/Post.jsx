@@ -4,24 +4,32 @@ import FavoriteOutlinedIcon from "@mui/icons-material/FavoriteOutlined";
 import TextsmsOutlinedIcon from "@mui/icons-material/TextsmsOutlined";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from "react-router-dom";
 import Comments from "../comments/Comments";
 import { useState } from "react";
 import moment from "moment";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 
 const Post = ({ post }) => {
   const [commentOpen, setCommentOpen] = useState(false);
   const { currentUser } = useContext(AuthContext);
   const queryClient = useQueryClient();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const { isLoading, error, data } = useQuery({
+  const { isLoading: likesLoading, error: likesError, data: likesData } = useQuery({
     queryKey: ["likes", post.id],
     queryFn: () =>
       makeRequest.get("/likes?postId=" + post.id).then((res) => res.data),
+  });
+
+  const { isLoading: commentsLoading, error: commentsError, data: commentsData } = useQuery({
+    queryKey: ["comments", post.id],
+    queryFn: () =>
+      makeRequest.get("/comments?postId=" + post.id).then((res) => res.data),
   });
 
   const mutation = useMutation({
@@ -35,9 +43,28 @@ const Post = ({ post }) => {
     },
   });
 
+  const deleteMutation = useMutation({
+    mutationKey: "deletePost",
+    mutationFn: (postId) => {
+      return makeRequest.delete("/posts/" + postId);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["posts"]);
+    },
+  });
+  
+
   const handleLike = () => {
-    mutation.mutate(data.includes(currentUser.id));
+    mutation.mutate(likesData.includes(currentUser.id));
   };
+
+  const handleDelete = () => {
+    deleteMutation.mutate(post.id);
+  };
+
+  useEffect(() => {
+    queryClient.invalidateQueries(["comments", post.id]);
+  }, [post.id, queryClient]);
 
   return (
     <div className="post">
@@ -55,7 +82,10 @@ const Post = ({ post }) => {
               <span className="date">{moment(post.createdAt).fromNow()}</span>
             </div>
           </div>
-          <MoreHorizIcon />
+          <MoreHorizIcon onClick={() => setMenuOpen(!menuOpen)} style={{cursor: "pointer"}}/>
+          {menuOpen && post.userId === currentUser.id && (
+            <button onClick={handleDelete}><DeleteIcon/></button>
+          )}
         </div>
         <div className="content">
           <p>{post.desc}</p>
@@ -63,9 +93,9 @@ const Post = ({ post }) => {
         </div>
         <div className="info">
           <div className="item">
-            {isLoading ? (
+            {likesLoading ? (
               "loading"
-            ) : data.includes(currentUser.id) ? (
+            ) : likesData.includes(currentUser.id) ? (
               <FavoriteOutlinedIcon
                 style={{ color: "limegreen" }}
                 onClick={handleLike}
@@ -73,11 +103,11 @@ const Post = ({ post }) => {
             ) : (
               <FavoriteBorderOutlinedIcon onClick={handleLike} />
             )}
-            {data?.length} Me gusta
+            {likesData?.length} Me gusta
           </div>
           <div className="item" onClick={() => setCommentOpen(!commentOpen)}>
             <TextsmsOutlinedIcon />
-            12 Comentarios
+            {commentsLoading ? "Cargando..." : `${commentsData?.length} Comentarios`}
           </div>
           <div className="item">
             <ShareOutlinedIcon />
