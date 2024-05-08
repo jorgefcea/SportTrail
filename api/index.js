@@ -6,6 +6,7 @@ import postRoutes from "./routes/posts.js";
 import commentRoutes from "./routes/comments.js";
 import likeRoutes from "./routes/likes.js";
 import relationshipRoutes from "./routes/relationships.js";
+import recommendationRoutes from "./routes/recommendations.js"; // Importa las rutas de recomendaciones
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import multer from "multer";
@@ -45,7 +46,8 @@ app.use("/api/posts", postRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api/likes", likeRoutes);
 app.use("/api/relationships", relationshipRoutes);
+app.use("/api/recommendations", recommendationRoutes); // Agrega las rutas de recomendaciones
 
 app.listen(8800, () => {
     console.log("API working!");
-  });
+});
