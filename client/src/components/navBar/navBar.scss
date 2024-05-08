@@ -63,10 +63,26 @@
             display: flex;
             align-items: center;
             gap: 30px;
+            justify-content: flex-end;
 
             @include mobile{
                 display: none;
-              }
+            }
+
+            .logout {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                @include tablet {
+                  margin-left: -30px;
+
+                  span {
+                    display: none;
+                  }
+                }
+                
+            }
 
             .user {
                 display: flex;

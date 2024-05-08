@@ -83,7 +83,7 @@ const NavBar = () => {
                                 )}
                             </div>
                         </Link>
-                        <div className="user" onClick={handleLogout} style={{cursor: "pointer"}}> {/* Maneja el clic para cerrar sesión */}
+                        <div className="logout" onClick={handleLogout} style={{cursor: "pointer"}}> {/* Maneja el clic para cerrar sesión */}
                             <CancelIcon/>
                             <span>Cerrar Sesión</span>
                         </div>

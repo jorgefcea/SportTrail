@@ -4,10 +4,12 @@ import { AuthContext } from "../../context/authContext";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import moment from "moment";
+import { useEffect } from "react";
 
 const Comments = ({ postId }) => {
   const [desc, setDesc] = useState("");
   const { currentUser } = useContext(AuthContext);
+  const [userData, setUserData] = useState(null);
 
   const { isLoading, error, data } = useQuery({
     queryKey: ["comments"],
@@ -26,6 +28,19 @@ const Comments = ({ postId }) => {
     },
   });
 
+  const fetchUserData = async () => {
+    try {
+      const response = await makeRequest.get(`/users/find/${currentUser.id}`);
+      setUserData(response.data);
+    } catch (error) {
+      console.error("Error fetching user data:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
+
   const handleClick = async (e) => {
     e.preventDefault();
     mutation.mutate({ desc, postId });
@@ -35,7 +50,7 @@ const Comments = ({ postId }) => {
   return (
     <div className="comments">
       <div className="write">
-        <img src={currentUser.profilePic} alt="" />
+        <img src={userData && userData.profilePic ? "/upload/" + userData.profilePic : ""} alt="Profile" />
         <input
           type="text"
           placeholder="Publica un comentario"
@@ -51,7 +66,7 @@ const Comments = ({ postId }) => {
       ) : (
         data.map((comment) => (
           <div className="comment" key={comment.id}>
-            <img src={comment.profilePic} alt="" />
+            <img src={comment.profilePic ? "/upload/" + comment.profilePic : ""} alt="Profile" />
             <div className="info">
               <span>{comment.name}</span>
               <p>{comment.desc}</p>
