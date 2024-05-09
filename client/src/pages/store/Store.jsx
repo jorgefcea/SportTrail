@@ -17,7 +17,7 @@ const Store = () => {
                 <div className="storeInfo">
                     <img src="../src/pages/login/images/store.png" alt="" className="storeLogo"/>
                     <div className="storeLeft">
-                        <a>Descuentos en Productos</a>
+                        <a href="#lista-1">Descuentos en Productos</a>
                         <a>Nuestra Ropa</a>
                         <a>Suplementación Alimenticia</a>
                     </div>
@@ -30,7 +30,7 @@ const Store = () => {
                 </div>
                 <div className="storeInfo2">
                     <section className="promos container" id="lista-1">
-                        <h2>Descuentos en Videojuegos</h2>
+                        <h2>Descuentos en Productos</h2>
                         <div className="categories">
                             <div className="categorie">
                                 <div className="categorie-1">
