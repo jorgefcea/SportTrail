@@ -55,7 +55,9 @@ const Share = () => {
   });
 
   const handleClick = () => {
-    mutation.mutate();
+    if (desc.trim() !== "") { // Verifica que el campo de descripción no esté vacío
+      mutation.mutate();
+    }
   };
 
   useEffect(() => {
@@ -101,7 +103,7 @@ const Share = () => {
             </div>
           </div>
           <div className="right">
-            <button onClick={handleClick}>Publicar</button>
+            <button disabled={!desc.trim()} onClick={handleClick}>Publicar</button>
           </div>
         </div>
       </div>

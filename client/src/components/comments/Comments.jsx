@@ -53,8 +53,10 @@ const Comments = ({ postId }) => {
 
   const handleClick = async (e) => {
     e.preventDefault();
-    mutation.mutate({ desc, postId });
-    setDesc("");
+    if (desc.trim() !== "") { // Verifica que el comentario no esté vacío
+      mutation.mutate({ desc, postId });
+      setDesc("");
+    }
   };
 
   const handleDeleteComment = (commentId) => {
@@ -85,7 +87,7 @@ const Comments = ({ postId }) => {
           value={desc}
           onChange={(e) => setDesc(e.target.value)}
         />
-        <button onClick={handleClick}>Enviar</button>
+        <button disabled={!desc.trim()} onClick={handleClick}>Enviar</button>
       </div>
       {error ? (
         "Algo salió mal"
