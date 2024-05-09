@@ -11,6 +11,7 @@ import LeftBar from "./components/leftBar/LeftBar";
 import RightBar from "./components/rightBar/rightBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
+import Store from "./pages/store/Store";
 import "./style.scss";
 import React, { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext.jsx';
@@ -69,6 +70,10 @@ function App() {
           path: "/profile/:id",
           element: <Profile/>,
         },
+        {
+          path: "/store",
+          element: <Store/>,
+        }, 
       ],
     },
     {
@@ -78,7 +83,7 @@ function App() {
     {
       path: "/register",
       element: <Register/>,
-    },
+    },   
   ]);
 
   return ( // Añadir el componente RouterProvider con la propiedad router

@@ -10,24 +10,24 @@ const Stories = () => {
     {
       id: 1,
       name: "David Fernández",
-      img: "/public/upload/1715119677934david.jpg",
+      img: "/upload/1715119677934david.jpg",
     },
     {
       id: 2,
       name: "Jorge Fernández",
-      img: "/public/upload/1715119730810jorge.jpg",
+      img: "/upload/1715119730810jorge.jpg",
     },
     {
       id: 3,
       name: "Rubén de la Blanca",
-      img: "/public/upload/1715119826386ruben.jpg",
+      img: "/upload/1715119826386ruben.jpg",
     },
   ];
 
   return (
     <div className="stories">
       <div className="story">
-          <img src="/public/upload/1715119575881takeli.jpg" alt="" />
+          <img src="/upload/1715119575881takeli.jpg" alt="" />
           <span>Sergio Takeli</span>
           <button>+</button>
         </div>

@@ -1,0 +1,221 @@
+@import "../../style.scss";
+
+.store {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+    min-height: 100vh;
+
+    .storeContainer {
+      padding: 20px 70px;
+
+      @include mobile {
+        padding: 10px;
+      }
+
+      @include tablet {
+        padding: 20px;
+      }
+
+      .storeInfo {
+        position: relative;
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        border-radius: 20px;
+        background-color: themed("bg");
+        color: themed("textColor");
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+
+        .storeLogo {
+          width: 300px;
+          margin-bottom: 10px;
+
+          @include tablet {
+            width: 250px;
+          }
+
+          @include mobile {
+            width: 200px;
+          }
+        }
+
+        .storeLeft {
+          display: flex;
+          gap: 30px;
+          justify-content: center;
+          margin-bottom: 20px;
+          font-weight: bold;
+
+          @include tablet {
+            flex-wrap: wrap;
+
+            a {
+              margin-right: 5px;
+            }
+          }
+
+          a {
+            color: themed("textColorSoft");
+
+            .icon {
+              width: 30px;
+              height: 30px;
+              color: themed("iconColor");
+            }
+          }
+        }
+
+        .shoppingBagIcon {
+          position: absolute;
+          top: 40px;
+          right: 45px; 
+          color: themed("iconColor");
+          font-size: 30px;
+
+          @include tablet {
+              top: 40px;
+              right: 40px; 
+          }
+
+          @include mobile {
+            top: 20px;
+            right: 20px;
+          }
+        }
+
+        .numeroArticulosContainer {
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          background-color: red;
+          position: absolute;
+          top: 30px;
+          margin-left: 405px;
+          border: 1px solid themed("commentBorder");
+          font-weight: bold;
+          color: white;
+
+          @include tablet {
+              width: 18px; 
+              height: 18px; 
+              top: 30px;
+              right: 25px;
+          }
+      
+          @include mobile {
+              width: 15px; 
+              height: 15px;
+              top: 15px; 
+              right: 8px;
+          }
+
+          .numeroArticulos {
+              margin-left: 5px;
+              margin-top: -1px;
+              font-size: 14px;
+
+              @include mobile {
+                  font-size: 12px;
+              }
+          }
+        }
+      }
+
+      .storeInfo2 {
+        position: relative;
+        -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+        border-radius: 20px;
+        background-color: themed("bg");
+        color: themed("textColor");
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        margin-top: 30px;
+
+    
+      }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .promos {
+      padding: 50px 0;
+      text-align: center;
+
+      h2 {
+        font-size: 50px;
+        color: black;
+        margin-bottom: 35px;
+      }
+    }
+
+    .categories {
+      text-align: left;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .categorie {
+      display: flex;
+      align-items: center;
+      padding: 35px;
+    }
+
+    .categorie img {
+      width: 150px;
+      height: 160px;
+    }
+
+    .categorie-1 {
+      width: 50%;
+
+      h3 {
+        color: black;
+        font-size: 15px;
+        font-weight: 600;
+      }
+
+      p {
+        color: #747B8F;
+        font-size: 18px;
+      }
+    }
+
+    .categorie-img {
+      width: 50%;
+    }
+
+    .prices {
+      display: flex;
+      margin: 20px 0;
+    }
+
+    .price-1 {
+      font-size: 30px;
+      color: #747B8F;
+      text-decoration-line: line-through;
+      margin-right: 25px;
+    }
+
+    .btn-3 {
+        display: inline-block;
+        padding: 10px 25px;
+        font-size: 14px;
+        border: none;
+        background-color: #2a403a;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+  }
+}

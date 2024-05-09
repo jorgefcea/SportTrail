@@ -67,10 +67,12 @@ const LeftBar = () => {
                                 <GroupsIcon className="icon" />
                                 <span>Grupos</span>
                             </div>
-                            <div className="item">
-                                <ShoppingBagIcon className="icon" />
-                                <span>Tienda</span>
-                            </div>
+                            <Link to="/store" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                <div className="item">
+                                    <ShoppingBagIcon className="icon" />
+                                    <span>Tienda</span>
+                                </div>
+                            </Link>
                             <div className="item">
                                 <MapIcon className="icon" />
                                 <span>Rutas</span>
