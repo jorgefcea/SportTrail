@@ -81,14 +81,40 @@ const RightBar = () => {
                     <span>Últimas actividades</span>
                     <div className="user">
                         <div className="userInfo">
-                            <img src="/src/pages/login/images/logo.png" alt="" />
+                            <img src="/public/upload/1715119730810jorge.jpg" alt="" />
                             <p>
                                 <span>Jorge Fernández</span> ha cambiado su foto de perfil
                             </p>
                         </div>
-                        <span>hace 1 minuto</span>
+                        <span>2 minutes ago</span>
                     </div>
-                    {/* Agrega aquí más elementos de las últimas actividades si es necesario */}
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src="/public/upload/1715119826386ruben.jpg" alt="" />
+                            <p>
+                                <span>Rubén de la Blanca</span> ha cambiado su foto de perfil
+                            </p>
+                        </div>
+                        <span>1 hour ago</span>
+                    </div>
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src="/public/upload/1715119677934david.jpg" alt="" />
+                            <p>
+                                <span>David Fernández</span> ha cambiado su foto de perfil
+                            </p>
+                        </div>
+                        <span>3 hours ago</span>
+                    </div>
+                    <div className="user">
+                        <div className="userInfo">
+                            <img src="/public/upload/1715119575881takeli.jpg" alt="" />
+                            <p>
+                                <span>Sergio Takeli</span> ha cambiado su foto de perfil
+                            </p>
+                        </div>
+                        <span>a day ago</span>
+                    </div>
                 </div>
                 <div className="item">
                     <span>Amigos conectados</span>
