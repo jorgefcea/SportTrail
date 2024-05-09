@@ -17,6 +17,15 @@ const RightBar = () => {
         }
     });
 
+    // Obtener los amigos conectados
+    const { isLoading: friendsLoading, error: friendsError, data: connectedFriends } = useQuery({
+        queryKey: ["connectedFriends", userId],
+        queryFn: async () => {
+            const response = await makeRequest.get(`/friends?userId=${userId}`);
+            return response.data;
+        },
+    });
+
     const queryClient = useQueryClient();
 
     const mutation = useMutation({
@@ -83,14 +92,29 @@ const RightBar = () => {
                 </div>
                 <div className="item">
                     <span>Amigos conectados</span>
-                    <div className="user">
-                        <div className="userInfo">
-                            <img src="/src/pages/login/images/logo.png" alt="" />
-                            <div className="online" />
-                            <span>Jorge Fernández</span>
+                    {friendsLoading ? (
+                        "Cargando..."
+                    ) : friendsError ? (
+                        "Error al cargar amigos conectados"
+                    ) : connectedFriends && connectedFriends.length > 0 ? (
+                        connectedFriends.map((friend) => (
+                            <div className="user" key={friend.id}>
+                                <div className="userInfo">
+                                    <img src={`/upload/${friend.profilePic}`} alt="" />
+                                    <div className="online" />
+                                    <Link to={`/profile/${friend.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                        <span>{friend.name}</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="user">
+                            <div className="userInfo">
+                                <span>No hay amigos conectados en este momento.</span>
+                            </div>
                         </div>
-                    </div>
-                    {/* Agrega aquí más elementos de amigos conectados si es necesario */}
+                    )}
                 </div>
             </div>
         </div>
