@@ -71,19 +71,19 @@
 
                 .shoppingBagIcon {
                     position: absolute;
-                    top: 40px;
-                    right: 45px;
+                    top: 15px;
+                    right: 15px;
                     color: themed("iconColor");
                     font-size: 30px;
 
                     @include tablet {
-                        top: 40px;
-                        right: 40px;
+                        top: 15px;
+                        right: 15px;
                     }
 
                     @include mobile {
-                        top: 20px;
-                        right: 20px;
+                        top: 10px;
+                        right: 10px;
                     }
                 }
 
@@ -98,6 +98,13 @@
                     border: 1px solid themed("commentBorder");
                     font-weight: bold;
                     color: white;
+                    
+                    ul {
+                        list-style-type: none;
+                        margin: 0;
+                        padding: 0; 
+                    }
+                    
 
                     @include tablet {
                         width: 18px;
@@ -120,7 +127,70 @@
 
                         @include mobile {
                             font-size: 12px;
+                            margin-top: -2px;
                         }
+                    }
+                }
+
+                #carrito {
+                    position: absolute;
+                    top: 60px;
+                    right: 15px;
+                    background-color: themed("bg");
+                    border-radius: 10px;
+                    padding: 20px;
+                    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+                    width: 400px;
+                    overflow: auto;
+                    z-index: 998;
+                
+                    table {
+                        width: 100%;
+                
+                        th, td {
+                            padding: 10px;
+                            text-align: left;
+                            font-size: 14px;
+                            text-align: center;
+                            color: themed("textColor");
+
+                            hr {
+                                height: 0.5px;
+                                width: 100%;
+                                border: none;
+                                height: 0.5px;
+                                background-color: themed("commentBorder");
+                            }
+                        }
+                
+                        th {
+                            background-color: #2a403a;
+                            text-align: center;
+                            border-radius: 5px;
+                            width: 100px;
+                            color: themed("navTextColor");
+                        }
+                    }
+                
+                    #vaciar-carrito {
+                        display: block;
+                        margin-top: 20px;
+                        background-color: #f0544f;
+                        color: white;
+                        padding: 10px 20px;
+                        border-radius: 5px;
+                        text-align: center;
+                        text-decoration: none;
+                        transition: background-color 0.3s;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: auto; 
+                    }
+
+                    .iconBorrar {
+                        color: themed("textColor");
                     }
                 }
             }

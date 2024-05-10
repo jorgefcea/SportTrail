@@ -76,7 +76,32 @@ const RightBar = () => {
                         </div>
                     )}
                 </div>
-                {/* Aquí están los otros elementos */}
+                <div className="item">
+                    <span>Amigos conectados</span>
+                    {friendsLoading ? (
+                        "Cargando..."
+                    ) : friendsError ? (
+                        "Error al cargar amigos conectados"
+                    ) : connectedFriends && connectedFriends.length > 0 ? (
+                        connectedFriends.map((friend) => (
+                            <div className="user" key={friend.id}>
+                                <div className="userInfo">
+                                    <img src={`/upload/${friend.profilePic}`} alt="" />
+                                    <div className="online" />
+                                    <Link to={`/profile/${friend.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                                        <span>{friend.name}</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <div className="user">
+                            <div className="userInfo">
+                                <span>No hay amigos conectados en este momento.</span>
+                            </div>
+                        </div>
+                    )}
+                </div>
                 <div className="item">
                     <span>Últimas actividades</span>
                     <div className="user">
@@ -115,32 +140,6 @@ const RightBar = () => {
                         </div>
                         <span>a day ago</span>
                     </div>
-                </div>
-                <div className="item">
-                    <span>Amigos conectados</span>
-                    {friendsLoading ? (
-                        "Cargando..."
-                    ) : friendsError ? (
-                        "Error al cargar amigos conectados"
-                    ) : connectedFriends && connectedFriends.length > 0 ? (
-                        connectedFriends.map((friend) => (
-                            <div className="user" key={friend.id}>
-                                <div className="userInfo">
-                                    <img src={`/upload/${friend.profilePic}`} alt="" />
-                                    <div className="online" />
-                                    <Link to={`/profile/${friend.id}`} style={{ textDecoration: "none", color: "inherit" }}>
-                                        <span>{friend.name}</span>
-                                    </Link>
-                                </div>
-                            </div>
-                        ))
-                    ) : (
-                        <div className="user">
-                            <div className="userInfo">
-                                <span>No hay amigos conectados en este momento.</span>
-                            </div>
-                        </div>
-                    )}
                 </div>
             </div>
         </div>
