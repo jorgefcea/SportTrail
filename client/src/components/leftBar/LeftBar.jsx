@@ -53,12 +53,14 @@ const LeftBar = () => {
                 ) : (
                     <>
                         <div className="menu">
+                        {userData && (
                             <Link to={`/profile/${currentUser.id}`} style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                 <div className="user">
                                     <img src={"/upload/"+ userData.profilePic} alt="Profile" />
                                     <span>{userData.name}</span>
                                 </div>
                             </Link>
+                        )}
                             <div className="item">
                                 <PeopleAltIcon className="icon" />
                                 <span>Amigos</span>

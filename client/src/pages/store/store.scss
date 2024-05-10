@@ -51,9 +51,20 @@
 
                     @include tablet {
                         flex-wrap: wrap;
+                        gap: 15px;
 
                         a {
-                            margin-right: 5px;
+                            font-size: 14px;
+                        }
+                    }
+
+                    @include mobile {
+                        flex-wrap: wrap;
+                        gap: 15px;
+                        font-size: 13px;
+
+                        a {
+                            font-size: 13px;
                         }
                     }
 

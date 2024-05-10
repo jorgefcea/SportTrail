@@ -1,40 +1,47 @@
 import "./store.scss";
+import React, { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../context/authContext";
+import { makeRequest } from "../../axios";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useEffect, useState } from "react";
 import CancelIcon from '@mui/icons-material/Cancel';
-import React from "react";
 
 const Store = () => {
-    
-    const [showCart, setShowCart] = useState(false); // Estado para controlar la visibilidad de la cesta
-    const [cartItems, setCartItems] = useState([]); // Estado para mantener los elementos en el carrito
+    const [showCart, setShowCart] = useState(false);
+    const [cartItems, setCartItems] = useState([]);
+    const { currentUser } = useContext(AuthContext);
+
+    const fetchUserData = async () => {
+        try {
+            const response = await makeRequest.get(`/users/find/${currentUser.id}`);
+            setUserData(response.data);
+        } catch (error) {
+            console.error("Error fetching user data:", error);
+        }
+    };
 
     useEffect(() => {
-        // Cargar elementos desde el localStorage al montar el componente
-        cargarElementosDesdeLocalStorage();
-    }, []);
+        fetchUserData();
+        cargarElementosDesdeLocalStorage(currentUser.id); // Pasar el ID del usuario
+    }, [currentUser.id]); // Asegurar que se recargue cuando cambie el usuario
 
-    // Función para cargar elementos desde el localStorage al carrito
-    const cargarElementosDesdeLocalStorage = () => {
-        const storedItems = JSON.parse(localStorage.getItem('elementos'));
+    const cargarElementosDesdeLocalStorage = (userId) => { // Recibir el ID del usuario
+        const storedItems = JSON.parse(localStorage.getItem(`elementos_${userId}`)); // Usar el ID del usuario para almacenar los elementos
         if (storedItems) {
             setCartItems(storedItems);
         }
     };
 
-    // Función para mostrar u ocultar la cesta
     const toggleCart = () => {
         setShowCart(!showCart);
     };
 
-    // Función para agregar un elemento al carrito
     const comprarElemento = (id) => {
         const elementoExistenteIndex = cartItems.findIndex(item => item.id === id);
         if (elementoExistenteIndex !== -1) {
             const updatedCart = [...cartItems];
-            updatedCart[elementoExistenteIndex].cantidad += 1; // Aumentar la cantidad del elemento existente
+            updatedCart[elementoExistenteIndex].cantidad += 1;
             setCartItems(updatedCart);
-            guardarEnLocalStorage(updatedCart);
+            guardarEnLocalStorage(updatedCart, currentUser.id); // Guardar con el ID del usuario
         } else {
             const elemento = data.find(item => item.id === id);
             const infoElemento = {
@@ -42,44 +49,35 @@ const Store = () => {
                 titulo: elemento.titulo,
                 precio: elemento.precio,
                 id: elemento.id,
-                cantidad: 1 // Agregar la cantidad inicial
+                cantidad: 1
             };
             const updatedCart = [...cartItems, infoElemento];
             setCartItems(updatedCart);
-            guardarEnLocalStorage(updatedCart);
+            guardarEnLocalStorage(updatedCart, currentUser.id); // Guardar con el ID del usuario
         }
-        
-        // Actualizar el número de artículos en el carrito
-        const cantidadTotal = cartItems.reduce((total, item) => total + item.cantidad, 0);
-        document.getElementById("cartItemCount").textContent = cantidadTotal;
     };
 
-    // Actualizar el número total de artículos y la cantidad de cada artículo en la cesta
+    const eliminarElemento = (id) => {
+        const updatedCart = cartItems.filter(item => item.id !== id);
+        setCartItems(updatedCart);
+        guardarEnLocalStorage(updatedCart, currentUser.id); // Guardar con el ID del usuario
+    };
+
+    const vaciarCarrito = () => {
+        setCartItems([]);
+        localStorage.removeItem(`elementos_${currentUser.id}`); // Borrar con el ID del usuario
+    };
+
+    const guardarEnLocalStorage = (elementos, userId) => { // Recibir el ID del usuario
+        localStorage.setItem(`elementos_${userId}`, JSON.stringify(elementos)); // Guardar con el ID del usuario
+    };
+
     const actualizarCantidadArticulos = () => {
         const cantidadTotal = cartItems.reduce((total, item) => total + item.cantidad, 0);
         document.getElementById("cartItemCount").textContent = cantidadTotal;
     };
 
-    // Función para eliminar un elemento del carrito y del localStorage
-    const eliminarElemento = (id) => {
-        const updatedCart = cartItems.filter(item => item.id !== id);
-        setCartItems(updatedCart);
-        guardarEnLocalStorage(updatedCart);
-    };
-
-    // Función para vaciar el carrito y el localStorage
-    const vaciarCarrito = () => {
-        setCartItems([]);
-        localStorage.removeItem('elementos');
-    };
-
-    // Función para guardar un elemento en el localStorage
-    const guardarEnLocalStorage = (elementos) => {
-        localStorage.setItem('elementos', JSON.stringify(elementos));
-    };
-
     useEffect(() => {
-        // Actualizar la cantidad de artículos cada vez que cambie el carrito
         actualizarCantidadArticulos();
     }, [cartItems]);
 
@@ -105,8 +103,8 @@ const Store = () => {
                 <div className="storeInfo">
                     <img src="../src/pages/login/images/store.png" alt="" className="storeLogo"/>
                     <div className="storeLeft">
-                        <a href="#lista-1">Descuentos en Productos</a>
-                        <a href="#lista-2">Nuestra Ropa</a>
+                        <a href="#lista-1">Descuentos en Productos</a> /
+                        <a href="#lista-2">Nuestra Ropa</a> /
                         <a href="#lista-3">Suplementos Nutricionales</a>
                     </div>
                     <div className="shoppingBagContainer">
