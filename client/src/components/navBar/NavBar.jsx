@@ -70,7 +70,9 @@ const NavBar = () => {
                         <Link to="/" style={{textDecoration: "none", color: "inherit" }}>
                             <MapIcon/>
                         </Link>
-                        <ShoppingBagOutlinedIcon/>
+                        <Link to="/store" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                <ShoppingBagOutlinedIcon/>
+                            </Link>
                         {darkMode ? <WbSunnyOutlinedIcon onClick={toggle} style={{cursor: "pointer"}}/> : <DarkModeOutlinedIcon onClick={toggle} style={{cursor: "pointer"}}/> }
                         <GridViewOutlinedIcon className="cuadritos"/>
                         <div className="search">
