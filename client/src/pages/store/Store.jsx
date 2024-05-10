@@ -29,19 +29,35 @@ const Store = () => {
 
     // Función para agregar un elemento al carrito
     const comprarElemento = (id) => {
-        const elementoSeleccionado = cartItems.find(item => item.id === id);
-        if (!elementoSeleccionado) {
+        const elementoExistenteIndex = cartItems.findIndex(item => item.id === id);
+        if (elementoExistenteIndex !== -1) {
+            const updatedCart = [...cartItems];
+            updatedCart[elementoExistenteIndex].cantidad += 1; // Aumentar la cantidad del elemento existente
+            setCartItems(updatedCart);
+            guardarEnLocalStorage(updatedCart);
+        } else {
             const elemento = data.find(item => item.id === id);
             const infoElemento = {
                 imagen: elemento.imagen,
                 titulo: elemento.titulo,
                 precio: elemento.precio,
-                id: elemento.id
+                id: elemento.id,
+                cantidad: 1 // Agregar la cantidad inicial
             };
             const updatedCart = [...cartItems, infoElemento];
             setCartItems(updatedCart);
             guardarEnLocalStorage(updatedCart);
         }
+        
+        // Actualizar el número de artículos en el carrito
+        const cantidadTotal = cartItems.reduce((total, item) => total + item.cantidad, 0);
+        document.getElementById("cartItemCount").textContent = cantidadTotal;
+    };
+
+    // Actualizar el número total de artículos y la cantidad de cada artículo en la cesta
+    const actualizarCantidadArticulos = () => {
+        const cantidadTotal = cartItems.reduce((total, item) => total + item.cantidad, 0);
+        document.getElementById("cartItemCount").textContent = cantidadTotal;
     };
 
     // Función para eliminar un elemento del carrito y del localStorage
@@ -61,6 +77,11 @@ const Store = () => {
     const guardarEnLocalStorage = (elementos) => {
         localStorage.setItem('elementos', JSON.stringify(elementos));
     };
+
+    useEffect(() => {
+        // Actualizar la cantidad de artículos cada vez que cambie el carrito
+        actualizarCantidadArticulos();
+    }, [cartItems]);
 
     const data = [
         { id: 1, titulo: "Camiseta Negra Unisex - SportTrail", precio: "14.99 €", imagen: "/public/store/negra.png" },
@@ -94,7 +115,7 @@ const Store = () => {
                                 <li className="submenu">
                                     <div className="numeroArticulos" id="cartItemCount">{cartItems.length}</div>
                                     {/* Utiliza onClick para llamar a la función toggleCart */}
-                                    <ShoppingCartIcon className="shoppingBagIcon" id="img-carrito" onClick={toggleCart}/>
+                                    <ShoppingCartIcon className="shoppingBagIcon" id="img-carrito" onClick={toggleCart} style={{cursor: "pointer"}}/>
                                     {/* Muestra la cesta condicionalmente */}
                                     {showCart && (
                                         <div id="carrito">
@@ -104,26 +125,28 @@ const Store = () => {
                                                         <th>Imagen</th>
                                                         <th>Nombre</th>
                                                         <th>Precio</th>
+                                                        <th>Cantidad</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {cartItems.map((item, index) => (
-                                                        <React.Fragment key={index}>
-                                                            <tr>
-                                                                <td><img src={item.imagen} alt=""/></td>
-                                                                <td>{item.titulo}</td>
-                                                                <td>{item.precio}</td>
-                                                                <td>
-                                                                    <a href="#" className="borrar" onClick={() => eliminarElemento(item.id)}>
-                                                                        <CancelIcon className="iconBorrar"/>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td colSpan="4"><hr /></td>
-                                                            </tr>
-                                                        </React.Fragment>
-                                                    ))}
+                                                {cartItems.map((item, index) => (
+                                                    <React.Fragment key={index}>
+                                                        <tr>
+                                                            <td><img src={item.imagen} alt=""/></td>
+                                                            <td>{item.titulo}</td>
+                                                            <td>{item.precio}</td>
+                                                            <td>x {item.cantidad}</td>
+                                                            <td>
+                                                                <a href="#" className="borrar" onClick={() => eliminarElemento(item.id)}>
+                                                                    <CancelIcon className="iconBorrar"/>
+                                                                </a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colSpan="5"><hr /></td> {/* Ajustar el colspan para la nueva columna */}
+                                                        </tr>
+                                                    </React.Fragment>
+                                                ))}
                                                 </tbody>
                                             </table>
                                             <a href="#" id="vaciar-carrito" className="btn-2" onClick={vaciarCarrito}>Vaciar Carrito</a>
