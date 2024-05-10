@@ -117,37 +117,45 @@ const Store = () => {
                                     {/* Muestra la cesta condicionalmente */}
                                     {showCart && (
                                         <div id="carrito">
-                                            <table id="lista-carrito">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Imagen</th>
-                                                        <th>Nombre</th>
-                                                        <th>Precio</th>
-                                                        <th>Cantidad</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                {cartItems.map((item, index) => (
-                                                    <React.Fragment key={index}>
-                                                        <tr>
-                                                            <td><img src={item.imagen} alt=""/></td>
-                                                            <td>{item.titulo}</td>
-                                                            <td>{item.precio}</td>
-                                                            <td>x {item.cantidad}</td>
-                                                            <td>
-                                                                <a href="#" className="borrar" onClick={() => eliminarElemento(item.id)}>
-                                                                    <CancelIcon className="iconBorrar"/>
-                                                                </a>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td colSpan="5"><hr /></td> {/* Ajustar el colspan para la nueva columna */}
-                                                        </tr>
-                                                    </React.Fragment>
-                                                ))}
-                                                </tbody>
-                                            </table>
-                                            <a href="#" id="vaciar-carrito" className="btn-2" onClick={vaciarCarrito}>Vaciar Carrito</a>
+                                            {cartItems.length > 0 ? (
+                                                <>
+                                                    <h3 className="h3-compra">Resumen de compra:</h3>
+                                                    <table id="lista-carrito">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Imagen</th>
+                                                                <th>Nombre</th>
+                                                                <th>Precio</th>
+                                                                <th>Cantidad</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            {cartItems.map((item, index) => (
+                                                                <React.Fragment key={index}>
+                                                                    <tr>
+                                                                        <td><img src={item.imagen} alt=""/></td>
+                                                                        <td>{item.titulo}</td>
+                                                                        <td>{item.precio}</td>
+                                                                        <td>x {item.cantidad}</td>
+                                                                        <td>
+                                                                            <a href="#" className="borrar" onClick={() => eliminarElemento(item.id)}>
+                                                                                <CancelIcon className="iconBorrar"/>
+                                                                            </a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colSpan="5"><hr /></td>
+                                                                    </tr>
+                                                                </React.Fragment>
+                                                            ))}
+                                                        </tbody>
+                                                    </table>
+                                                    <a href="#" id="comprar-productos" className="btn-2">Comprar Ahora</a>
+                                                    <a href="#" id="vaciar-carrito" className="btn-2" onClick={vaciarCarrito}>Vaciar Carrito</a>
+                                                </>
+                                            ) : (
+                                                <h3 className="h3-vacio">El carrito está vacío.</h3>
+                                            )}
                                         </div>
                                     )}
                                 </li>
