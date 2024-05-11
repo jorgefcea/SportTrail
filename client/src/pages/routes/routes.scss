@@ -1,0 +1,205 @@
+@import "../../style.scss";
+
+.routes {
+    @include themify($themes) {
+        background-color: themed("bgSoft");
+        min-height: 100vh;
+
+        .routesContainer {
+            padding: 20px 70px;
+
+            @include mobile {
+                padding: 10px;
+            }
+
+            @include tablet {
+                padding: 20px;
+            }
+
+            .routesInfo {
+                position: relative;
+                -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                border-radius: 20px;
+                background-color: themed("bg");
+                color: themed("textColor");
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+
+                .routesLogo {
+                    width: 290px;
+                    margin-bottom: 10px;
+                    margin-top: 20px;
+
+                    @include tablet {
+                        width: 250px;
+                    }
+
+                    @include mobile {
+                        width: 200px;
+                    }
+                }
+
+                .routesLeft {
+                    display: flex;
+                    gap: 30px;
+                    justify-content: center;
+                    margin-bottom: 20px;
+                    font-weight: bold;
+
+                    @include tablet {
+                        flex-wrap: wrap;
+                        gap: 15px;
+
+                        a {
+                            font-size: 14px;
+                        }
+                    }
+
+                    @include mobile {
+                        flex-wrap: wrap;
+                        gap: 15px;
+                        font-size: 13px;
+
+                        a {
+                            font-size: 13px;
+                        }
+                    }
+
+                    a {
+                        color: themed("textColorSoft");
+                        text-decoration: none;
+
+                        .icon {
+                            width: 30px;
+                            height: 30px;
+                            color: themed("iconColor");
+                        }
+                    }
+                }
+            }
+
+            .routesInfo2 {
+                position: relative;
+                -webkit-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                -moz-box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.38);
+                border-radius: 20px;
+                background-color: themed("bg");
+                color: themed("textColor");
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+                margin-top: 30px;
+
+                h2 {
+                    font-size: 30px;
+                    color: themed("textColor");
+                    margin-bottom: 25px;
+                    text-align: center;
+                    margin-top: -25px;
+
+                    @include mobile {
+                        font-size: 25px;
+                    }
+                }
+
+                hr {
+                    width: 60%;
+                    margin: auto;
+                    margin-bottom: 10px;
+                }
+
+                .promos {
+                    padding: 50px 0;
+                    text-align: center;
+
+                    hr {
+                        width: 50%;
+                        margin: auto;
+                        margin-bottom: 40px;
+                    }
+
+                }
+
+                .categories {
+                    text-align: left;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+
+                    @include tablet {
+                        grid-template-columns: repeat(1, 1fr);
+                    }
+
+                    @include mobile {
+                        grid-template-columns: repeat(1, 1fr);
+                    }
+                }
+
+                .categorie {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    margin-top: 20px;
+
+                    @include tablet {
+                        margin-left: 100px;
+                    }
+
+                    @include mobile {
+                        margin-left: 40px;
+                    }
+                }
+
+                .categorie img {
+                    width: 150px;
+                    height: 150px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                .categorie-1 {
+                    width: 80%;
+
+                    h3 {
+                        color: themed("textColor");
+                        font-size: 16px;
+                        font-weight: 600;
+                        margin-top: 20px;
+                    }
+
+                    p {
+                        color: #747B8F;
+                        font-size: 16px;
+                    }
+                }
+
+                button {
+                    display: inline-block;
+                    padding: 10px 25px;
+                    font-size: 14px;
+                    border: none;
+                    background-color: #2a403a;
+                    color: white;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    text-decoration: none;
+                    margin-top: 20px;
+                }
+
+                hr {
+                    height: 0.5px;
+                    width: 80%;
+                    border: none;
+                    height: 0.5px;
+                    background-color: themed("commentBorder");
+                }
+            }
+        }
+    }
+}

@@ -47,7 +47,7 @@ const RightBar = () => {
         <div className="rightBar">
             <div className="container">
                 <div className="item">
-                    <span>Recomendaciones para ti</span>
+                    <span>Recomendaciones para tí</span>
                     {isLoading ? (
                         "Cargando..."
                     ) : error ? (

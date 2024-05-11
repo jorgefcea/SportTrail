@@ -12,6 +12,8 @@ import RightBar from "./components/rightBar/rightBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Store from "./pages/store/Store";
+import Routes from "./pages/routes/Routes";
+import Monachil from "./pages/routesLink/Monachil";
 import "./style.scss";
 import React, { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext.jsx';
@@ -73,6 +75,14 @@ function App() {
         {
           path: "/store",
           element: <Store/>,
+        },
+        {
+          path: "/routes",
+          element: <Routes/>,
+        }, 
+        {
+          path: "/routesLink",
+          element: <Monachil/>,
         }, 
       ],
     },

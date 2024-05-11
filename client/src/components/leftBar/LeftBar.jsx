@@ -75,10 +75,12 @@ const LeftBar = () => {
                                     <span>Tienda</span>
                                 </div>
                             </Link>
-                            <div className="item">
-                                <MapIcon className="icon" />
-                                <span>Rutas</span>
-                            </div>
+                            <Link to="/routes" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                <div className="item">
+                                    <MapIcon className="icon" />
+                                    <span>Rutas</span>
+                                </div>
+                            </Link>
                             <div className="item">
                                 <RestoreIcon className="icon" />
                                 <span>Recuerdos</span>
