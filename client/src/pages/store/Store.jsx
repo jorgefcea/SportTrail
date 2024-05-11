@@ -82,18 +82,18 @@ const Store = () => {
     }, [cartItems]);
 
     const data = [
-        { id: 1, titulo: "Camiseta Negra Unisex - SportTrail", precio: "14.99 €", imagen: "/public/store/negra.png" },
-        { id: 2, titulo: "Proteínas - 100% Whey Gold Standard", precio: "39.99 €", imagen: "/public/store/proteina.png" },
-        { id: 3, titulo: "Sudadera Verde Unisex - SportTrail", precio: "29.99 €", imagen: "/public/store/sudaderaV.png" },
-        { id: 4, titulo: "Creatina - 100% Creatine Six Star", precio: "19.99 €", imagen: "/public/store/creatina.png" },
-        { id: 5, titulo: "Camiseta Blanca Unisex - SportTrail", precio: "29.99 €", imagen: "/public/store/blanca.png" },
-        { id: 6, titulo: "Camiseta Burdeos Unisex - SportTrail", precio: "39.99 €", imagen: "/public/store/burdeos.png" },
-        { id: 7, titulo: "Sudadera Marrón Unisex - SportTrail", precio: "49.99 €", imagen: "/public/store/sudaderaM.png" },
-        { id: 8, titulo: "Sudadera Negra Unisex - SportTrail", precio: "49.99 €", imagen: "/public/store/sudaderaN.png" },
-        { id: 9, titulo: "Multivitamínicos - Caffeine Muscle P.", precio: "9.99 €", imagen: "/public/store/cafeina.png" },
-        { id: 10, titulo: "Aminoácidos - Amino Elite", precio: "29.99 €", imagen: "/public/store/aminoácidos.png" },
-        { id: 11, titulo: "Proteínas - 100% Whey Elite", precio: "19.99 €", imagen: "/public/store/proteinas2.png" },
-        { id: 12, titulo: "Pre-Entreno - Intenze", precio: "19.99 €", imagen: "/public/store/preentreno.png" }
+        { id: 1, titulo: "Camiseta Negra Unisex - SportTrail", precio: "14.99 €", imagen: "/store/negra.png" },
+        { id: 2, titulo: "Proteínas - 100% Whey Gold Standard", precio: "39.99 €", imagen: "/store/proteina.png" },
+        { id: 3, titulo: "Sudadera Verde Unisex - SportTrail", precio: "29.99 €", imagen: "/store/sudaderaV.png" },
+        { id: 4, titulo: "Creatina - 100% Creatine Six Star", precio: "19.99 €", imagen: "/store/creatina.png" },
+        { id: 5, titulo: "Camiseta Blanca Unisex - SportTrail", precio: "29.99 €", imagen: "/store/blanca.png" },
+        { id: 6, titulo: "Camiseta Burdeos Unisex - SportTrail", precio: "39.99 €", imagen: "store/burdeos.png" },
+        { id: 7, titulo: "Sudadera Marrón Unisex - SportTrail", precio: "49.99 €", imagen: "/store/sudaderaM.png" },
+        { id: 8, titulo: "Sudadera Negra Unisex - SportTrail", precio: "49.99 €", imagen: "/store/sudaderaN.png" },
+        { id: 9, titulo: "Multivitamínicos - Caffeine Muscle P.", precio: "9.99 €", imagen: "/store/cafeina.png" },
+        { id: 10, titulo: "Aminoácidos - Amino Elite", precio: "29.99 €", imagen: "/store/aminoácidos.png" },
+        { id: 11, titulo: "Proteínas - 100% Whey Elite", precio: "19.99 €", imagen: "/store/proteinas2.png" },
+        { id: 12, titulo: "Pre-Entreno - Intenze", precio: "19.99 €", imagen: "/store/preentreno.png" }
     ];
     
 
@@ -178,7 +178,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(1)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/negra.png" alt=""/>
+                                    <img src="/store/negra.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -191,7 +191,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(2)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/proteina.png" alt=""/>
+                                    <img src="/store/proteina.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -204,7 +204,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(3)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/sudaderaV.png" alt=""/>
+                                    <img src="/store/sudaderaV.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -217,7 +217,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(4)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/creatina.png" alt=""/>
+                                    <img src="/store/creatina.png" alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -238,7 +238,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(5)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/blanca.png" alt=""/>
+                                    <img src="/store/blanca.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -250,7 +250,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(6)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/burdeos.png" alt=""/>
+                                    <img src="/store/burdeos.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -262,7 +262,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(7)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/sudaderaM.png" alt=""/>
+                                    <img src="/store/sudaderaM.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -274,7 +274,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(8)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/sudaderaN.png" alt=""/>
+                                    <img src="/store/sudaderaN.png" alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -295,7 +295,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(9)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/cafeina.png" alt=""/>
+                                    <img src="/store/cafeina.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -307,7 +307,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(10)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/aminoácidos.png" alt=""/>
+                                    <img src="/store/aminoácidos.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -319,7 +319,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(11)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/proteinas2.png" alt=""/>
+                                    <img src="/store/proteinas2.png" alt=""/>
                                 </div>
                             </div>
                             <div className="categorie">
@@ -331,7 +331,7 @@ const Store = () => {
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(12)}>Comprar</a>
                                 </div>
                                 <div className="categorie-img">
-                                    <img src="/public/store/preentreno.png" alt=""/>
+                                    <img src="/store/preentreno.png" alt=""/>
                                 </div>
                             </div>
                         </div>

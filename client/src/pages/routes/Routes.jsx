@@ -32,7 +32,7 @@ const Routes = () => {
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
-                                    <h3>Senda Circular a los Cahorros de Monachil en Sierra Nevada (Granada)</h3>
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
                                     <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -40,16 +40,47 @@ const Routes = () => {
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -57,29 +88,62 @@ const Routes = () => {
 
                     <hr id="lista-2"/>
                     
-                    <section className="promos container" id="lista-1">
-                        <h2>Senderismo</h2>
+                    <section className="promos container">
+                        <h2>Mountain Bike</h2>
                         <hr />
                         <div className="categories">
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -87,29 +151,125 @@ const Routes = () => {
 
                     <hr id="lista-3"/>
 
-                    <section className="promos container" id="lista-1">
-                        <h2>Senderismo</h2>
+                    <section className="promos container">
+                        <h2>Running</h2>
                         <hr />
                         <div className="categories">
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="" alt="" />
-                                    <h3>Proteínas - 100% Whey Gold Standard</h3>
-                                    <button>Ver Ruta</button>
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <hr id="lista-4"/>
+
+                    <section className="promos container">
+                        <h2>Paseo</h2>
+                        <hr />
+                        <div className="categories">
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="categorie">
+                                <div className="categorie-1">
+                                    <img src="src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
+                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                        <button>Ver Ruta</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

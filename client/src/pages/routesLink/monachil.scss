@@ -63,6 +63,20 @@
                     background-color: themed("bg");
                     width: 100%;
                     text-align: center;
+
+                    @include mobile {
+                        font-size: 25px;
+                    }
+
+                    span {
+                        font-size: 20px;
+                        color: themed("textColor");
+                        background-color: themed("bg");
+
+                        @include mobile {
+                            font-size: 18px;
+                        }
+                    }
                 }
 
                 .routesLeft {
@@ -164,6 +178,15 @@
                         width: 80%;
                         text-align: left;
                         margin: auto;
+                       
+                        @include tablet {
+                            font-size: 14px;
+                        }
+
+                        @include mobile {
+                            font-size: 12px;
+                        }
+                        
                     }
 
                     #map {
@@ -172,17 +195,24 @@
                         border-radius: 20px;
                         top: 20px;
                         margin: auto;
+                        z-index: 1;
 
                         @include tablet {
-                            margin-top: 20px;
+                            margin-top: 10px;
                             width: 500px;
                             height: 250px;
+                        }
+
+                        @include mobile {
+                            margin-top: 10px;
+                            width: 350px;
+                            height: 200px;
                         }
                     }
 
                     #altitudeChart {
-                        width: 650px;
-                        height: 350px;
+                        width: 800px;
+                        height: 250px;
                         border-radius: 20px;
                         margin: auto;
                         background-color: white;
@@ -190,8 +220,13 @@
                         margin-top: 50px;
 
                         @include tablet {
-                            margin-top: 20px;
-                            width: 450px;
+                            margin-top: 50px;
+                            width: 500px;
+                            height: 250px;
+                        }
+
+                        @include mobile {
+                            width: 350px;
                             height: 250px;
                         }
                     }
@@ -289,6 +324,16 @@
                             height: 225px;
                             object-fit: cover;
                             border-radius: 10px;
+
+                            @include tablet {
+                                width: 250px;
+                                height: 150px;
+                            }
+
+                            @include mobile {
+                                width: 165px;
+                                height: 100px;
+                            }
                         }
                     }
 
@@ -299,6 +344,14 @@
                         align-items: center;
                         margin-left: 20px;
 
+                        @include tablet {
+                            width: 240px;
+                        }
+
+                        @include mobile {
+                            width: 165px;
+                        }
+
                         img {
                             max-width: 100%;
                             max-height: 600px;
@@ -307,6 +360,42 @@
                         }
                     }
                 }
+            }
+
+            .route-info {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                border-collapse: collapse;
+                margin-bottom: 10px;
+
+                @include tablet {
+                    font-size: 14px;
+                }
+
+                @include mobile {
+                    font-size: 12px;
+                }
+            }
+        
+            .route-info td {
+                padding: 8px 16px;
+                border: 1px solid #c9c9bf; 
+                color: black;
+            }
+        
+            .route-info td:first-child {
+                font-weight: bold; 
+            }
+        
+            .route-info tr:nth-child(even) {
+                background-color: #a8a89f; 
+            }
+
+            .route-info tr:nth-child(odd) {
+                background-color: white;
             }
         }
     }

@@ -106,7 +106,7 @@ const RightBar = () => {
                     <span>Últimas actividades</span>
                     <div className="user">
                         <div className="userInfo">
-                            <img src="/public/upload/1715119730810jorge.jpg" alt="" />
+                            <img src="/upload/1715119730810jorge.jpg" alt="" />
                             <p>
                                 <span>Jorge Fernández</span> ha cambiado su foto de perfil
                             </p>
@@ -115,7 +115,7 @@ const RightBar = () => {
                     </div>
                     <div className="user">
                         <div className="userInfo">
-                            <img src="/public/upload/1715119826386ruben.jpg" alt="" />
+                            <img src="/upload/1715119826386ruben.jpg" alt="" />
                             <p>
                                 <span>Rubén de la Blanca</span> ha cambiado su foto de perfil
                             </p>
@@ -124,7 +124,7 @@ const RightBar = () => {
                     </div>
                     <div className="user">
                         <div className="userInfo">
-                            <img src="/public/upload/1715119677934david.jpg" alt="" />
+                            <img src="/upload/1715119677934david.jpg" alt="" />
                             <p>
                                 <span>David Fernández</span> ha cambiado su foto de perfil
                             </p>
@@ -133,7 +133,7 @@ const RightBar = () => {
                     </div>
                     <div className="user">
                         <div className="userInfo">
-                            <img src="/public/upload/1715119575881takeli.jpg" alt="" />
+                            <img src="/upload/1715119575881takeli.jpg" alt="" />
                             <p>
                                 <span>Sergio Takeli</span> ha cambiado su foto de perfil
                             </p>

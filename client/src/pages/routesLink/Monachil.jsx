@@ -65,18 +65,41 @@ const Monachil = () => {
     <div className="routes">
             <div className="routesContainer">
                 <div className="routesInfo">
-                  <h1>Cahorros - Río Monachil</h1>
+                  <h1>Los Cahorros - Río Monachil <br />
+                    <span>(Monachil, Granada, España)</span>
+                  </h1>
                   <img src="../src/pages/routes/routesImg/cahorros.jpg" alt="" />
                 </div>
                 <div className="routesInfo2">
-                    <section className="promos container" id="lista-1">
-                        <h1>Recorrido y Altitud de la Ruta</h1>
-                        <hr />
-                        <p><b>Distancia:</b> 4,0 km.</p>
-                        <span>(Monachil, Granada, España)</span>
-                        <div id="map"></div>
-                        <canvas id="altitudeChart"></canvas>
-                    </section>
+                <section className="promos container" id="lista-1">
+                  <h1>Recorrido y Altitud de la Ruta</h1>
+                  <hr />
+                  <table className="route-info">
+                    <tbody>
+                      <tr>
+                        <td colSpan="2" style={{backgroundColor: "#2a403a", color: "white"}}>Detalles de la Ruta</td>
+                      </tr>
+                      <tr>
+                        <td><b>Dificultad:</b></td>
+                        <td>Moderada</td>
+                      </tr>
+                      <tr>
+                        <td><b>Distancia:</b></td>
+                        <td>4,0 km.</td>
+                      </tr>
+                      <tr>
+                        <td><b>Desnivel Positivo:</b></td>
+                        <td>167 m.</td>
+                      </tr>
+                      <tr>
+                        <td><b>Tipo de Ruta:</b></td>
+                        <td>Circular</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div id="map"></div>
+                  <canvas id="altitudeChart"></canvas>
+                </section>
 
                     <hr />
 
