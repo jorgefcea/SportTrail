@@ -132,6 +132,10 @@
             align-items: center;
             justify-content: space-around;
 
+            @include mobile{
+              gap: 40px;
+            }
+
             .item {
               display: flex;
               align-items: center;
@@ -154,11 +158,11 @@
           }
 
           .button {
-            margin-top: 30px; 
+            margin-top: 30px;
 
             @include mobile{
               margin-bottom: 20px;
-              margin-top: 20px;
+              margin-top: 10px;
             }
           }
         }
@@ -169,7 +173,7 @@
           align-items: center;
           justify-content: flex-end;
           gap: 15px;
-            
+          margin-bottom: -35px;
         }
       }
     }
