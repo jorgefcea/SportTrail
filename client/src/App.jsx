@@ -14,6 +14,17 @@ import Profile from "./pages/profile/Profile";
 import Store from "./pages/store/Store";
 import Routes from "./pages/routes/Routes";
 import Monachil from "./pages/routesLink/Monachil";
+import Monserrat from "./pages/routesLink/Monserrat";
+import Soller from "./pages/routesLink/Soller";
+import Tibidabo from "./pages/routesLink/Tibidabo";
+import Tajo from "./pages/routesLink/Tajo";
+import Caminito from "./pages/routesLink/Caminito";
+import Senderoagua from "./pages/routesLink/Senderoagua";
+import Pla from "./pages/routesLink/Pla";
+import Embalse from "./pages/routesLink/Embalse";
+import Floresta from "./pages/routesLink/Floresta";
+import Turia from "./pages/routesLink/Turia";
+import Beas from "./pages/routesLink/Beas";
 import "./style.scss";
 import React, { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext.jsx';
@@ -81,9 +92,53 @@ function App() {
           element: <Routes/>,
         }, 
         {
-          path: "/routesLink",
+          path: "/routesLink/Monachil",
           element: <Monachil/>,
-        }, 
+        },
+        {
+          path: "/routesLink/Montserrat",
+          element: <Monserrat/>,
+        },
+        {
+          path: "/routesLink/Soller",
+          element: <Soller/>,
+        },
+        {
+          path: "/routesLink/Tibidabo",
+          element: <Tibidabo/>,
+        },
+        {
+          path: "/routesLink/Tajo",
+          element: <Tajo/>,
+        },
+        {
+          path: "/routesLink/Caminito",
+          element: <Caminito/>,
+        },
+        {
+          path: "/routesLink/Senderoagua",
+          element: <Senderoagua/>,
+        },
+        {
+          path: "/routesLink/Pla",
+          element: <Pla/>,
+        },
+        {
+          path: "/routesLink/Embalse",
+          element: <Embalse/>,
+        },
+        {
+          path: "/routesLink/Floresta",
+          element: <Floresta/>,
+        },
+        {
+          path: "/routesLink/Turia",
+          element: <Turia/>,
+        },
+        {
+          path: "/routesLink/Beas",
+          element: <Beas/>,
+        },
       ],
     },
     {

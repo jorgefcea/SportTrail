@@ -5,7 +5,7 @@ import "leaflet-gpx";
 import Chart from "chart.js/auto";
 import "./routesLink.scss";
 
-const Monachil = () => {
+const Beas = () => {
 
   useEffect(() => {
     
@@ -18,7 +18,7 @@ const Monachil = () => {
     }).addTo(map);
 
     // Carga el archivo GPX
-    new L.GPX("../src/pages/routesLink/gpx/monachil.gpx", {
+    new L.GPX("../src/pages/routesLink/gpx/beas.gpx", {
       async: true
     }).on("loaded", function(e) {
       map.fitBounds(e.target.getBounds());
@@ -65,10 +65,10 @@ const Monachil = () => {
     <div className="routes">
             <div className="routesContainer">
                 <div className="routesInfo">
-                  <h1>Los Cahorros - Río Monachil <br />
-                    <span>(Monachil, Granada, España)</span>
+                  <h1>Parque Periurbano Dehesa del Generalife<br />
+                    <span>(Beas de Granada, Granada, España)</span>
                   </h1>
-                  <img src="../src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                  <img src="../src/pages/routes/routesImg/beas.png" alt="" />
                 </div>
                 <div className="routesInfo2">
                 <section className="promos container" id="lista-1">
@@ -85,15 +85,15 @@ const Monachil = () => {
                       </tr>
                       <tr>
                         <td><b>Distancia:</b></td>
-                        <td>4,0 km.</td>
+                        <td>16,1 km.</td>
                       </tr>
                       <tr>
                         <td><b>Desnivel Positivo:</b></td>
-                        <td>167 m.</td>
+                        <td>370 m.</td>
                       </tr>
                       <tr>
                         <td><b>Tipo de Ruta:</b></td>
-                        <td>Circular</td>
+                        <td>Punto a Punto</td>
                       </tr>
                     </tbody>
                   </table>
@@ -106,7 +106,7 @@ const Monachil = () => {
                     <section className="promos container" id="lista-1">
                         <h1>Descripción de la Ruta</h1>
                         <hr />
-                        <p className="descripcion">La ruta de los Cahorros es uno de los destinos al aire libre más populares en la provincia de Granada. <br /><br />Esta aventura comienza en el pueblo de Monachil (del latín, monasterio), localidad granadina situada a 14 km de la capital. <br /><br />Monachil se encuentra dentro de un valle en el Parque Nacional y Natural de Sierra Nevada y es también conocido por la estación de esquí de Sierra Nevada. <br /><br />A lo largo de esta caminata se pasa por cascadas, rocas erosionadas por el paso del cauce del río Monachil, puente colgante, Cueva de las Palomas y vistas espectaculares a la ribera del río. <br /><br />Esta ruta circular está llena de flores silvestres, árboles frutales como albaricoqueros, almendros, cerezos y manzanos. Primavera es la estación del año más recomendable, ya que las flores están en su pleno esplendor. <br /><br />Es recomendable evitar ir en fin de semana, puesto que hay mucha afluencia de senderistas. <br /><br />Se puede aparcar el coche en el aparcamiento de la Carretera de El Purche o en el de la Calle Huenes.</p>
+                        <p className="descripcion">Siguiendo las cumbres que separan Beas y Granada se desarrolla este precioso recorrido con algunas de las mejores vistas de todas las montañas de Sierra Nevada que se pueden tener desde cualquier lugar.  <br /><br />Es particularmente espectacular en invierno, cuando se pueden ver todos los picos nevados y la estación de esquí, desde El Caballo en el oeste hasta Picón de Jerez en el este.  <br /><br />Se recomienda llevar agua, protector solar y snacks ya que es una ruta bastante larga, especialmente si se hace ida y vuelta (32 kilómetros aproximadamente). También es aconsejable comenzar temprano, sobre todo si se realiza entre mayo y octubre, ya que las temperaturas pueden bastante ser elevadas a medio día.<br /><br />Para volver a Beas desde Granada se puede optar por coger el autobús de la línea 300. También hay servicios de taxi y empresas privadas VTC.</p>
                     </section>
 
                     <hr />
@@ -116,11 +116,11 @@ const Monachil = () => {
                       <hr />
                       <div className="imageGallery">
                           <div className="horizontalImages">
-                              <img src="../src/pages/routes/routesImg/cahorros1.png" alt="Imagen 1" />
-                              <img src="../src/pages/routes/routesImg/cahorros3.png" alt="Imagen 2" />
+                              <img src="../src/pages/routes/routesImg/beas1.png" alt="Imagen 1" />
+                              <img src="../src/pages/routes/routesImg/beas2.png" alt="Imagen 2" />
                           </div>
                           <div className="verticalImage">
-                              <img src="../src/pages/routes/routesImg/cahorros2.png" alt="Imagen 3" />
+                              <img src="../src/pages/routes/routesImg/beas3.png" alt="Imagen 3" />
                           </div>
                       </div>
                   </section>
@@ -130,4 +130,4 @@ const Monachil = () => {
     );
 };
 
-export default Monachil;
+export default Beas;

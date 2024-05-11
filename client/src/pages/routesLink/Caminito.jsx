@@ -5,7 +5,7 @@ import "leaflet-gpx";
 import Chart from "chart.js/auto";
 import "./routesLink.scss";
 
-const Monachil = () => {
+const Caminito = () => {
 
   useEffect(() => {
     
@@ -18,7 +18,7 @@ const Monachil = () => {
     }).addTo(map);
 
     // Carga el archivo GPX
-    new L.GPX("../src/pages/routesLink/gpx/monachil.gpx", {
+    new L.GPX("../src/pages/routesLink/gpx/caminito.gpx", {
       async: true
     }).on("loaded", function(e) {
       map.fitBounds(e.target.getBounds());
@@ -65,10 +65,10 @@ const Monachil = () => {
     <div className="routes">
             <div className="routesContainer">
                 <div className="routesInfo">
-                  <h1>Los Cahorros - Río Monachil <br />
-                    <span>(Monachil, Granada, España)</span>
+                  <h1>El Caminito del Rey<br />
+                    <span>(Ardales, Málaga, España)</span>
                   </h1>
-                  <img src="../src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                  <img src="../src/pages/routes/routesImg/caminito.png" alt="" />
                 </div>
                 <div className="routesInfo2">
                 <section className="promos container" id="lista-1">
@@ -85,15 +85,15 @@ const Monachil = () => {
                       </tr>
                       <tr>
                         <td><b>Distancia:</b></td>
-                        <td>4,0 km.</td>
+                        <td>6,8 km.</td>
                       </tr>
                       <tr>
                         <td><b>Desnivel Positivo:</b></td>
-                        <td>167 m.</td>
+                        <td>280 m.</td>
                       </tr>
                       <tr>
                         <td><b>Tipo de Ruta:</b></td>
-                        <td>Circular</td>
+                        <td>Punto a Punto</td>
                       </tr>
                     </tbody>
                   </table>
@@ -106,7 +106,7 @@ const Monachil = () => {
                     <section className="promos container" id="lista-1">
                         <h1>Descripción de la Ruta</h1>
                         <hr />
-                        <p className="descripcion">La ruta de los Cahorros es uno de los destinos al aire libre más populares en la provincia de Granada. <br /><br />Esta aventura comienza en el pueblo de Monachil (del latín, monasterio), localidad granadina situada a 14 km de la capital. <br /><br />Monachil se encuentra dentro de un valle en el Parque Nacional y Natural de Sierra Nevada y es también conocido por la estación de esquí de Sierra Nevada. <br /><br />A lo largo de esta caminata se pasa por cascadas, rocas erosionadas por el paso del cauce del río Monachil, puente colgante, Cueva de las Palomas y vistas espectaculares a la ribera del río. <br /><br />Esta ruta circular está llena de flores silvestres, árboles frutales como albaricoqueros, almendros, cerezos y manzanos. Primavera es la estación del año más recomendable, ya que las flores están en su pleno esplendor. <br /><br />Es recomendable evitar ir en fin de semana, puesto que hay mucha afluencia de senderistas. <br /><br />Se puede aparcar el coche en el aparcamiento de la Carretera de El Purche o en el de la Calle Huenes.</p>
+                        <p className="descripcion">Es necesario hacer una reserva con meses de antelación para recorrer este sendero ya que es una ruta muy popular: <b><u>https://www.caminitodelrey.info/es</u></b>. <br /><br />El recorrido del Caminito del Rey es una ruta lineal no circular de sentido único. Fue una vez conocido como el "sendero más peligroso de España", conocido y transcurrido entonces solo por los amantes de la escalada en roca. Hoy en día el sendero ha sido restaurado en buena parte, siendo una de las rutas más populares y espectaculares de España. <br /><br />Su construcción se inició en 1901 y se terminó en 1905. El rey Alfonso XIII atravesó la pasarela en 1921 para la inauguración de la presa del Conde del Guadalhorce. La pasarela tiene 1 metro de ancho y se eleva más de 100 metros sobre el río. <br /><br />El sendero sigue el desfiladero de Gaitanes en El Chorro. Es un paseo espectacular sobre puentes de madera al lado de los acantilados. <br /><br />Se recomienda optar por esta ruta si eres un excursionista aventurero y experimentado. Con las renovaciones recientes es mucho más seguro, sin embargo, necesitas usar casco. No se permiten niños menores de 8 años.</p>
                     </section>
 
                     <hr />
@@ -116,11 +116,11 @@ const Monachil = () => {
                       <hr />
                       <div className="imageGallery">
                           <div className="horizontalImages">
-                              <img src="../src/pages/routes/routesImg/cahorros1.png" alt="Imagen 1" />
-                              <img src="../src/pages/routes/routesImg/cahorros3.png" alt="Imagen 2" />
+                              <img src="../src/pages/routes/routesImg/caminito1.png" alt="Imagen 1" />
+                              <img src="../src/pages/routes/routesImg/caminito2.png" alt="Imagen 2" />
                           </div>
                           <div className="verticalImage">
-                              <img src="../src/pages/routes/routesImg/cahorros2.png" alt="Imagen 3" />
+                              <img src="../src/pages/routes/routesImg/caminito3.png" alt="Imagen 3" />
                           </div>
                       </div>
                   </section>
@@ -130,4 +130,4 @@ const Monachil = () => {
     );
 };
 
-export default Monachil;
+export default Caminito;

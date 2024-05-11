@@ -5,7 +5,7 @@ import "leaflet-gpx";
 import Chart from "chart.js/auto";
 import "./routesLink.scss";
 
-const Monachil = () => {
+const Soller = () => {
 
   useEffect(() => {
     
@@ -18,7 +18,7 @@ const Monachil = () => {
     }).addTo(map);
 
     // Carga el archivo GPX
-    new L.GPX("../src/pages/routesLink/gpx/monachil.gpx", {
+    new L.GPX("../src/pages/routesLink/gpx/soller.gpx", {
       async: true
     }).on("loaded", function(e) {
       map.fitBounds(e.target.getBounds());
@@ -65,10 +65,10 @@ const Monachil = () => {
     <div className="routes">
             <div className="routesContainer">
                 <div className="routesInfo">
-                  <h1>Los Cahorros - Río Monachil <br />
-                    <span>(Monachil, Granada, España)</span>
+                  <h1>Sóller - Binibassí - Fortnalux - Biniaraix<br />
+                    <span>(Sóller, Mallorca, España)</span>
                   </h1>
-                  <img src="../src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                  <img src="../src/pages/routes/routesImg/soller.png" alt="" />
                 </div>
                 <div className="routesInfo2">
                 <section className="promos container" id="lista-1">
@@ -85,11 +85,11 @@ const Monachil = () => {
                       </tr>
                       <tr>
                         <td><b>Distancia:</b></td>
-                        <td>4,0 km.</td>
+                        <td>7,6 km.</td>
                       </tr>
                       <tr>
                         <td><b>Desnivel Positivo:</b></td>
-                        <td>167 m.</td>
+                        <td>226 m.</td>
                       </tr>
                       <tr>
                         <td><b>Tipo de Ruta:</b></td>
@@ -106,7 +106,7 @@ const Monachil = () => {
                     <section className="promos container" id="lista-1">
                         <h1>Descripción de la Ruta</h1>
                         <hr />
-                        <p className="descripcion">La ruta de los Cahorros es uno de los destinos al aire libre más populares en la provincia de Granada. <br /><br />Esta aventura comienza en el pueblo de Monachil (del latín, monasterio), localidad granadina situada a 14 km de la capital. <br /><br />Monachil se encuentra dentro de un valle en el Parque Nacional y Natural de Sierra Nevada y es también conocido por la estación de esquí de Sierra Nevada. <br /><br />A lo largo de esta caminata se pasa por cascadas, rocas erosionadas por el paso del cauce del río Monachil, puente colgante, Cueva de las Palomas y vistas espectaculares a la ribera del río. <br /><br />Esta ruta circular está llena de flores silvestres, árboles frutales como albaricoqueros, almendros, cerezos y manzanos. Primavera es la estación del año más recomendable, ya que las flores están en su pleno esplendor. <br /><br />Es recomendable evitar ir en fin de semana, puesto que hay mucha afluencia de senderistas. <br /><br />Se puede aparcar el coche en el aparcamiento de la Carretera de El Purche o en el de la Calle Huenes.</p>
+                        <p className="descripcion">Ruta circular por los pequeños pueblos del valle de Sóller, en la sierra de Tramuntana, una opción ideal para dar un paseo mezclando vistas, paisajes, historia, elementos arquitecturales y naturaleza. <br /><br />El recorrido empieza cerca de la estación de tren de Sóller, y continúa atravesando el pueblo en dirección a Binibassí por el sendero GR®221 conocido como la Ruta de la Piedra en Seco de Mallorca, llegando a Fortnalux, considerado uno de los pueblos más bonitos de España. <br /><br />La vuelta pasa por Biniaraix y el carrer d'Ozones hasta volver al punto de partida. Hay que tener en cuenta que el último tramo discurre por caminos asfaltados y una sección de carretera, por lo que al pasar vehículos a motor, conviene prestar más atención.</p>
                     </section>
 
                     <hr />
@@ -116,11 +116,11 @@ const Monachil = () => {
                       <hr />
                       <div className="imageGallery">
                           <div className="horizontalImages">
-                              <img src="../src/pages/routes/routesImg/cahorros1.png" alt="Imagen 1" />
-                              <img src="../src/pages/routes/routesImg/cahorros3.png" alt="Imagen 2" />
+                              <img src="../src/pages/routes/routesImg/soller1.png" alt="Imagen 1" />
+                              <img src="../src/pages/routes/routesImg/soller2.png" alt="Imagen 2" />
                           </div>
                           <div className="verticalImage">
-                              <img src="../src/pages/routes/routesImg/cahorros2.png" alt="Imagen 3" />
+                              <img src="../src/pages/routes/routesImg/soller3.png" alt="Imagen 3" />
                           </div>
                       </div>
                   </section>
@@ -130,4 +130,4 @@ const Monachil = () => {
     );
 };
 
-export default Monachil;
+export default Soller;

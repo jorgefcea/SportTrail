@@ -5,7 +5,7 @@ import "leaflet-gpx";
 import Chart from "chart.js/auto";
 import "./routesLink.scss";
 
-const Monachil = () => {
+const Tibidabo = () => {
 
   useEffect(() => {
     
@@ -18,7 +18,7 @@ const Monachil = () => {
     }).addTo(map);
 
     // Carga el archivo GPX
-    new L.GPX("../src/pages/routesLink/gpx/monachil.gpx", {
+    new L.GPX("../src/pages/routesLink/gpx/tibidabo.gpx", {
       async: true
     }).on("loaded", function(e) {
       map.fitBounds(e.target.getBounds());
@@ -65,10 +65,10 @@ const Monachil = () => {
     <div className="routes">
             <div className="routesContainer">
                 <div className="routesInfo">
-                  <h1>Los Cahorros - Río Monachil <br />
-                    <span>(Monachil, Granada, España)</span>
+                  <h1>Montaña del Tibidabo<br />
+                    <span>(Parc de Collserola, Barcelona, España)</span>
                   </h1>
-                  <img src="../src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                  <img src="../src/pages/routes/routesImg/tibidabo.png" alt="" />
                 </div>
                 <div className="routesInfo2">
                 <section className="promos container" id="lista-1">
@@ -85,11 +85,11 @@ const Monachil = () => {
                       </tr>
                       <tr>
                         <td><b>Distancia:</b></td>
-                        <td>4,0 km.</td>
+                        <td>6,4 km.</td>
                       </tr>
                       <tr>
                         <td><b>Desnivel Positivo:</b></td>
-                        <td>167 m.</td>
+                        <td>269 m.</td>
                       </tr>
                       <tr>
                         <td><b>Tipo de Ruta:</b></td>
@@ -106,7 +106,7 @@ const Monachil = () => {
                     <section className="promos container" id="lista-1">
                         <h1>Descripción de la Ruta</h1>
                         <hr />
-                        <p className="descripcion">La ruta de los Cahorros es uno de los destinos al aire libre más populares en la provincia de Granada. <br /><br />Esta aventura comienza en el pueblo de Monachil (del latín, monasterio), localidad granadina situada a 14 km de la capital. <br /><br />Monachil se encuentra dentro de un valle en el Parque Nacional y Natural de Sierra Nevada y es también conocido por la estación de esquí de Sierra Nevada. <br /><br />A lo largo de esta caminata se pasa por cascadas, rocas erosionadas por el paso del cauce del río Monachil, puente colgante, Cueva de las Palomas y vistas espectaculares a la ribera del río. <br /><br />Esta ruta circular está llena de flores silvestres, árboles frutales como albaricoqueros, almendros, cerezos y manzanos. Primavera es la estación del año más recomendable, ya que las flores están en su pleno esplendor. <br /><br />Es recomendable evitar ir en fin de semana, puesto que hay mucha afluencia de senderistas. <br /><br />Se puede aparcar el coche en el aparcamiento de la Carretera de El Purche o en el de la Calle Huenes.</p>
+                        <p className="descripcion">El Monte Tibidabo es el punto más alto de Barcelona y uno de los iconos más importantes de la ciudad condal. Además, en él se encuentra el parque de atracciones más antiguo de Barcelona, inaugurado en 1905 donde se puede disfrutar de más de 30 atracciones. <br /><br />Desde lo alto del monte, se puede ver el famoso Pico Aserrado de Montserrat, los Pirineos en el horizonte, el Templo Expiatorio del Sagrado Corazón, una impresionante iglesia visible desde cualquier lugar de Barcelona por la noche, la Torre de Collserola, construida para los Juegos Olímpicos de Barcelona de 1992 y la estructura más alta de toda la ciudad. <br /><br />El Parque Natural de Collserola cubre 8.000 hectáreas de bosques y prados protegidos siendo el gran "pulmón" verde de Barcelona. En términos geográficos, la sierra incorpora dos biodiversidades diferenciadas: la euroibérica y la mediterránea. <br /><br />Además de la abundante flora, el parque alberga 190 especies de animales, entre ellos ardillas, zorros, el jabalí ocasional y una gran variedad de aves. <br /><br />Se puede subir al Monte Tibidabo también a través de funicular o autobús. En el caso de que se vaya con niños pequeños o se prefiera dar una vuelta por el parque sin tener que subir a pie o en bicicleta, se puede llegar hasta allí a través de: <br /><br /><b>1. Funicular del Tibidabo: </b>Estación Avenida de Tibidabo, que se conecta con Plaza Cataluña con los trenes FGC. Allí, hay que coger el bus 196 y bajar en la parada Avenida Tibidabo 81. Una vez allí, hay que subirse al funicular que lleva hasta la cima de la montaña, muy cerca del parque de atracciones. <br /><br /><b>2. Tibibus: </b>Sale de Plaza Cataluña y va directo hasta el Parque de Atracciones sin paradas.</p>
                     </section>
 
                     <hr />
@@ -116,11 +116,11 @@ const Monachil = () => {
                       <hr />
                       <div className="imageGallery">
                           <div className="horizontalImages">
-                              <img src="../src/pages/routes/routesImg/cahorros1.png" alt="Imagen 1" />
-                              <img src="../src/pages/routes/routesImg/cahorros3.png" alt="Imagen 2" />
+                              <img src="../src/pages/routes/routesImg/tibidabo1.png" alt="Imagen 1" />
+                              <img src="../src/pages/routes/routesImg/tibidabo2.png" alt="Imagen 2" />
                           </div>
                           <div className="verticalImage">
-                              <img src="../src/pages/routes/routesImg/cahorros2.png" alt="Imagen 3" />
+                              <img src="../src/pages/routes/routesImg/tibidabo3.png" alt="Imagen 3" />
                           </div>
                       </div>
                   </section>
@@ -130,4 +130,4 @@ const Monachil = () => {
     );
 };
 
-export default Monachil;
+export default Tibidabo;

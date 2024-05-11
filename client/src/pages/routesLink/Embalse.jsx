@@ -5,7 +5,7 @@ import "leaflet-gpx";
 import Chart from "chart.js/auto";
 import "./routesLink.scss";
 
-const Monachil = () => {
+const Embalse = () => {
 
   useEffect(() => {
     
@@ -18,7 +18,7 @@ const Monachil = () => {
     }).addTo(map);
 
     // Carga el archivo GPX
-    new L.GPX("../src/pages/routesLink/gpx/monachil.gpx", {
+    new L.GPX("../src/pages/routesLink/gpx/embalse.gpx", {
       async: true
     }).on("loaded", function(e) {
       map.fitBounds(e.target.getBounds());
@@ -65,10 +65,10 @@ const Monachil = () => {
     <div className="routes">
             <div className="routesContainer">
                 <div className="routesInfo">
-                  <h1>Los Cahorros - Río Monachil <br />
-                    <span>(Monachil, Granada, España)</span>
+                  <h1>Embalse de la Concepción<br />
+                    <span>(Marbella, Málaga, España)</span>
                   </h1>
-                  <img src="../src/pages/routes/routesImg/cahorros.jpg" alt="" />
+                  <img src="../src/pages/routes/routesImg/embalse.png" alt="" />
                 </div>
                 <div className="routesInfo2">
                 <section className="promos container" id="lista-1">
@@ -85,15 +85,15 @@ const Monachil = () => {
                       </tr>
                       <tr>
                         <td><b>Distancia:</b></td>
-                        <td>4,0 km.</td>
+                        <td>8,5 km.</td>
                       </tr>
                       <tr>
                         <td><b>Desnivel Positivo:</b></td>
-                        <td>167 m.</td>
+                        <td>288 m.</td>
                       </tr>
                       <tr>
                         <td><b>Tipo de Ruta:</b></td>
-                        <td>Circular</td>
+                        <td>Ida y Vuelta</td>
                       </tr>
                     </tbody>
                   </table>
@@ -106,7 +106,7 @@ const Monachil = () => {
                     <section className="promos container" id="lista-1">
                         <h1>Descripción de la Ruta</h1>
                         <hr />
-                        <p className="descripcion">La ruta de los Cahorros es uno de los destinos al aire libre más populares en la provincia de Granada. <br /><br />Esta aventura comienza en el pueblo de Monachil (del latín, monasterio), localidad granadina situada a 14 km de la capital. <br /><br />Monachil se encuentra dentro de un valle en el Parque Nacional y Natural de Sierra Nevada y es también conocido por la estación de esquí de Sierra Nevada. <br /><br />A lo largo de esta caminata se pasa por cascadas, rocas erosionadas por el paso del cauce del río Monachil, puente colgante, Cueva de las Palomas y vistas espectaculares a la ribera del río. <br /><br />Esta ruta circular está llena de flores silvestres, árboles frutales como albaricoqueros, almendros, cerezos y manzanos. Primavera es la estación del año más recomendable, ya que las flores están en su pleno esplendor. <br /><br />Es recomendable evitar ir en fin de semana, puesto que hay mucha afluencia de senderistas. <br /><br />Se puede aparcar el coche en el aparcamiento de la Carretera de El Purche o en el de la Calle Huenes.</p>
+                        <p className="descripcion">Bonita ruta a las afueras de Marbella, una opción ideal para disfrutar de la naturaleza de la zona a un paso de un área urbanizada. <br /><br />El recorrido empieza al final de la Calle las Águilas y sigue en ascenso cruzando la AP-7, siguiendo un camino de tierra con bonitas vistas a mano derecha del Embalse de la Concepción. <br /><br />La vuelta puede ser por el mismo sendero o coger algún tramo que hace un rodeo para ampliar la ruta un poco más.</p>
                     </section>
 
                     <hr />
@@ -116,11 +116,11 @@ const Monachil = () => {
                       <hr />
                       <div className="imageGallery">
                           <div className="horizontalImages">
-                              <img src="../src/pages/routes/routesImg/cahorros1.png" alt="Imagen 1" />
-                              <img src="../src/pages/routes/routesImg/cahorros3.png" alt="Imagen 2" />
+                              <img src="../src/pages/routes/routesImg/embalse1.png" alt="Imagen 1" />
+                              <img src="../src/pages/routes/routesImg/embalse2.png" alt="Imagen 2" />
                           </div>
                           <div className="verticalImage">
-                              <img src="../src/pages/routes/routesImg/cahorros2.png" alt="Imagen 3" />
+                              <img src="../src/pages/routes/routesImg/embalse3.png" alt="Imagen 3" />
                           </div>
                       </div>
                   </section>
@@ -130,4 +130,4 @@ const Monachil = () => {
     );
 };
 
-export default Monachil;
+export default Embalse;
