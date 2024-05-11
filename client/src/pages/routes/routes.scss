@@ -28,11 +28,12 @@
                 align-items: center;
                 justify-content: space-between;
                 flex-direction: column;
-
+                
                 .routesLogo {
-                    width: 290px;
+                    width: 400px;
                     margin-bottom: 10px;
-                    margin-top: 20px;
+                    margin-top: 7px;
+                    
 
                     @include tablet {
                         width: 230px;

@@ -30,15 +30,15 @@
                 flex-direction: column;
 
                 .storeLogo {
-                    width: 300px;
+                    width: 425px;
                     margin-bottom: 10px;
 
                     @include tablet {
-                        width: 250px;
+                        width: 255px;
                     }
 
                     @include mobile {
-                        width: 200px;
+                        width: 255px;
                     }
                 }
 
