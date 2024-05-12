@@ -324,8 +324,9 @@ const Store = () => { // Componente para mostrar la tienda
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <h3>Pre-Entreno - Intenze</h3>
+                                    <h3>Pre-Entreno - Intenze</h3><br />
                                     <div className="prices">
+                                        <br />
                                         <p className="precio">19.99 €</p>
                                     </div>
                                     <a href="#" className="agregar-carrito btn-3" onClick={() => comprarElemento(12)}>Comprar</a>

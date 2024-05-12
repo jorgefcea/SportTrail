@@ -50,7 +50,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/soller.png" alt="" />
-                                    <h3><b>Sóller - Binibassí - Fortnalux - Biniaraix</b><br />(Sóller, Mallorca, España)</h3>
+                                    <h3><b>Sóller - Binibassí - Fortnalux - Biniaraix</b><br />(Sóller, Mallorca, España)</h3><br />
                                     <Link to="/routesLink/Soller" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -77,7 +77,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/caminito.png" alt="" />
-                                    <h3><b>El Caminito del Rey</b><br /><br />(Ardales, Málaga, España)</h3>
+                                    <h3><b>El Caminito del Rey</b><br /><br />(Ardales, Málaga, España)</h3><br />
                                     <Link to="/routesLink/Caminito" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -113,7 +113,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/embalse.png" alt="" />
-                                    <h3><b>Embalse de la Concepción</b><br />(Marbella, Málaga, España)</h3>
+                                    <h3><b>Embalse de la Concepción</b><br /><br />(Marbella, Málaga, España)</h3><br />
                                     <Link to="/routesLink/Embalse" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -131,7 +131,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/turia.png" alt="" />
-                                    <h3><b>Parque Fluvial del Río Turia</b><br />(Valencia, Valencia, España)</h3>
+                                    <h3><b>Parque Fluvial del Río Turia</b><br />(Valencia, Valencia, España)</h3><br />
                                     <Link to="/routesLink/Turia" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -203,7 +203,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/padul.png" alt="" />
-                                    <h3><b>Cerro de la Silleta</b><br /><br />(El Padul, Granada, España)</h3>
+                                    <h3><b>Cerro de la Silleta</b><br /><br />(El Padul, Granada, España)</h3><br />
                                     <Link to="/routesLink/Padul" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -221,7 +221,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/bicha.png" alt="" />
-                                    <h3><b>Fuente de la Bicha</b><br /><br />(Granada, Granada, España)</h3>
+                                    <h3><b>Fuente de la Bicha</b><br /><br />(Granada, Granada, España)</h3><br />
                                     <Link to="/routesLink/Bicha" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -239,7 +239,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/alhambra.png" alt="" />
-                                    <h3><b>Alhambra y Albaicín</b><br /><br />(Granada, Granada, España)</h3>
+                                    <h3><b>Alhambra y Albaicín</b><br /><br />(Granada, Granada, España)</h3><br />
                                     <Link to="/routesLink/Alhambra" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -266,7 +266,7 @@ const Routes = () => { // Componente para mostrar las rutas disponibles
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/santiago.png" alt="" />
-                                    <h3><b>Santiago de Compostela</b><br />(Santiago de Compostela, La Coruña, España)</h3>
+                                    <h3><b>Santiago de Compostela</b><br /><br />(Santiago de Compostela, La Coruña, España)</h3>
                                     <Link to="/routesLink/Santiago" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
