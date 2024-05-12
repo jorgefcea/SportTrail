@@ -221,7 +221,7 @@ const Routes = () => {
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/bicha.png" alt="" />
-                                    <h3><b>Fuente de la Bicha</b><br />(Granada, Granada, España)</h3>
+                                    <h3><b>Fuente de la Bicha</b><br /><br />(Granada, Granada, España)</h3>
                                     <Link to="/routesLink/Bicha" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -230,7 +230,7 @@ const Routes = () => {
                             <div className="categorie">
                                 <div className="categorie-1">
                                     <img src="src/pages/routes/routesImg/sevilla.png" alt="" />
-                                    <h3><b>Tour de Sevilla</b><br /><br />(Sevilla, Sevilla, España)</h3>
+                                    <h3><b>Tour de Sevilla</b><br /><br />(Sevilla, Sevilla, España)</h3><br />
                                     <Link to="/routesLink/Sevilla" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
@@ -238,36 +238,36 @@ const Routes = () => {
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="src/pages/routes/routesImg/" alt="" />
-                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
-                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                    <img src="src/pages/routes/routesImg/alhambra.png" alt="" />
+                                    <h3><b>Alhambra y Albaicín</b><br /><br />(Granada, Granada, España)</h3>
+                                    <Link to="/routesLink/Alhambra" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="src/pages/routes/routesImg/" alt="" />
-                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
-                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                    <img src="src/pages/routes/routesImg/rambla.png" alt="" />
+                                    <h3><b>La Rambla</b><br /><br />(Barcelona, Barcelona, España)</h3>
+                                    <Link to="/routesLink/Rambla" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="src/pages/routes/routesImg/" alt="" />
-                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
-                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                    <img src="src/pages/routes/routesImg/urgul.png" alt="" />
+                                    <h3><b>Monte Urgull - Castillo de la Mota</b><br />(San Sebastián, Guipúzcoa, España)</h3>
+                                    <Link to="/routesLink/Urgul" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
                                 </div>
                             </div>
                             <div className="categorie">
                                 <div className="categorie-1">
-                                    <img src="src/pages/routes/routesImg/" alt="" />
-                                    <h3>Los Cahorros - Río Monachil <br />(Monachil, Granada, España)</h3>
-                                    <Link to="/routesLink" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
+                                    <img src="src/pages/routes/routesImg/santiago.png" alt="" />
+                                    <h3><b>Santiago de Compostela</b><br />(Santiago de Compostela, La Coruña, España)</h3>
+                                    <Link to="/routesLink/Santiago" style={{ textDecoration: "none", color: "inherit" }} onClick={handleLinkClick}>
                                         <button>Ver Ruta</button>
                                     </Link>
                                 </div>

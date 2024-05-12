@@ -33,6 +33,10 @@ import Torremolinos from "./pages/routesLink/Torremolinos";
 import Padul from "./pages/routesLink/Padul";
 import Bicha from "./pages/routesLink/Bicha";
 import Sevilla from "./pages/routesLink/Sevilla";
+import Alhambra from "./pages/routesLink/Alhambra";
+import Rambla from "./pages/routesLink/Rambla";
+import Urgul from "./pages/routesLink/Urgul";
+import Santiago from "./pages/routesLink/Santiago";
 import "./style.scss";
 import React, { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext.jsx';
@@ -178,6 +182,22 @@ function App() {
         {
           path: "/routesLink/Sevilla",
           element: <Sevilla/>,
+        },
+        {
+          path: "/routesLink/Alhambra",
+          element: <Alhambra/>,
+        },
+        {
+          path: "/routesLink/Rambla",
+          element: <Rambla/>,
+        },
+        {
+          path: "/routesLink/Urgul",
+          element: <Urgul/>,
+        },
+        {
+          path: "/routesLink/Santiago",
+          element: <Santiago/>,
         },
       ],
     },
