@@ -3,11 +3,11 @@ import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 
-const Posts = ({ userId }) => {
-  const { isLoading, error, data } = useQuery({
-    queryKey: ["posts", userId], // Establece un queryKey más específico
+const Posts = ({ userId }) => { // Componente para mostrar las publicaciones de un usuario
+  const { isLoading, error, data } = useQuery({ // Consulta para obtener las publicaciones de un usuario
+    queryKey: ["posts", userId], 
     queryFn: () =>
-      makeRequest.get("/posts?userId=" + userId).then((res) => res.data),
+      makeRequest.get("/posts?userId=" + userId).then((res) => res.data), // Hacer una petición para obtener las publicaciones
   });
 
   return (
@@ -17,7 +17,7 @@ const Posts = ({ userId }) => {
       ) : isLoading ? (
         "loading"
       ) : (
-        data.map((post, index) => <Post post={post} key={`${post.id}-${index}`} />)
+        data.map((post, index) => <Post post={post} key={`${post.id}-${index}`} />) // Mapear las publicaciones
       )}
     </div>
   );

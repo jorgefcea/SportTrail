@@ -3,23 +3,18 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 export const register = (req, res) => { // Registrar un usuario en la base de datos
-  //CHECK USER IF EXISTS
 
-  const q = "SELECT * FROM users WHERE username = ?";
+  const q = "SELECT * FROM users WHERE username = ?"; // Consultar si el usuario ya existe
 
   db.query(q, [req.body.username], (err, data) => { // Verificar si el usuario ya existe
     if (err) return res.status(500).json(err);
     if (data.length) return res.status(409).json("¡El usuario ya existe!");
-    //CREATE A NEW USER
-    //Hash the password
     const salt = bcrypt.genSaltSync(10); // Generar un salt
     const hashedPassword = bcrypt.hashSync(req.body.password, salt); // Encriptar la contraseña
 
-    // Insetar un nuevo usuario en la base de datos
+    const q = "INSERT INTO users (`name`,`username`,`email`,`password`) VALUE (?)"; // Insertar un nuevo usuario en la base de datos
 
-    const q = "INSERT INTO users (`name`,`username`,`email`,`password`) VALUE (?)";
-
-    const values = [
+    const values = [ // Valores a insertar
       req.body.name,
       req.body.username,
       req.body.email,

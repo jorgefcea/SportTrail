@@ -18,26 +18,26 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import XIcon from '@mui/icons-material/X';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
-const Post = ({ post }) => {
-  const [commentOpen, setCommentOpen] = useState(false);
-  const { currentUser } = useContext(AuthContext);
-  const queryClient = useQueryClient();
-  const [menuOpen, setMenuOpen] = useState(false);
+const Post = ({ post }) => { // Componente para mostrar una publicación
+  const [commentOpen, setCommentOpen] = useState(false); // Estado para controlar si los comentarios están abiertos o cerrados
+  const { currentUser } = useContext(AuthContext); // Obtener el usuario actual
+  const queryClient = useQueryClient(); // Cliente de queries de React Query
+  const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
   const [shareModalOpen, setShareModalOpen] = useState(false); // Estado para controlar la apertura del modal de compartir
 
-  const { isLoading: likesLoading, error: likesError, data: likesData } = useQuery({
+  const { isLoading: likesLoading, error: likesError, data: likesData } = useQuery({ // Consulta para obtener los "me gusta" de una publicación
     queryKey: ["likes", post.id],
     queryFn: () =>
       makeRequest.get("/likes?postId=" + post.id).then((res) => res.data),
   });
 
-  const { isLoading: commentsLoading, error: commentsError, data: commentsData } = useQuery({
+  const { isLoading: commentsLoading, error: commentsError, data: commentsData } = useQuery({ // Consulta para obtener los comentarios de una publicación
     queryKey: ["comments", post.id],
     queryFn: () =>
       makeRequest.get("/comments?postId=" + post.id).then((res) => res.data),
   });
 
-  const mutation = useMutation({
+  const mutation = useMutation({ // Mutación para añadir o eliminar un "me gusta"
     mutationKey: "toggleLike",
     mutationFn: (liked) => {
       if (liked) return makeRequest.delete("/likes?postId=" + post.id);
@@ -48,7 +48,7 @@ const Post = ({ post }) => {
     },
   });
 
-  const deleteMutation = useMutation({
+  const deleteMutation = useMutation({ // Mutación para eliminar una publicación
     mutationKey: "deletePost",
     mutationFn: (postId) => {
       return makeRequest.delete("/posts/" + postId);
@@ -58,19 +58,19 @@ const Post = ({ post }) => {
     },
   });
 
-  useEffect(() => {
+  useEffect(() => { // Invalidar la cache de comentarios al eliminar un comentario
     queryClient.invalidateQueries(["comments", post.id]);
   }, [post.id, queryClient]);
 
-  const handleLike = () => {
+  const handleLike = () => { // Función para añadir o eliminar un "me gusta"
     mutation.mutate(likesData.includes(currentUser.id));
   };
 
-  const handleDelete = () => {
+  const handleDelete = () => { // Función para eliminar una publicación
     deleteMutation.mutate(post.id);
   };
 
-  const handleShare = () => {
+  const handleShare = () => { // Función para compartir una publicación
     setShareModalOpen(!shareModalOpen); // Cambiar el estado de shareModalOpen al hacer clic en Compartir
   };
 
@@ -78,7 +78,7 @@ const Post = ({ post }) => {
     const shareUrl = window.location.href;
     const shareText = post.desc;
   
-    switch (platform) { 
+    switch (platform) { // Abrir la URL de la red social correspondiente con el texto y la URL de la publicación
       case "facebook":
         window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`, "_blank");
         break;

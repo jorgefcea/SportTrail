@@ -4,12 +4,12 @@ import logo from '../login/images/logo.png';
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Register = () => {
-  const [passwordError, setPasswordError] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+const Register = () => { // Componente para mostrar el formulario de registro
+  const [passwordError, setPasswordError] = useState(false); // Estado para controlar si hay un error en la contraseña
+  const [submitted, setSubmitted] = useState(false); // Estado para controlar si se ha enviado el formulario
   const [redirectToLogin, setRedirectToLogin] = useState(false); // Variable de estado para controlar la redirección
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event) => { // Función para manejar el envío del formulario
     event.preventDefault();
     setSubmitted(true);
     const confirmPassword = event.target.confirmPassword.value;
@@ -18,7 +18,7 @@ const Register = () => {
       setPasswordError(true);
     } else {
       try {
-        await axios.post("http://localhost:8800/api/auth/register", inputs); 
+        await axios.post("http://localhost:8800/api/auth/register", inputs);  // Hacer una petición POST al servidor para registrar al usuario
         setRedirectToLogin(true); // Establecer redirectToLogin a true después de un registro exitoso
       } catch (err) {
         setErr(err.response.data);
@@ -26,22 +26,22 @@ const Register = () => {
     }
   };
 
-  const handleConfirmPasswordChange = (event) => {
+  const handleConfirmPasswordChange = (event) => { // Función para manejar el cambio en el campo de confirmar contraseña
     const confirmPassword = event.target.value;
     const password = event.target.form.password.value;
     setPasswordError(confirmPassword !== password);
   };
 
-  const [inputs, setInputs] = useState({
+  const [inputs, setInputs] = useState({ // Estado para almacenar los datos del formulario
     name: "",
     username: "",
     email: "",
     password: "",
   });
-  const [err, setErr] = useState(null);
+  const [err, setErr] = useState(null); // Estado para almacenar errores
 
-  const handleChange = (e) => {
-    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e) => { // Función para manejar los cambios en los inputs
+    setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value })); 
   };
 
   if (redirectToLogin) {

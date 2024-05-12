@@ -6,21 +6,21 @@ import { useContext } from 'react';
 import { AuthContext } from "../../context/authContext";
 import { useNavigate } from 'react-router-dom';
 
-const Login = () => {
-  const [inputs, setInputs] = useState({
+const Login = () => { // Componente para mostrar el formulario de inicio de sesión
+  const [inputs, setInputs] = useState({ // Estado para almacenar los datos del formulario
     username: "",
     password: "",
   });
-  const [err, setErr] = useState(null);
+  const [err, setErr] = useState(null); // Estado para almacenar errores
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook para la navegación
 
-  const handleChange = (e) => {
+  const handleChange = (e) => { // Función para manejar los cambios en los inputs
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
-  const { login } = useContext(AuthContext);
+  const { login } = useContext(AuthContext); // Función de inicio de sesión
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e) => { // Función para manejar el inicio de sesión
     e.preventDefault();
     try {
       await login(inputs);

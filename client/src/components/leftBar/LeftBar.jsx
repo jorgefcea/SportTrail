@@ -18,12 +18,12 @@ import { makeRequest } from "../../axios";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const LeftBar = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const { currentUser } = useContext(AuthContext);
-    const [userData, setUserData] = useState(null);
+const LeftBar = () => { // Componente para mostrar la barra lateral izquierda
+    const [isLoading, setIsLoading] = useState(true); // Estado para controlar si se está cargando la información
+    const { currentUser } = useContext(AuthContext); // Obtener el usuario actual
+    const [userData, setUserData] = useState(null); // Estado para almacenar los datos del usuario
 
-    const fetchUserData = async () => {
+    const fetchUserData = async () => { // Función para obtener los datos del usuario
         try {
             const response = await makeRequest.get(`/users/find/${currentUser.id}`);
             setUserData(response.data);
@@ -34,11 +34,11 @@ const LeftBar = () => {
         }
     };
 
-    useEffect(() => {
+    useEffect(() => { // Obtener los datos del usuario al cargar el componente
         fetchUserData();
     }, []);
 
-    const handleLinkClick = () => {
+    const handleLinkClick = () => { // Función para recargar la página al hacer clic en un enlace
         setTimeout(() => {
           window.scrollTo(0, 0);
           window.location.reload();

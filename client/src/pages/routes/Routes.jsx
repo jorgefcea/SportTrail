@@ -1,10 +1,10 @@
 import "./routes.scss";
 import { Link } from "react-router-dom";
 
-const Routes = () => {
+const Routes = () => { // Componente para mostrar las rutas disponibles
 
-    const handleLinkClick = () => {
-        setTimeout(() => {
+    const handleLinkClick = () => { // Función para manejar el clic en un enlace
+        setTimeout(() => { // Establecer un temporizador para recargar la página después de hacer clic en un enlace
           window.scrollTo(0, 0);
           window.location.reload();
         }, 1);

@@ -9,20 +9,20 @@ import { Link } from "react-router-dom";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-const Comments = ({ postId }) => {
-  const [desc, setDesc] = useState("");
-  const { currentUser } = useContext(AuthContext);
-  const [userData, setUserData] = useState(null);
-  const queryClient = useQueryClient();
+const Comments = ({ postId }) => { // Componente para mostrar los comentarios de una publicación
+  const [desc, setDesc] = useState(""); // Estado para almacenar el contenido del comentario
+  const { currentUser } = useContext(AuthContext); // Obtener el usuario actual
+  const [userData, setUserData] = useState(null); // Estado para almacenar los datos del usuario
+  const queryClient = useQueryClient(); // Cliente de queries de React Query
   const [menuOpen, setMenuOpen] = useState(false); // Estado para controlar si el menú está abierto o cerrado
 
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, error, data } = useQuery({ // Consulta para obtener los comentarios de una publicación
     queryKey: ["comments", postId],
     queryFn: () =>
       makeRequest.get("/comments?postId=" + postId).then((res) => res.data),
   });
 
-  const mutation = useMutation({
+  const mutation = useMutation({ // Mutación para añadir un comentario
     mutationKey: "addComment",
     mutationFn: (newComment) => makeRequest.post("/comments", newComment),
     onSuccess: () => {
@@ -30,7 +30,7 @@ const Comments = ({ postId }) => {
     },
   });
 
-  const deleteMutation = useMutation({
+  const deleteMutation = useMutation({ // Mutación para eliminar un comentario
     mutationKey: "deleteComment",
     mutationFn: (commentId) => makeRequest.delete(`/comments/${commentId}`),
     onSuccess: () => {
@@ -38,7 +38,7 @@ const Comments = ({ postId }) => {
     },
   });
 
-  const fetchUserData = async () => {
+  const fetchUserData = async () => { // Función para obtener los datos del usuario
     try {
       const response = await makeRequest.get(`/users/find/${currentUser.id}`);
       setUserData(response.data);
@@ -47,11 +47,11 @@ const Comments = ({ postId }) => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => { // Obtener los datos del usuario al cargar el componente
     fetchUserData();
   }, []);
 
-  const handleClick = async (e) => {
+  const handleClick = async (e) => { // Función para añadir un comentario
     e.preventDefault();
     if (desc.trim() !== "") { // Verifica que el comentario no esté vacío
       mutation.mutate({ desc, postId });
@@ -59,11 +59,11 @@ const Comments = ({ postId }) => {
     }
   };
 
-  const handleDeleteComment = (commentId) => {
+  const handleDeleteComment = (commentId) => { // Función para eliminar un comentario
     deleteMutation.mutate(commentId);
   };
 
-  const handleLinkClick = () => {
+  const handleLinkClick = () => { // Función para recargar la página al hacer clic en un enlace
     setTimeout(() => {
       window.scrollTo(0, 0);
       window.location.reload();

@@ -8,7 +8,7 @@ import { // Importar las funciones necesarias de react-router-dom
 } from "react-router-dom";
 import NavBar from "./components/navBar/NavBar";
 import LeftBar from "./components/leftBar/LeftBar";
-import RightBar from "./components/rightBar/rightBar";
+import RightBar from "./components/rightBar/RightBar";
 import Home from "./pages/home/Home";
 import Profile from "./pages/profile/Profile";
 import Store from "./pages/store/Store";

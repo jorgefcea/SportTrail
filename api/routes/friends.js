@@ -1,9 +1,8 @@
 import express from "express";
-import { getFriends } from "../controllers/friend.js"; // Corregir la ruta de importación
+import { getFriends } from "../controllers/friend.js"; 
 
-const router = express.Router();
+const router = express.Router(); // Crear un router para manejar las rutas de amigos
 
-// Ruta para obtener amigos conectados de un usuario
-router.get("/", getFriends);
+router.get("/", getFriends); // Ruta para obtener amigos conectados de un usuario
 
 export default router;

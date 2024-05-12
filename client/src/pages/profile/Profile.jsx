@@ -16,26 +16,26 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/authContext";
 import Update from "../../components/update/Update";
 
-const Profile = () => {
-  const [openUpdate, setOpenUpdate] = useState(false);
-  const { currentUser } = useContext(AuthContext);
-  const userId = parseInt(useLocation().pathname.split("/")[2]);
+const Profile = () => { // Componente para mostrar el perfil de un usuario
+  const [openUpdate, setOpenUpdate] = useState(false); // Estado para controlar si el modal de actualización está abierto o cerrado
+  const { currentUser } = useContext(AuthContext); // Obtener el usuario actual del contexto de autenticación
+  const userId = parseInt(useLocation().pathname.split("/")[2]); // Obtener el ID del usuario de la URL
 
-  const { isLoading, error, data } = useQuery({
+  const { isLoading, error, data } = useQuery({ // Consulta para obtener los datos del usuario
     queryKey: ["user"],
     queryFn: () =>
       makeRequest.get("/users/find/" + userId).then((res) => res.data)
   });
 
-  const { isLoading: rIsLoading, data: relationshipData } = useQuery({
+  const { isLoading: rIsLoading, data: relationshipData } = useQuery({ // Consulta para obtener la relación entre el usuario actual y el usuario del perfil
     queryKey: ["relationship"],
     queryFn: () =>
       makeRequest.get("/relationships?followedUserId=" + userId).then((res) => res.data)
   });
 
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient(); // Cliente de queries de React Query
 
-  const mutation = useMutation({
+  const mutation = useMutation({ // Mutación para seguir o dejar de seguir a un usuario
     mutationKey: "toggleRelationship",
     mutationFn: (following) => {
       if (following) return makeRequest.delete("/relationships?userId=" + userId);
@@ -46,28 +46,28 @@ const Profile = () => {
     },
   });
 
-  const handleFollow = () => {
+  const handleFollow = () => { // Función para seguir o dejar de seguir a un usuario
     mutation.mutate(relationshipData.includes(currentUser.id));
   };
 
-  useEffect(() => {
+  useEffect(() => { // Recargar la página al hacer clic en el botón de retroceso
     const handlePopstate = () => {
       setTimeout(() => {
         window.location.reload();
       }, 1);
     };
 
-    window.addEventListener("popstate", handlePopstate);
+    window.addEventListener("popstate", handlePopstate); // Agregar un evento para manejar el clic en el botón de retroceso
 
     return () => {
-      window.removeEventListener("popstate", handlePopstate);
+      window.removeEventListener("popstate", handlePopstate); // Eliminar el evento al desmontar el componente
     };
   }, []);
 
   return (
     <div className="profile">
       {isLoading ? (
-        "loading"
+        "Cargando..."
       ) : (
         <>
           <div className="images">
@@ -106,7 +106,7 @@ const Profile = () => {
                   </div>
                 </div>
                 {rIsLoading ? (
-                  "loading"
+                  "Cargando..."
                 ) : userId === currentUser.id ? (
                   <button onClick={() => setOpenUpdate(true)} className="button">Actualizar</button>
                 ) : (

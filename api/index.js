@@ -1,5 +1,5 @@
 import express from "express";
-const app = express();
+const app = express(); // Crear una instancia de express
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
@@ -13,8 +13,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import multer from "multer";
 
-// middleware
-app.use((req, res, next) => {
+// Configurar el servidor para recibir y enviar datos en formato JSON (middleware) y habilitar CORS (Cross-Origin Resource Sharing)
+app.use((req, res, next) => { // Habilitar CORS
   res.header("Access-Control-Allow-Credentials", true);
   next();
 });
@@ -24,9 +24,9 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
-app.use(cookieParser());
+app.use(cookieParser()); // Habilitar el uso de cookies
 
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ // Configurar el almacenamiento de archivos
   destination: function (req, file, cb) {
     cb(null, "../client/public/upload");
   },
@@ -35,9 +35,9 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }); // Crear una instancia de multer
 
-app.post("/api/upload", upload.single("file"), (req, res) => {
+app.post("/api/upload", upload.single("file"), (req, res) => { // Subir un archivo
   const file = req.file;
   res.status(200).json(file.filename);
 });
@@ -52,6 +52,6 @@ app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/friends", friendsRoutes);
 app.use("/api/stories", storiesRoutes);
 
-app.listen(8800, () => {
-    console.log("API working!");
+app.listen(8800, () => { // Iniciar el servidor en el puerto 8800
+    console.log("¡Servidor iniciado!");
 });

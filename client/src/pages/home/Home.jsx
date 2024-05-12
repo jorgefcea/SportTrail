@@ -3,7 +3,7 @@ import Share from "../../components/share/Share"
 import Stories from "../../components/stories/Stories"
 import "./home.scss"
 
-const Home = () => {
+const Home = () => { // Componente para la página de inicio
   return (
     <div className="home">
       <Stories/>

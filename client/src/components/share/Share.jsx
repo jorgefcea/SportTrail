@@ -7,15 +7,15 @@ import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 
-const Share = () => {
-  const [file, setFile] = useState(null);
-  const [desc, setDesc] = useState("");
-  const { currentUser } = useContext(AuthContext);
-  const [userData, setUserData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const queryClient = useQueryClient();
+const Share = () => { // Componente para compartir una publicación
+  const [file, setFile] = useState(null); // Estado para almacenar el archivo de imagen
+  const [desc, setDesc] = useState(""); // Estado para almacenar la descripción de la publicación
+  const { currentUser } = useContext(AuthContext); // Obtener el usuario actual del contexto de autenticación
+  const [userData, setUserData] = useState(null); // Estado para almacenar los datos del usuario
+  const [isLoading, setIsLoading] = useState(true); // Estado para controlar si se está cargando 
+  const queryClient = useQueryClient(); // Cliente de queries de React Query
 
-  const upload = async () => {
+  const upload = async () => { // Función para subir una imagen
     try {
       const formData = new FormData();
       formData.append("file", file);
@@ -26,42 +26,42 @@ const Share = () => {
     }
   };
 
-  const fetchUserData = async () => {
+  const fetchUserData = async () => { // Función para obtener los datos del usuario
     try {
       const response = await makeRequest.get(`/users/find/${currentUser.id}`);
       setUserData(response.data);
       setIsLoading(false);
     } catch (error) {
-      console.error("Error fetching user data:", error);
+      console.error("Error al recuperar los datos del usuario:", error);
       setIsLoading(false);
     }
   };
 
-  const mutation = useMutation({
+  const mutation = useMutation({ // Mutación para crear una publicación
     mutationKey: "createPost",
     mutationFn: async () => {
       let imgUrl = "";
       if (file) imgUrl = await upload();
       await makeRequest.post("/posts", { desc, img: imgUrl });
     },
-    onSuccess: () => {
+    onSuccess: () => { // Función que se ejecuta cuando la mutación es exitosa
       queryClient.invalidateQueries(["posts"]);
       setDesc("");
       setFile(null);
     },
-    onError: (error) => {
+    onError: (error) => { // Función que se ejecuta cuando hay un error en la mutación
       console.error("Error al realizar la mutación:", error);
     }
   });
 
-  const handleClick = () => {
+  const handleClick = () => { // Función para manejar el clic en el botón de publicar
     if (desc.trim() !== "") { // Verifica que el campo de descripción no esté vacío
       mutation.mutate();
     }
   };
 
-  useEffect(() => {
-    fetchUserData();
+  useEffect(() => { // Obtener los datos del usuario al cargar el componente
+    fetchUserData(); 
   }, [currentUser.id]);
 
   return (

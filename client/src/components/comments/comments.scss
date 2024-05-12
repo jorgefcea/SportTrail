@@ -2,7 +2,6 @@
 
 .comments {
   @include themify($themes) {
-    // Estilos para las imágenes de perfil en los comentarios
     img {
       width: 40px;
       height: 40px;
@@ -10,7 +9,6 @@
       object-fit: cover;
     }
 
-    // Estilos para el área de escritura de comentarios
     .write {
       display: flex;
       align-items: center;
@@ -49,7 +47,6 @@
       }
     }
 
-    // Estilos para cada comentario individual
     .comment {
       margin: 30px 0;
       display: flex;
@@ -115,15 +112,14 @@
         }
       }
 
-      // Estilos para el contenedor del icono de más (menú)
       .more-icon-container {
-        margin-left: auto; // Mueve los tres puntos hacia la derecha
+        margin-left: auto; 
         display: flex;
         align-items: center;
         gap: 10px;
 
         .delete-btn {
-          margin-right: 10px; // Agregamos un poco de margen entre el botón de borrar y los tres puntos
+          margin-right: 10px; 
         }
 
         .comment-menu {
@@ -131,7 +127,7 @@
           border-radius: 5px;
           padding: 5px;
           display: flex;
-          justify-content: flex-start; /* Alinear los elementos al principio del contenedor */
+          justify-content: flex-start;
           align-items: center;
           gap: 5px;
           cursor: pointer;

@@ -4,7 +4,7 @@ import App from './App.jsx'
 import { DarkModeContextProvider } from './context/darkModeContext.jsx'
 import { AuthContextProvider } from './context/authContext.jsx'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById('root')).render( // Renderiza la aplicación en el elemento con el ID "root" utilizando React Concurrent Mode y React Strict Mode para mejorar el rendimiento y la calidad del código
   <React.StrictMode>
     <DarkModeContextProvider>
       <AuthContextProvider>

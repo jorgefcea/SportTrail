@@ -5,11 +5,11 @@ import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { AuthContext } from "../../context/authContext";
 import { Link } from "react-router-dom"; // Importar el componente Link
 
-const RightBar = () => {
+const RightBar = () => { // Componente para mostrar la barra lateral derecha
     const { currentUser } = useContext(AuthContext); // Obtener el usuario actual del contexto de autenticación
     const userId = currentUser.id; // Obtener el ID del usuario actual
 
-    const { isLoading, error, data: recommendations } = useQuery({
+    const { isLoading, error, data: recommendations } = useQuery({ // Consulta para obtener las recomendaciones de usuarios
         queryKey: ["recommendations", userId], // Incluir el ID del usuario actual en la clave de la consulta
         queryFn: async () => {
             const response = await makeRequest.get(`/recommendations?userId=${userId}`);
@@ -26,9 +26,9 @@ const RightBar = () => {
         },
     });
 
-    const queryClient = useQueryClient();
+    const queryClient = useQueryClient(); // Cliente de queries de React Query
 
-    const mutation = useMutation({
+    const mutation = useMutation({ // Mutación para seguir o dejar de seguir a un usuario
         mutationKey: "followUser",
         mutationFn: async (followedUserId) => {
             // Realizar la solicitud para seguir o dejar de seguir al usuario
@@ -117,7 +117,7 @@ const RightBar = () => {
                         <div className="userInfo">
                             <img src="/upload/1715119826386ruben.jpg" alt="" />
                             <p>
-                                <span>Rubén de la Blanca</span> ha cambiado su foto de perfil
+                                <span>Rubén de la Blanca</span> ha dado 💚 a una publicación
                             </p>
                         </div>
                         <span>1 hour ago</span>
@@ -126,7 +126,7 @@ const RightBar = () => {
                         <div className="userInfo">
                             <img src="/upload/1715119677934david.jpg" alt="" />
                             <p>
-                                <span>David Fernández</span> ha cambiado su foto de perfil
+                                <span>David Fernández</span> ha añadido un nuevo post
                             </p>
                         </div>
                         <span>3 hours ago</span>
@@ -135,7 +135,7 @@ const RightBar = () => {
                         <div className="userInfo">
                             <img src="/upload/1715119575881takeli.jpg" alt="" />
                             <p>
-                                <span>Sergio Takeli</span> ha cambiado su foto de perfil
+                                <span>Sergio Takeli</span> ha dado 💚 a una publicación
                             </p>
                         </div>
                         <span>a day ago</span>

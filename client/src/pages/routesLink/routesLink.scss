@@ -59,7 +59,7 @@
                     position: absolute;
                     top: 50%;
                     transform: translateY(-50%);
-                    z-index: 1; /* Asegura que el h1 esté encima de la imagen */
+                    z-index: 1;
                     background-color: themed("bg");
                     width: 100%;
                     text-align: center;

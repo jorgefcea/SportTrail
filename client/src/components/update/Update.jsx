@@ -11,11 +11,11 @@ import PasswordIcon from '@mui/icons-material/Password';
 import DriveFileRenameOutlineIcon from '@mui/icons-material/DriveFileRenameOutline';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 
-const Update = ({ setOpenUpdate, user }) => {
-    const [cover, setCover] = useState(null);
-    const [profile, setProfile] = useState(null);
+const Update = ({ setOpenUpdate, user }) => { // Componente para actualizar el perfil de usuario
+    const [cover, setCover] = useState(null); // Estado para almacenar la imagen de portada
+    const [profile, setProfile] = useState(null); // Estado para almacenar la imagen de perfil
 
-    const [texts, setTexts] = useState({
+    const [texts, setTexts] = useState({ // Estado para almacenar los datos del usuario
         email: user.email,
         password: user.password,
         name: user.name,
@@ -23,7 +23,7 @@ const Update = ({ setOpenUpdate, user }) => {
         country: user.country,
     });
 
-    const upload = async (file) => {
+    const upload = async (file) => { // Función para subir una imagen
         try {
             const formData = new FormData();
             formData.append("file", file);
@@ -34,13 +34,13 @@ const Update = ({ setOpenUpdate, user }) => {
         }
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e) => { // Función para manejar el cambio en los campos de texto
         setTexts((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
-    const queryClient = useQueryClient();
+    const queryClient = useQueryClient(); // Cliente de queries de React Query
 
-    const mutation = useMutation({
+    const mutation = useMutation({ // Mutación para actualizar los datos del usuario
         mutationKey: "updateUser",
         mutationFn: async () => {
             let coverUrl = "";
@@ -49,17 +49,17 @@ const Update = ({ setOpenUpdate, user }) => {
             if (profile) profileUrl = await upload(profile);
             await makeRequest.put("/users", { ...texts, coverPic: coverUrl, profilePic: profileUrl });
         },
-        onSuccess: () => {
+        onSuccess: () => { // Función que se ejecuta cuando la mutación es exitosa
             queryClient.invalidateQueries(["user"]);
             setCover(null);
             setProfile(null);
         },
-        onError: (error) => {
+        onError: (error) => { // Función que se ejecuta cuando hay un error en la mutación
             console.error("Error al realizar la mutación:", error);
         }
     });
 
-    const handleClick = async (e) => {
+    const handleClick = async (e) => { // Función para manejar el clic en el botón de actualizar
         e.preventDefault();
 
         try {

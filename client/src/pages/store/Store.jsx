@@ -5,21 +5,21 @@ import { makeRequest } from "../../axios";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import CancelIcon from '@mui/icons-material/Cancel';
 
-const Store = () => {
-    const [showCart, setShowCart] = useState(false);
-    const [cartItems, setCartItems] = useState([]);
-    const { currentUser } = useContext(AuthContext);
+const Store = () => { // Componente para mostrar la tienda
+    const [showCart, setShowCart] = useState(false); // Estado para controlar si se muestra la cesta
+    const [cartItems, setCartItems] = useState([]); // Estado para almacenar los elementos de la cesta
+    const { currentUser } = useContext(AuthContext); // Obtener el usuario actual del contexto de autenticación
 
-    const fetchUserData = async () => {
+    const fetchUserData = async () => { // Función para obtener los datos del usuario
         try {
-            const response = await makeRequest.get(`/users/find/${currentUser.id}`);
+            const response = await makeRequest.get(`/users/find/${currentUser.id}`); // Obtener los datos del usuario actual
             setUserData(response.data);
         } catch (error) {
-            console.error("Error fetching user data:", error);
+            console.error("Error al recuperar los datos del usuario:", error);
         }
     };
 
-    useEffect(() => {
+    useEffect(() => { // Obtener los datos del usuario al cargar la página
         fetchUserData();
         cargarElementosDesdeLocalStorage(currentUser.id); // Pasar el ID del usuario
     }, [currentUser.id]); // Asegurar que se recargue cuando cambie el usuario
@@ -31,19 +31,19 @@ const Store = () => {
         }
     };
 
-    const toggleCart = () => {
+    const toggleCart = () => { // Función para mostrar u ocultar la cesta
         setShowCart(!showCart);
     };
 
-    const comprarElemento = (id) => {
-        const elementoExistenteIndex = cartItems.findIndex(item => item.id === id);
+    const comprarElemento = (id) => { // Función para comprar un elemento
+        const elementoExistenteIndex = cartItems.findIndex(item => item.id === id); // Buscar el elemento en la cesta
         if (elementoExistenteIndex !== -1) {
             const updatedCart = [...cartItems];
             updatedCart[elementoExistenteIndex].cantidad += 1;
             setCartItems(updatedCart);
             guardarEnLocalStorage(updatedCart, currentUser.id); // Guardar con el ID del usuario
         } else {
-            const elemento = data.find(item => item.id === id);
+            const elemento = data.find(item => item.id === id); // Buscar el elemento en los datos
             const infoElemento = {
                 imagen: elemento.imagen,
                 titulo: elemento.titulo,
@@ -57,13 +57,13 @@ const Store = () => {
         }
     };
 
-    const eliminarElemento = (id) => {
+    const eliminarElemento = (id) => { // Función para eliminar un elemento de la cesta
         const updatedCart = cartItems.filter(item => item.id !== id);
         setCartItems(updatedCart);
         guardarEnLocalStorage(updatedCart, currentUser.id); // Guardar con el ID del usuario
     };
 
-    const vaciarCarrito = () => {
+    const vaciarCarrito = () => { // Función para vaciar la cesta
         setCartItems([]);
         localStorage.removeItem(`elementos_${currentUser.id}`); // Borrar con el ID del usuario
     };
@@ -72,16 +72,16 @@ const Store = () => {
         localStorage.setItem(`elementos_${userId}`, JSON.stringify(elementos)); // Guardar con el ID del usuario
     };
 
-    const actualizarCantidadArticulos = () => {
+    const actualizarCantidadArticulos = () => { // Función para actualizar la cantidad de artículos en la cesta
         const cantidadTotal = cartItems.reduce((total, item) => total + item.cantidad, 0);
         document.getElementById("cartItemCount").textContent = cantidadTotal;
     };
 
-    useEffect(() => {
+    useEffect(() => { // Actualizar la cantidad de artículos al cargar la página
         actualizarCantidadArticulos();
     }, [cartItems]);
 
-    const data = [
+    const data = [ // Datos de los productos
         { id: 1, titulo: "Camiseta Negra Unisex - SportTrail", precio: "14.99 €", imagen: "/store/negra.png" },
         { id: 2, titulo: "Proteínas - 100% Whey Gold Standard", precio: "39.99 €", imagen: "/store/proteina.png" },
         { id: 3, titulo: "Sudadera Verde Unisex - SportTrail", precio: "29.99 €", imagen: "/store/sudaderaV.png" },

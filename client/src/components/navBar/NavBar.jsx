@@ -16,13 +16,13 @@ import { DarkModeContext } from "../../context/darkModeContext";
 import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios";
 
-const NavBar = () => {
-    const { toggle, darkMode } = useContext(DarkModeContext);
+const NavBar = () => { // Componente para mostrar la barra de navegación
+    const { toggle, darkMode } = useContext(DarkModeContext); // Importa el estado y la función para cambiar el modo oscuro
     const { currentUser, logout } = useContext(AuthContext); // Importa logout del contexto
-    const [isLoading, setIsLoading] = useState(true);
-    const [userData, setUserData] = useState(null);
+    const [isLoading, setIsLoading] = useState(true); // Estado para controlar si se está cargando la información
+    const [userData, setUserData] = useState(null); // Estado para almacenar los datos del usuario
 
-    const fetchUserData = async () => {
+    const fetchUserData = async () => { // Función para obtener los datos del usuario
         try {
             const response = await makeRequest.get(`/users/find/${currentUser.id}`);
             setUserData(response.data);
@@ -33,7 +33,7 @@ const NavBar = () => {
         }
     };
 
-    useEffect(() => {
+    useEffect(() => { // Obtener los datos del usuario al cargar el componente
         fetchUserData();
     }, [currentUser.id]);
 
@@ -47,7 +47,7 @@ const NavBar = () => {
         }
     };
 
-    const handleLinkClick = () => {
+    const handleLinkClick = () => { // Función para recargar la página al hacer clic en un enlace
         setTimeout(() => {
           window.scrollTo(0, 0);
           window.location.reload();

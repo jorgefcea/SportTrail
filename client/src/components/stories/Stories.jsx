@@ -3,11 +3,11 @@ import "./stories.scss";
 import { AuthContext } from "../../context/authContext";
 import { makeRequest } from "../../axios"; // Importa makeRequest desde tu archivo de axios
 
-const Stories = () => {
-  const { currentUser } = useContext(AuthContext);
-  const [otherUsers, setOtherUsers] = useState([]);
+const Stories = () => { // Componente para mostrar las historias de los usuarios
+  const { currentUser } = useContext(AuthContext); // Obtener el usuario actual del contexto de autenticación
+  const [otherUsers, setOtherUsers] = useState([]); // Estado para almacenar los datos de los otros usuarios
 
-  useEffect(() => {
+  useEffect(() => { // Obtener los datos de los otros usuarios al cargar el componente
     const fetchOtherUsers = async () => {
       try {
         // Hacer la solicitud para obtener la información de los usuarios
@@ -15,7 +15,7 @@ const Stories = () => {
         const users = response.data.filter(user => user.id !== currentUser.id); // Filtrar el usuario actual
         setOtherUsers(users);
       } catch (error) {
-        console.error("Error fetching other users:", error);
+        console.error("Error al recuperar los datos del usuario:", error);
       }
     };
 
