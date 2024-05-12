@@ -5,7 +5,7 @@ import "leaflet-gpx";
 import Chart from "chart.js/auto";
 import "./routesLink.scss";
 
-const Monserrat = () => {
+const Manzanares = () => {
 
   useEffect(() => {
     
@@ -18,7 +18,7 @@ const Monserrat = () => {
     }).addTo(map);
 
     // Carga el archivo GPX
-    new L.GPX("../src/pages/routesLink/gpx/montserrat.gpx", {
+    new L.GPX("../src/pages/routesLink/gpx/manzanares.gpx", {
       async: true
     }).on("loaded", function(e) {
       map.fitBounds(e.target.getBounds());
@@ -65,10 +65,10 @@ const Monserrat = () => {
     <div className="routes">
             <div className="routesContainer">
                 <div className="routesInfo">
-                  <h1>Circuito de la Cumbre de Sant Jeroni<br />
-                    <span>(Parque Natural de la Montaña de Montserrat, Barcelona)</span>
+                  <h1>Madrid Río - Río Manzanares<br />
+                    <span>(Madrid, Comunidad de Madrid, España)</span>
                   </h1>
-                  <img src="../src/pages/routes/routesImg/montserrat.png" alt="" />
+                  <img src="../src/pages/routes/routesImg/manzanares.png" alt="" />
                 </div>
                 <div className="routesInfo2">
                 <section className="promos container" id="lista-1">
@@ -81,15 +81,15 @@ const Monserrat = () => {
                       </tr>
                       <tr>
                         <td><b>Dificultad:</b></td>
-                        <td>Difícil</td>
+                        <td>Moderada</td>
                       </tr>
                       <tr>
                         <td><b>Distancia:</b></td>
-                        <td>10,3 km.</td>
+                        <td>10,9 km.</td>
                       </tr>
                       <tr>
                         <td><b>Desnivel Positivo:</b></td>
-                        <td>676 m.</td>
+                        <td>126 m.</td>
                       </tr>
                       <tr>
                         <td><b>Tipo de Ruta:</b></td>
@@ -106,7 +106,7 @@ const Monserrat = () => {
                     <section className="promos container" id="lista-1">
                         <h1>Descripción de la Ruta</h1>
                         <hr />
-                        <p className="descripcion">Este sendero dentro del Parque Natural de la Montaña de Montserrat comienza cerca del famoso Monasterio homónimo. El sendero pasa por zonas de bosque, que poco a poco, se van transformando en picos de piedra. <br /><br />El Sant Jeroni es el punto más alto de la montaña de Montserrat. La cima o la cumbre de Sant Jeroni ofrece excelentes vistas de pueblos y un abrupto descenso. El camino está en buen estado con un desnivel positivo bastante pronunciado, por lo que un par de bastones de senderismo pueden ser de ayuda. <br /><br />Si se prefiere acortar esta ruta, se puede coger el funicular de Sant Joan (Punto de Ruta).</p>
+                        <p className="descripcion">Bonito paseo por las orillas del mítico y madrileño río Manzanares en la zona de Madrid Río, siendo una opción perfecta para realizar en familia, en bicicleta o salir a correr por esta zona verde.  <br /><br />Además, durante el recorrido también se pasa por el popular Matadero de Madrid, un centro cultural donde suele haber ferias o exposiciones muy interesantes. <br /><br />Se recomienda no realizar los días que haga mucho calor ya que apenas hay sombra.</p>
                     </section>
 
                     <hr />
@@ -116,11 +116,11 @@ const Monserrat = () => {
                       <hr />
                       <div className="imageGallery">
                           <div className="horizontalImages">
-                              <img src="../src/pages/routes/routesImg/montserrat1.png" alt="Imagen 1" />
-                              <img src="../src/pages/routes/routesImg/montserrat2.png" alt="Imagen 2" />
+                              <img src="../src/pages/routes/routesImg/manzanares1.png" alt="Imagen 1" />
+                              <img src="../src/pages/routes/routesImg/manzanares2.png" alt="Imagen 2" />
                           </div>
                           <div className="verticalImage">
-                              <img src="../src/pages/routes/routesImg/montserrat3.png" alt="Imagen 3" />
+                              <img src="../src/pages/routes/routesImg/manzanares3.png" alt="Imagen 3" />
                           </div>
                       </div>
                   </section>
@@ -130,4 +130,4 @@ const Monserrat = () => {
     );
 };
 
-export default Monserrat;
+export default Manzanares;

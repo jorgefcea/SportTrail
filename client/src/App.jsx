@@ -14,7 +14,7 @@ import Profile from "./pages/profile/Profile";
 import Store from "./pages/store/Store";
 import Routes from "./pages/routes/Routes";
 import Monachil from "./pages/routesLink/Monachil";
-import Monserrat from "./pages/routesLink/Monserrat";
+import Montserrat from "./pages/routesLink/Montserrat";
 import Soller from "./pages/routesLink/Soller";
 import Tibidabo from "./pages/routesLink/Tibidabo";
 import Tajo from "./pages/routesLink/Tajo";
@@ -25,6 +25,14 @@ import Embalse from "./pages/routesLink/Embalse";
 import Floresta from "./pages/routesLink/Floresta";
 import Turia from "./pages/routesLink/Turia";
 import Beas from "./pages/routesLink/Beas";
+import Manzanares from "./pages/routesLink/Manzanares";
+import Retiro from "./pages/routesLink/Retiro";
+import Mijas from "./pages/routesLink/Mijas";
+import Cazadores from "./pages/routesLink/Cazadores";
+import Torremolinos from "./pages/routesLink/Torremolinos";
+import Padul from "./pages/routesLink/Padul";
+import Bicha from "./pages/routesLink/Bicha";
+import Sevilla from "./pages/routesLink/Sevilla";
 import "./style.scss";
 import React, { useContext } from 'react';
 import { DarkModeContext } from './context/darkModeContext.jsx';
@@ -97,7 +105,7 @@ function App() {
         },
         {
           path: "/routesLink/Montserrat",
-          element: <Monserrat/>,
+          element: <Montserrat/>,
         },
         {
           path: "/routesLink/Soller",
@@ -138,6 +146,38 @@ function App() {
         {
           path: "/routesLink/Beas",
           element: <Beas/>,
+        },
+        {
+          path: "/routesLink/Manzanares",
+          element: <Manzanares/>,
+        },
+        {
+          path: "/routesLink/Retiro",
+          element: <Retiro/>,
+        },
+        {
+          path: "/routesLink/Mijas",
+          element: <Mijas/>,
+        },
+        {
+          path: "/routesLink/Cazadores",
+          element: <Cazadores/>,
+        },
+        {
+          path: "/routesLink/Torremolinos",
+          element: <Torremolinos/>,
+        },
+        {
+          path: "/routesLink/Padul",
+          element: <Padul/>,
+        },
+        {
+          path: "/routesLink/Bicha",
+          element: <Bicha/>,
+        },
+        {
+          path: "/routesLink/Sevilla",
+          element: <Sevilla/>,
         },
       ],
     },
