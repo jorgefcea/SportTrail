@@ -78,7 +78,7 @@ const Register = () => { // Componente para mostrar el formulario de registro
                    onChange={handleConfirmPasswordChange} name="confirmPassword" required />
             {submitted && passwordError && <small style={{ color: 'red' }}>Las contraseñas no coinciden.</small>}
             {err && <small style={{ color: 'red' }}>{err}</small>}
-            <button type="submit">Register</button>
+            <button type="submit">Registrarse</button>
           </form>
         </div>
       </div>
