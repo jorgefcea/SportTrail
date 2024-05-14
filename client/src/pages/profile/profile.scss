@@ -174,7 +174,14 @@
           align-items: center;
           justify-content: flex-end;
           gap: 15px;
-          margin-bottom: -35px;
+
+          @include tablet{
+            margin-bottom: -35px;
+          }
+
+          @include mobile{
+            margin-bottom: -15px;
+          }
         }
       }
     }
